@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Library {
 
-    ArrayList<Book> Books = new ArrayList<Book>();
+    ArrayList<Book> Books = new ArrayList<>();
 
     public void addBook(Book book){
         Books.add(book);
@@ -15,8 +15,8 @@ public class Library {
     public ArrayList<Book> getBooks(){
         return Books;
     }
-    public void SaveLibrary(){
-        File file = new File("output.txt");
+    public void SaveLibrary(String path){
+        File file = new File(path);
         try (PrintWriter out = new PrintWriter(file)) {
             out.println(Books.get(0).toString());
         } catch (FileNotFoundException e) {
