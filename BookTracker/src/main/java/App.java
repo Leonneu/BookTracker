@@ -2,6 +2,7 @@ import Console.AddToLibrary;
 import Console.IConsoleCommand;
 import data.Book;
 import data.Genre;
+import data.GoogleBooksWebApi;
 import data.Library;
 
 import java.util.Scanner;
@@ -12,28 +13,18 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        Library lib = new Library();
-        lib.addBook(new Book("Test", "TestA", Genre.FANTASY));
-        for (Book b : lib.getBooks()
-        ) {
-            System.out.println(b.toString());
-        }
-        lib.SaveLibrary("output.txt");
         Scanner s = new Scanner(System.in);
-        boolean resume = true;
-        while (resume) {
-            String input = s.nextLine();
-            IConsoleCommand cmd = null;
-            switch (input) {
-                case "a":
-                    System.out.println("Was für Buch");
-                    cmd = new AddToLibrary(lib,new Book("Test","Author",Genre.FANTASY));
-                    break;
-                case "b":
-                    resume = false;
-                default:
+        GoogleBooksWebApi google = new GoogleBooksWebApi();
+        String search = s.nextLine();
+        try {
+            var results = google.searchForBookByTitle(search);
+            for (var b:results
+                 ) {
+                System.out.println(b.toString());
             }
-            System.out.println(cmd.execute());
+        }catch (Exception e){
+
         }
+        //TODO WRITE UNIT TEST for parser!!
     }
 }

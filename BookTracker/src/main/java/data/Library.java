@@ -15,7 +15,7 @@ public class Library {
     public ArrayList<Book> getBooks(){
         return Books;
     }
-    public void SaveLibrary(String path){
+    public void saveLibrary(String path){
         File file = new File(path);
         try (PrintWriter out = new PrintWriter(file)) {
             out.println(Books.get(0).toString());
