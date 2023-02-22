@@ -8,10 +8,6 @@ public record Book(
 ) {
     @Override
     public String toString() {
-        return "Book{" +
-                "Title='" + Title + '\'' +
-                ", Author='" + Author + '\'' +
-                ", genre=" + genre +
-                '}';
+        return Title + "|" + Author + "|" + genre;
     }
 }

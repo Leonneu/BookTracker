@@ -1,1 +1,0 @@
-Book{Title='Test', Author='TestA', genre=FANTASY}
