@@ -1,9 +1,8 @@
 package JsonParser;
 
-import data.Book;
-import data.Genre;
+import Model.Book;
+import Model.Genre;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class JsonParser {

@@ -1,4 +1,4 @@
-package data;
+package Model;
 
 public enum Genre {
     FANTASY,

@@ -1,4 +1,4 @@
-package data;
+package Model;
 
 public record Book(
         String Title,
