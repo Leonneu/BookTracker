@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class AddBook implements IConsoleCommand {
+public class AddBook extends ConsoleCommand {
+    public AddBook(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return null;

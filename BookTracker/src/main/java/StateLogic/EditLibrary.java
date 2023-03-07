@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class EditLibrary implements IConsoleCommand {
+public class EditLibrary extends ConsoleCommand {
+    public EditLibrary(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return null;

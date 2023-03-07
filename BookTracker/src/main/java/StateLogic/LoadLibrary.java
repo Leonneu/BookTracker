@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class LoadLibrary implements IConsoleCommand{
+public class LoadLibrary extends ConsoleCommand {
+    public LoadLibrary(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
 

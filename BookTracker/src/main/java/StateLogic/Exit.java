@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class Exit implements IConsoleCommand {
+public class Exit extends ConsoleCommand {
+    public Exit(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return State.EXIT;

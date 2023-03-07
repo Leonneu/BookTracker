@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class DeleteBook implements IConsoleCommand {
+public class DeleteBook extends ConsoleCommand {
+    public DeleteBook(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return null;

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class JsonParser {
     public static final int NUMBEROFRESULTS = 10;
-
     public static ArrayList<Book> parseHttpResponseToBooks(String response){
         String[] extractedResponses = extractResponses(response);
         ArrayList<Book> result = new ArrayList<>();

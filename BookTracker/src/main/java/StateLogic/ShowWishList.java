@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class ShowWishList implements IConsoleCommand {
+public class ShowWishList extends ConsoleCommand {
+    public ShowWishList(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return null;

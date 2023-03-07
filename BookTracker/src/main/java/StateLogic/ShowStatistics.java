@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class ShowStatistics implements IConsoleCommand {
+public class ShowStatistics extends ConsoleCommand {
+    public ShowStatistics(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return null;

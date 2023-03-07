@@ -1,6 +1,10 @@
 package StateLogic;
 
-public class Cancle implements IConsoleCommand {
+public class Cancel extends ConsoleCommand {
+    public Cancel(DIContainer container) {
+        super(container);
+    }
+
     @Override
     public State execute() {
         return null;
