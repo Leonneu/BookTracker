@@ -1,6 +1,7 @@
 package Model;
 
 import JsonParser.JsonParser;
+import Model.Data.Book;
 
 import java.net.URI;
 import java.net.http.HttpClient;

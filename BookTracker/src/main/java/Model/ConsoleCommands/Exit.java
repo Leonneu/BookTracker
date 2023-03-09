@@ -1,4 +1,7 @@
-package StateLogic;
+package Model.ConsoleCommands;
+
+import Model.Data.DIContainer;
+import Model.State;
 
 public class Exit extends ConsoleCommand {
     public Exit(DIContainer container) {

@@ -1,4 +1,8 @@
-package StateLogic;
+package Model.ConsoleCommands.EditLibrary;
+
+import Model.ConsoleCommands.ConsoleCommand;
+import Model.Data.DIContainer;
+import Model.State;
 
 public class AddBook extends ConsoleCommand {
     public AddBook(DIContainer container) {
@@ -7,7 +11,7 @@ public class AddBook extends ConsoleCommand {
 
     @Override
     public State execute() {
-        return null;
+        return State.ADDBOOKTOLIBRARY;
     }
 
     @Override

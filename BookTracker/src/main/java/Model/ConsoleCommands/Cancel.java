@@ -1,4 +1,7 @@
-package StateLogic;
+package Model.ConsoleCommands;
+
+import Model.Data.DIContainer;
+import Model.State;
 
 public class Cancel extends ConsoleCommand {
     public Cancel(DIContainer container) {
@@ -7,7 +10,7 @@ public class Cancel extends ConsoleCommand {
 
     @Override
     public State execute() {
-        return null;
+        return State.MAIN;
     }
 
     @Override

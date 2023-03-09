@@ -1,6 +1,6 @@
 package IO;
 
-import StateLogic.ConsoleCommand;
+import Model.ConsoleCommands.ConsoleCommand;
 
 public class Output {
     private static String lineBreak = System.getProperty("line.separator");

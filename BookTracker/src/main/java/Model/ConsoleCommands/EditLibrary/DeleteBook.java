@@ -1,4 +1,8 @@
-package StateLogic;
+package Model.ConsoleCommands.EditLibrary;
+
+import Model.ConsoleCommands.ConsoleCommand;
+import Model.Data.DIContainer;
+import Model.State;
 
 public class DeleteBook extends ConsoleCommand {
     public DeleteBook(DIContainer container) {

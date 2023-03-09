@@ -1,4 +1,8 @@
-package StateLogic;
+package Model.ConsoleCommands.MainMenu;
+
+import Model.ConsoleCommands.ConsoleCommand;
+import Model.Data.DIContainer;
+import Model.State;
 
 public class ShowWishList extends ConsoleCommand {
     public ShowWishList(DIContainer container) {

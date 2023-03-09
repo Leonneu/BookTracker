@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Data.Book;
+
 import java.util.ArrayList;
 
 public interface IBookFinder {

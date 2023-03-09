@@ -1,16 +1,16 @@
 import IO.Input;
-import StateLogic.ConsoleCommand;
-import StateLogic.DIContainer;
-import StateLogic.State;
+import Model.StateDictionary;
+import Model.ConsoleCommands.ConsoleCommand;
+import Model.Data.DIContainer;
+import Model.State;
 import IO.Output;
 
 public class App {
 
-
+    public static State appState = State.INIT;
     public static void main(String[] args) {
         DIContainer diContainer = new DIContainer(null,null);
         StateDictionary stateDictionary = new StateDictionary(diContainer);
-        State appState = State.INIT;
         while (appState != State.EXIT) {
             ConsoleCommand[] currentOptions =stateDictionary.GetOptions(appState);
             int numberOfOptions = currentOptions.length;

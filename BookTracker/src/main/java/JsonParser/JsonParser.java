@@ -1,7 +1,7 @@
 package JsonParser;
 
-import Model.Book;
-import Model.Genre;
+import Model.Data.Book;
+import Model.Data.Genre;
 
 import java.util.ArrayList;
 

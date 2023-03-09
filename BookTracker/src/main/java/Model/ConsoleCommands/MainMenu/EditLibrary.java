@@ -1,4 +1,8 @@
-package StateLogic;
+package Model.ConsoleCommands.MainMenu;
+
+import Model.ConsoleCommands.ConsoleCommand;
+import Model.Data.DIContainer;
+import Model.State;
 
 public class EditLibrary extends ConsoleCommand {
     public EditLibrary(DIContainer container) {
@@ -7,7 +11,7 @@ public class EditLibrary extends ConsoleCommand {
 
     @Override
     public State execute() {
-        return null;
+        return State.EDITLIBRARY;
     }
 
     @Override

@@ -1,8 +1,11 @@
-package StateLogic;
+package Model.ConsoleCommands;
+
+import Model.Data.DIContainer;
+import Model.State;
 
 public abstract class ConsoleCommand {
 
-    private DIContainer container;
+    protected final DIContainer container;
     public ConsoleCommand(DIContainer container){
         this.container = container;
     }

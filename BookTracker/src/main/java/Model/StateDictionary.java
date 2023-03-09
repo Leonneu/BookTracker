@@ -1,10 +1,16 @@
-import StateLogic.*;
+package Model;
+
+import Model.ConsoleCommands.*;
+import Model.ConsoleCommands.EditLibrary.*;
+import Model.ConsoleCommands.MainMenu.*;
+import Model.Data.DIContainer;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class StateDictionary {
     private Map<State, ConsoleCommand[]> dic = new HashMap<>();
+
     public StateDictionary(DIContainer container) {
         dic.put(State.INIT, new ConsoleCommand[]{
                 new LoadLibrary(container),
@@ -30,6 +36,11 @@ public class StateDictionary {
         });
         dic.put(State.EXIT, new ConsoleCommand[]{
         });
+        dic.put(State.ADDBOOKTOLIBRARY, new ConsoleCommand[]{
+                new AddBookFromWishlist(container),
+                new AddBookByWebSearch(container),
+                new AddBookManually(container),
+                new Cancel(container)});
     }
 
     public ConsoleCommand[] GetOptions(State appState) {
