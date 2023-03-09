@@ -72,4 +72,9 @@ public class Input {
         }
         return new Book(title,author, genre);
     }
+
+    public static String GetSearchPrompt() {
+        Output.ShowOutput("Titel für die Suche eingeben");
+        return userInput.nextLine();
+    }
 }
