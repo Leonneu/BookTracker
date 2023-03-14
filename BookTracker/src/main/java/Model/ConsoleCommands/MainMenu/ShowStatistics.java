@@ -4,9 +4,10 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class ShowStatistics extends ConsoleCommand {
+public class ShowStatistics implements ConsoleCommand {
+    private DIContainer container;
     public ShowStatistics(DIContainer container) {
-        super(container);
+        this.container = container;
     }
 
     @Override

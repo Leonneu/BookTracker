@@ -4,9 +4,10 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class AddBookFromWishlist extends ConsoleCommand {
-    public AddBookFromWishlist(DIContainer container) {
-        super(container);
+public class AddBookFromWishlist implements ConsoleCommand {
+    private DIContainer container;
+    public AddBookFromWishlist(DIContainer container){
+        this.container=container;
     }
 
     @Override

@@ -7,9 +7,10 @@ import Model.Data.DIContainer;
 import Model.Data.Library;
 import Model.State;
 
-public class ShowLibrary extends ConsoleCommand {
+public class ShowLibrary implements ConsoleCommand {
+    private DIContainer container;
     public ShowLibrary(DIContainer container) {
-        super(container);
+        this.container = container;
     }
 
     @Override

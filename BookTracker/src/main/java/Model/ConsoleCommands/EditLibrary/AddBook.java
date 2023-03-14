@@ -4,9 +4,10 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class AddBook extends ConsoleCommand {
-    public AddBook(DIContainer container) {
-        super(container);
+public class AddBook implements ConsoleCommand {
+    private DIContainer container;
+    public AddBook(DIContainer container){
+        this.container=container;
     }
 
     @Override

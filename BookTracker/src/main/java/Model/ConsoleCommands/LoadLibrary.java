@@ -10,9 +10,11 @@ import Model.Data.Library;
 
 import java.util.ArrayList;
 
-public class LoadLibrary extends ConsoleCommand {
+public class LoadLibrary implements ConsoleCommand {
+    private DIContainer container;
+
     public LoadLibrary(DIContainer container) {
-        super(container);
+        this.container = container;
     }
 
     @Override
@@ -25,16 +27,17 @@ public class LoadLibrary extends ConsoleCommand {
         return State.MAIN;
     }
 
-    private ArrayList<Book> StringArrayToBooksArray(ArrayList<String> booksAsString){
+    private ArrayList<Book> StringArrayToBooksArray(ArrayList<String> booksAsString) {
         ArrayList<Book> result = new ArrayList<>();
-        for (String str:booksAsString
-             ) {
+        for (String str : booksAsString
+        ) {
             var values = str.split("\\|");
-            Book b = new Book(values[0],values[1], Genre.valueOf(values[2]));
+            Book b = new Book(values[0], values[1], Genre.valueOf(values[2]));
             result.add(b);
         }
         return result;
     }
+
     @Override
     public String name() {
         return "Bibliothek laden";

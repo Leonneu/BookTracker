@@ -11,14 +11,15 @@ import IO.Input;
 
 import java.util.ArrayList;
 
-public class AddBookByWebSearch extends ConsoleCommand {
-    public AddBookByWebSearch(DIContainer container) {
-        super(container);
+public class AddBookByWebSearch implements ConsoleCommand {
+    private DIContainer container;
+    public AddBookByWebSearch(DIContainer container){
+        this.container = container;
     }
 
     @Override
     public State execute() {
-        String searchPrompt = Input.GetSearchPrompt();
+        String searchPrompt = Input.promptMsg("Titel für die Suche Eingeben");
         GoogleBooksWebApi webSearch = new GoogleBooksWebApi();
         ArrayList<Book> results;
         try {

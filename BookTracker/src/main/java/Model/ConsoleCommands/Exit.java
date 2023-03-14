@@ -3,11 +3,7 @@ package Model.ConsoleCommands;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class Exit extends ConsoleCommand {
-    public Exit(DIContainer container) {
-        super(container);
-    }
-
+public class Exit implements ConsoleCommand {
     @Override
     public State execute() {
         return State.EXIT;

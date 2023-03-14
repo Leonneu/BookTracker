@@ -14,7 +14,7 @@ public class StateDictionary {
     public StateDictionary(DIContainer container) {
         dic.put(State.INIT, new ConsoleCommand[]{
                 new LoadLibrary(container),
-                new Exit(container)
+                new Exit()
         });
         dic.put(State.MAIN, new ConsoleCommand[]{
                 new ShowLibrary(container),
@@ -22,17 +22,17 @@ public class StateDictionary {
                 new ShowWishList(container),
                 new EditWishList(container),
                 new ShowStatistics(container),
-                new Exit(container)
+                new Exit()
         });
         dic.put(State.EDITLIBRARY, new ConsoleCommand[]{
                 new AddBook(container),
                 new DeleteBook(container),
-                new Cancel(container)
+                new Cancel()
         });
         dic.put(State.EDITWISHLIST, new ConsoleCommand[]{
                 new AddBook(container),
                 new DeleteBook(container),
-                new Cancel(container)
+                new Cancel()
         });
         dic.put(State.EXIT, new ConsoleCommand[]{
         });
@@ -40,7 +40,7 @@ public class StateDictionary {
                 new AddBookFromWishlist(container),
                 new AddBookByWebSearch(container),
                 new AddBookManually(container),
-                new Cancel(container)});
+                new Cancel()});
     }
 
     public ConsoleCommand[] GetOptions(State appState) {

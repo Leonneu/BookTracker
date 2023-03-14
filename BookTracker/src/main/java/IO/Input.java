@@ -55,6 +55,10 @@ public class Input {
         return fileAsStringArray;
     }
 
+    public static String promptMsg(String msg){
+        Output.ShowOutput(msg);
+        return userInput.nextLine();
+    }
 
     public static Book GetBook() {
         String title,author,genreString;
@@ -71,10 +75,5 @@ public class Input {
             genre = Genre.FANTASY;
         }
         return new Book(title,author, genre);
-    }
-
-    public static String GetSearchPrompt() {
-        Output.ShowOutput("Titel für die Suche eingeben");
-        return userInput.nextLine();
     }
 }

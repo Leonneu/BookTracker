@@ -4,9 +4,11 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class DeleteBook extends ConsoleCommand {
+public class DeleteBook implements ConsoleCommand {
+    private DIContainer container;
+
     public DeleteBook(DIContainer container) {
-        super(container);
+        this.container = container;
     }
 
     @Override

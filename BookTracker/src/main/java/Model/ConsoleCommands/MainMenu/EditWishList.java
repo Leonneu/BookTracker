@@ -4,9 +4,10 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class EditWishList extends ConsoleCommand {
+public class EditWishList implements ConsoleCommand {
+    private DIContainer container;
     public EditWishList(DIContainer container) {
-        super(container);
+        this.container = container;
     }
 
     @Override
