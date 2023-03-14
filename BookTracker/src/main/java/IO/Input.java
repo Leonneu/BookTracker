@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,8 +60,8 @@ public class Input {
         Output.ShowOutput(msg);
         return userInput.nextLine();
     }
-
-    public static Book GetBook() {
+    //TOOO Make generic shit
+    /*public static Book GetBook() {
         String title,author,genreString;
         Genre genre;
         Output.ShowOutput("Titel:");
@@ -74,6 +75,6 @@ public class Input {
         }catch (Exception e){
             genre = Genre.FANTASY;
         }
-        return new Book(title,author, genre);
-    }
+        return new Book(title,author, new HashSet<Genre>(genre));
+    }*/
 }

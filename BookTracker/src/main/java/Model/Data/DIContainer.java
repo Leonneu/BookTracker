@@ -29,26 +29,4 @@ public final class DIContainer {
         wishList = library;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (DIContainer) obj;
-        return Objects.equals(this.library, that.library) &&
-                Objects.equals(this.wishList, that.wishList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(library, wishList);
-    }
-
-    @Override
-    public String toString() {
-        return "DIContainer[" +
-                "library=" + library + ", " +
-                "wishList=" + wishList + ']';
-    }
-
-
 }

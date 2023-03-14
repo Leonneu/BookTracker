@@ -13,21 +13,12 @@ public class Library {
         books = lib;
     }
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         books.add(book);
     }
-    public ArrayList<Book> getBooks(){
+
+    public ArrayList<Book> getBooks() {
         return books;
     }
-    public void saveLibrary(String path){
-        File file = new File(path);
-        try (PrintWriter out = new PrintWriter(file)) {
-            for (Book b: books
-                 ) {
-                out.println(b.toString());
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }
