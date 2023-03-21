@@ -9,6 +9,7 @@ import Model.Data.Genre;
 import Model.Data.Library;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 
 public class LoadLibrary implements ConsoleCommand {
     private DIContainer container;
@@ -32,7 +33,7 @@ public class LoadLibrary implements ConsoleCommand {
         for (String str : booksAsString
         ) {
             var values = str.split("\\|");
-            Book b = new Book(values[0], values[1], Genre.valueOf(values[2]));
+            Book b = new Book(values[0], values[1], EnumSet.of(Genre.valueOf(values[2])));
             result.add(b);
         }
         return result;
