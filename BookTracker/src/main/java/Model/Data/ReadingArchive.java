@@ -1,6 +1,9 @@
 package Model.Data;
 
+import IO.Output;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -21,20 +24,22 @@ public class ReadingArchive {
     }
     //Question: This vs give List and do inplace operation?
     //TODO more sophisticated matching of searchstring, Regex?
-    public ArrayList<ReadingArchiveEntry> searchByAuthor(String author){
-       return (ArrayList<ReadingArchiveEntry>) archive.stream().filter(e->e.book().Author().contains(author)).toList();
+    public List<ReadingArchiveEntry> searchByAuthor(String author){
+       return archive.stream().filter(e->e.book().Author().contains(author)).toList();
     }
     //TODO more sophisticated matching of searchstring, Regex?
-    public ArrayList<ReadingArchiveEntry> searchByTitle(String title){
-        return (ArrayList<ReadingArchiveEntry>) archive.stream().filter(e->e.book().Author().contains(title)).toList();
+    public List<ReadingArchiveEntry> searchByTitle(String title){
+        return archive.stream().filter(e->e.book().Author().contains(title)).toList();
     }
 
     //Use this from Output?
     //Don't have to String and make a method in Output?
+
+
     @Override
     public String toString() {
         String result="";
-        String linebreak = System.getProperty("line.separator");
+        String linebreak = ";";
         for (var e:archive
              ) {
             result+=e.toString()+linebreak;

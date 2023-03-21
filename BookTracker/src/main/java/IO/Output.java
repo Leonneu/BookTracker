@@ -3,7 +3,7 @@ package IO;
 import Model.ConsoleCommands.ConsoleCommand;
 
 public class Output {
-    private static String lineBreak = System.getProperty("line.separator");
+    public static String lineBreak = System.lineSeparator();
 
     public static void ShowOutput(String message) {
         System.out.println(message);
