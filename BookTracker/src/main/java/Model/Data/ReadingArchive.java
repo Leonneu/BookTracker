@@ -12,11 +12,8 @@ import java.util.stream.Collectors;
 //Make two classes? Single Responsibility
 public class ReadingArchive {
     private ArrayList<ReadingArchiveEntry> archive;
-    public ReadingArchive() {
-        archive = new ArrayList<ReadingArchiveEntry>();
-    }
-    public void LoadReadingArchive(ArrayList archive){
-        this.archive=archive;
+    public ReadingArchive(ArrayList<ReadingArchiveEntry> archive) {
+        this.archive = archive;
     }
 
     public void AddEntry(ReadingArchiveEntry entry){
@@ -29,7 +26,10 @@ public class ReadingArchive {
     }
     //TODO more sophisticated matching of searchstring, Regex?
     public List<ReadingArchiveEntry> searchByTitle(String title){
-        return archive.stream().filter(e->e.book().Author().contains(title)).toList();
+        return archive.stream().filter(e->e.book().Title().contains(title)).toList();
+    }
+    public boolean RemoveEntry(Book b){
+        return archive.remove(archive.stream().filter(e->e.book().equals(b)));
     }
 
     //Use this from Output?

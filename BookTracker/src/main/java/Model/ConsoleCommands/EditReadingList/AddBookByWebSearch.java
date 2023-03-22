@@ -1,10 +1,8 @@
-package Model.ConsoleCommands.EditLibrary;
+package Model.ConsoleCommands.EditReadingList;
 
 import IO.Output;
 import Model.ConsoleCommands.ConsoleCommand;
-import Model.Data.Book;
-import Model.Data.DIContainer;
-import Model.Data.Library;
+import Model.Data.*;
 import Model.GoogleBooksWebApi;
 import Model.State;
 import IO.Input;
@@ -27,8 +25,8 @@ public class AddBookByWebSearch implements ConsoleCommand {
         } catch (Exception e){
             Output.ShowOutput(e.getMessage());
             return State.MAIN;
-        }
-        container.GetLibrary().addBook(results.get(0));
+        }//TODO
+        container.GetReadingList().AddReadingListEntry(new ReadingListEntry(results.get(0),false,"Testing"));
         return State.MAIN;
     }
 

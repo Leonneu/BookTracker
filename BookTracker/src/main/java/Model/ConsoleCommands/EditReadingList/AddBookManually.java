@@ -1,8 +1,6 @@
-package Model.ConsoleCommands.EditLibrary;
+package Model.ConsoleCommands.EditReadingList;
 
-import IO.Input;
 import Model.ConsoleCommands.ConsoleCommand;
-import Model.Data.Book;
 import Model.Data.DIContainer;
 import Model.Data.Library;
 import Model.State;
@@ -15,10 +13,6 @@ public class AddBookManually implements ConsoleCommand {
     }
     @Override
     public State execute() {
-        library = container.GetLibrary();//TODO set library dynamically for wishlist?
-        Book newBook = Input.GetBook();
-        library.addBook(newBook);//TODO Check for duplicates
-
         return State.MAIN;
     }
 

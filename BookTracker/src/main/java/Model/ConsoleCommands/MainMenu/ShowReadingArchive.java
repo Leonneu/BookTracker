@@ -1,27 +1,29 @@
 package Model.ConsoleCommands.MainMenu;
 
+import IO.Output;
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class EditWishList implements ConsoleCommand {
+public class ShowReadingArchive implements ConsoleCommand {
     private DIContainer container;
-    public EditWishList(DIContainer container) {
+    public ShowReadingArchive(DIContainer container) {
         this.container = container;
     }
 
     @Override
     public State execute() {
-        return null;
+        Output.ShowOutput(container.GetReadingArchive().toString());
+        return State.MAIN;
     }
 
     @Override
     public String name() {
-        return "Wunschliste bearbeiten";
+        return "Show Books in Library";
     }
 
     @Override
     public String description() {
-        return "Öffnet die Optionen zur Bearbeitung der Bibliothek";
+        return "Shows all the Books currently in the Library";
     }
 }

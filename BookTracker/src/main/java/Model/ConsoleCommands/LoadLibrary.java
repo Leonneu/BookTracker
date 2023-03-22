@@ -1,15 +1,13 @@
 package Model.ConsoleCommands;
 
 import IO.Input;
-import IO.Output;
 import Model.*;
-import Model.Data.Book;
-import Model.Data.DIContainer;
-import Model.Data.Genre;
-import Model.Data.Library;
+import Model.Data.*;
 
+import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 
 public class LoadLibrary implements ConsoleCommand {
     private DIContainer container;
@@ -20,12 +18,57 @@ public class LoadLibrary implements ConsoleCommand {
 
     @Override
     public State execute() {
-        Output.ShowOutput("Enter File path");
-        String path = Input.GetLibraryFilePath();
-        ArrayList<String> text = Input.LoadTextFile(Input.parseFilePath(path));
-        Library lib = new Library(StringArrayToBooksArray(text));
-        container.SetLibrary(lib);
+        String path = Input.promptMsg("Enter File path");
+        if(!Input.validateFilePath(path)) throw new InvalidPathException(path,"is not a valid path");
+        ArrayList<String> content = Input.LoadTextFile(Input.parseFilePath(path));
+        int splitIndex = FindSeparatorIndex(content);
+        ArrayList<ReadingListEntry> readingListContent = ParseStringToListEntries(content.subList(0,splitIndex));
+        ArrayList<ReadingArchiveEntry> readingArchiveContent = ParseStringToArchiveEntries(content.subList(splitIndex+1,content.size()));
+        container.SetReadingArchive(new ReadingArchive(readingArchiveContent));
+        container.SetReadingList(new ReadingList(readingListContent));
         return State.MAIN;
+    }
+
+    private ArrayList<ReadingListEntry> ParseStringToListEntries(List<String> subList) {
+        ArrayList<ReadingListEntry> result = new ArrayList<>();
+        for (String str:subList
+             ) {
+            var values = str.split("\\|");
+            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Genre.parseGenreSet(values[3]));
+            ReadingListEntry entry = new ReadingListEntry(b,Boolean.parseBoolean(values[4]),values[5]);
+            result.add(entry);
+        }
+        return result;
+    }
+
+    private ArrayList<ReadingArchiveEntry> ParseStringToArchiveEntries(List<String> subList) {
+        ArrayList<ReadingArchiveEntry> result = new ArrayList<>();
+        for (String str:subList
+             ) {
+            var values = str.split("\\|");
+            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Genre.parseGenreSet(values[3]));
+            Date dateStart;
+            if(!values[4].equals("-")){
+                var dateStr = values[4].split("\\.");
+                dateStart = new Date(Integer.parseInt(dateStr[0]),Integer.parseInt(dateStr[1]),Integer.parseInt(dateStr[2]));
+            }else{
+                dateStart = null;
+            }
+            Date dateEnd;
+            if(!values[5].equals("-")){
+                var dateStr = values[5].split("\\.");
+                dateEnd = new Date(Integer.parseInt(dateStr[0]),Integer.parseInt(dateStr[1]),Integer.parseInt(dateStr[2]));
+            }else{
+                dateEnd = null;
+            }
+            result.add(new ReadingArchiveEntry(b,dateStart,dateEnd,Boolean.parseBoolean(values[6]),values[7]));
+        }
+        return result;
+    }
+
+    //TODO Naming and Arraylist => List, Magic string "---"
+    private int FindSeparatorIndex(ArrayList<String> listOfStrings){
+        return listOfStrings.indexOf("---");
     }
 
     private ArrayList<Book> StringArrayToBooksArray(ArrayList<String> booksAsString) {

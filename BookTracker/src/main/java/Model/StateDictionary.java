@@ -1,7 +1,7 @@
 package Model;
 
 import Model.ConsoleCommands.*;
-import Model.ConsoleCommands.EditLibrary.*;
+import Model.ConsoleCommands.EditReadingList.*;
 import Model.ConsoleCommands.MainMenu.*;
 import Model.Data.DIContainer;
 
@@ -17,27 +17,28 @@ public class StateDictionary {
                 new Exit()
         });
         dic.put(State.MAIN, new ConsoleCommand[]{
-                new ShowLibrary(container),
-                new EditLibrary(container),
-                new ShowWishList(container),
-                new EditWishList(container),
+                new ShowReadingArchive(container),
+                new EditReadingArchive(container),
+                new ShowReadingList(container),
+                new EditReadingList(container),
                 new ShowStatistics(container),
                 new Exit()
         });
-        dic.put(State.EDITLIBRARY, new ConsoleCommand[]{
-                new AddBook(container),
+        dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
+                new AddBookFromReadingList(container),
+                new AcquireBook(container),
                 new DeleteBook(container),
                 new Cancel()
         });
-        dic.put(State.EDITWISHLIST, new ConsoleCommand[]{
-                new AddBook(container),
+        dic.put(State.EDITREADINGLIST, new ConsoleCommand[]{
+                new AddBookToReadingList(container),
+                new AcquireBook(container),
                 new DeleteBook(container),
                 new Cancel()
         });
         dic.put(State.EXIT, new ConsoleCommand[]{
         });
-        dic.put(State.ADDBOOKTOLIBRARY, new ConsoleCommand[]{
-                new AddBookFromWishlist(container),
+        dic.put(State.ADDBOOKTOREADINGLIST, new ConsoleCommand[]{
                 new AddBookByWebSearch(container),
                 new AddBookManually(container),
                 new Cancel()});

@@ -1,13 +1,14 @@
-package Model.ConsoleCommands.EditLibrary;
+package Model.ConsoleCommands;
 
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class AddBookFromWishlist implements ConsoleCommand {
-    private DIContainer container;
-    public AddBookFromWishlist(DIContainer container){
-        this.container=container;
+public class AcquireBook implements ConsoleCommand {
+    DIContainer container;
+
+    public AcquireBook(DIContainer container) {
+        this.container = container;
     }
 
     @Override
@@ -17,7 +18,7 @@ public class AddBookFromWishlist implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "From Wishlist";
+        return null;
     }
 
     @Override

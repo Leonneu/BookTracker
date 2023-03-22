@@ -26,16 +26,13 @@ public class Input {
         throw new InvalidOptionException("Invalid Option");
     }
 
-    public static String GetLibraryFilePath(){
-        String path = userInput.nextLine();
+    public static boolean validateFilePath(String path){
         Matcher matchPath = filePathpattern.matcher(path);
-        if(matchPath.matches()) return path;
-        throw new InvalidPathException(path,"Invalid path format");
+        return matchPath.matches();
     }
 
     public static File parseFilePath(String path) throws InvalidPathException {
         File f = new File(System.getProperty("user.dir")+path);
-        var str = f.getAbsolutePath();
         if (f.isFile()) return f;
         throw new InvalidPathException(path,"Cannot find valid file within that path");
     }

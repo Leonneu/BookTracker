@@ -1,5 +1,7 @@
 package Model.Data;
 
+import java.util.EnumSet;
+
 public enum Genre {
     CLASSIC,
     THRILLER,
@@ -11,6 +13,10 @@ public enum Genre {
     DYSTOPIA,
     PSYCHOLOGY,
     PHILOSOPHY,
-    BODY_SPIRIT_MIND
+    BODY_SPIRIT_MIND;
 
+    //TODO implement
+    public static EnumSet<Genre> parseGenreSet(String value) {
+        return null;
+    }
 }

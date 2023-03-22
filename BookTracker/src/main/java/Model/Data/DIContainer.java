@@ -1,32 +1,31 @@
 package Model.Data;
 
-import java.util.Objects;
-
 public final class DIContainer {
-    private Library library;
-    private Library wishList;
+    private ReadingList readingList;
+    private ReadingArchive readingArchive;
 
     public DIContainer(
-            Library library,
-            Library wishList
+            ReadingList readingList,
+            ReadingArchive readingArchive
+
     ) {
-        this.library = library;
-        this.wishList = wishList;
+        this.readingArchive = readingArchive;
+        this.readingList =readingList;
     }
 
-    public Library GetLibrary() {
-        return library;
+    public ReadingArchive GetReadingArchive() {
+        return readingArchive;
     }
-    public void SetLibrary(Library library) {
-        this.library = library;
-    }
-
-    public Library GetWishList() {
-        return wishList;
+    public void SetReadingArchive(ReadingArchive readingArchive) {
+        this.readingArchive = readingArchive;
     }
 
-    public void SetWishlist(Library library) {
-        wishList = library;
+    public ReadingList GetReadingList() {
+        return readingList;
+    }
+
+    public void SetReadingList(ReadingList readingList) {
+        this.readingList=readingList;
     }
 
 }

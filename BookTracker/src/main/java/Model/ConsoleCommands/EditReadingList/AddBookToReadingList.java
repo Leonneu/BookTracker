@@ -1,18 +1,18 @@
-package Model.ConsoleCommands.EditLibrary;
+package Model.ConsoleCommands.EditReadingList;
 
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class AddBook implements ConsoleCommand {
+public class AddBookToReadingList implements ConsoleCommand {
     private DIContainer container;
-    public AddBook(DIContainer container){
+    public AddBookToReadingList(DIContainer container){
         this.container=container;
     }
 
     @Override
     public State execute() {
-        return State.ADDBOOKTOLIBRARY;
+        return State.ADDBOOKTOREADINGLIST;
     }
 
     @Override

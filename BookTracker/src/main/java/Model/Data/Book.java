@@ -1,6 +1,7 @@
 package Model.Data;
 
 import java.util.EnumSet;
+import java.util.Objects;
 import java.util.Set;
 
 public record Book(
@@ -24,5 +25,18 @@ public record Book(
     @Override
     public String toString() {
         return Title + "|" + Author + "|" + Genre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Title.equals(book.Title) && Author.equals(book.Author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Title, Author);
     }
 }

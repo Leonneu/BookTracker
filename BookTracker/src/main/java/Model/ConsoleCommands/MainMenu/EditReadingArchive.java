@@ -4,24 +4,24 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class ShowWishList implements ConsoleCommand {
-    DIContainer container;
-    public ShowWishList(DIContainer container) {
+public class EditReadingArchive implements ConsoleCommand {
+    private DIContainer container;
+    public EditReadingArchive(DIContainer container) {
         this.container=container;
     }
 
     @Override
     public State execute() {
-        return null;
+        return State.EDITREADINGARCHIVE;
     }
 
     @Override
     public String name() {
-        return "Wunschliste anzeigen";
+        return "Bibliothek bearbeiten";
     }
 
     @Override
     public String description() {
-        return "Zeigt die Wunschliste an";
+        return "Öffnet die Optionen zur Bearbeitung der Bibliothek";
     }
 }

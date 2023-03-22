@@ -4,6 +4,8 @@ import Model.Data.Book;
 import Model.Data.Genre;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumSet;
 
 public class JsonParser {
     public static final int NUMBEROFRESULTS = 10;
@@ -24,16 +26,16 @@ public class JsonParser {
         int authorStart = item.indexOf("author: \"");
         int authorEnd = item.indexOf("\",",authorStart);
         String author = item.substring(authorStart+9,authorEnd);
-        int genreStart = item.indexOf("categories: \"");
-        int genreEnd = item.indexOf("\",",genreStart);
-        Genre genre = Genre.valueOf(item.substring(genreStart+13,genreEnd).toUpperCase());
-        Book book = new Book(title,author,genre);
+//        int genreStart = item.indexOf("categories: \"");
+//        int genreEnd = item.indexOf("\",",genreStart);
+//        Genre genre = Genre.valueOf(item.substring(genreStart+13,genreEnd).toUpperCase());
+        Book book = new Book(title,author, EnumSet.of(Genre.FANTASY));
         return book;
     }
 
     private static String[] extractResponses(String response) {
         response = response.split("\"items\": ")[1];
         var parts = response.split("\"kind\": \"books#volume\",");
-        return parts;
+        return Arrays.copyOfRange(parts,1,parts.length);
     }
 }

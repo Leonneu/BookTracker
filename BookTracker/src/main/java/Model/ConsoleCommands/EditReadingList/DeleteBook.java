@@ -1,4 +1,4 @@
-package Model.ConsoleCommands.EditLibrary;
+package Model.ConsoleCommands.EditReadingList;
 
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
