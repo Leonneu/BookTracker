@@ -34,7 +34,7 @@ public class Input {
     public static File parseFilePath(String path) throws InvalidPathException {
         File f = new File(System.getProperty("user.dir")+path);
         if (f.isFile()) return f;
-        throw new InvalidPathException(path,"Cannot find valid file within that path");
+        throw new InvalidPathException(f.getAbsolutePath(),"Cannot find valid file within that path");
     }
 
     public static ArrayList<String> LoadTextFile(File file) {

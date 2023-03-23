@@ -8,35 +8,47 @@ public record Book(
         String Title,
         String Author,
         int Pagecount,
+        Language language,
         EnumSet<Genre> Genre
 
 ) {
-    public Book(String Title, String Author, int Pagecount, EnumSet<Genre> Genre) {
+    public Book(String Title, String Author, int Pagecount, Language language, EnumSet<Genre> Genre) {
         this.Title = Title;
         this.Author = Author;
         this.Pagecount = Pagecount;
+        this.language = language;
         this.Genre = Genre;
     }
 
-    public Book(String title, String author, EnumSet<Model.Data.Genre> genre) {
-        this(title, author, -1, genre);
+    public Book(String title, String author, int pagecount, EnumSet<Model.Data.Genre> genre) {
+        this(title, author, pagecount, Language.EN, genre);
     }
 
+    public Book(String title, String author, EnumSet<Model.Data.Genre> genre) {
+        this(title, author, -1, Language.EN, genre);
+    }
+
+    //TODO Stringbuilder
     @Override
     public String toString() {
-        return Title + "|" + Author + "|" + Genre;
+        String genreString="";
+        for (Genre g:Genre
+             ) {
+            genreString+=g.toString()+",";
+        }
+        if(genreString.endsWith(",")) genreString = genreString.substring(0,genreString.length()-1);
+        return Title + "|" + Author + "|" + language + "|" + genreString;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Title.equals(book.Title) && Author.equals(book.Author);
+        if (!(o instanceof Book book)) return false;
+        return Title.equals(book.Title) && Author.equals(book.Author) && language == book.language;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Title, Author);
+        return Objects.hash(Title, Author, language);
     }
 }

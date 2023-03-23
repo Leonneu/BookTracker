@@ -2,6 +2,9 @@ package IO;
 
 import Model.ConsoleCommands.ConsoleCommand;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class Output {
     public static String lineBreak = System.lineSeparator();
 
@@ -16,5 +19,13 @@ public class Output {
             result.append(i).append(". ").append(options[i].name()).append(lineBreak);
         }
         return result.toString();
+    }
+
+    public static void saveToTextFile(String content) {
+        try (PrintWriter out = new PrintWriter("filename.txt")) {
+            out.print(content);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -14,7 +14,7 @@ public class StateDictionary {
     public StateDictionary(DIContainer container) {
         dic.put(State.INIT, new ConsoleCommand[]{
                 new LoadLibrary(container),
-                new Exit()
+                new Exit(container)
         });
         dic.put(State.MAIN, new ConsoleCommand[]{
                 new ShowReadingArchive(container),
@@ -22,7 +22,7 @@ public class StateDictionary {
                 new ShowReadingList(container),
                 new EditReadingList(container),
                 new ShowStatistics(container),
-                new Exit()
+                new Exit(container)
         });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
                 new AddBookFromReadingList(container),
