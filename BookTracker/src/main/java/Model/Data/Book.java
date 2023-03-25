@@ -20,6 +20,10 @@ public record Book(
         this.Genre = Genre;
     }
 
+    public Book(String title, String author, int pagecount, Language language) {
+        this(title, author, pagecount, language, null);
+    }
+
     public Book(String title, String author, int pagecount, EnumSet<Model.Data.Genre> genre) {
         this(title, author, pagecount, Language.EN, genre);
     }

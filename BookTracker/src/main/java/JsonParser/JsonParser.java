@@ -2,6 +2,7 @@ package JsonParser;
 
 import Model.Data.Book;
 import Model.Data.Genre;
+import Model.Data.Language;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,16 +21,23 @@ public class JsonParser {
     }
 
     private static Book parseIntoBook(String item) {
-        int titleStart = item.indexOf("title: \"");
-        int titleEnd = item.indexOf("\",",titleStart);
-        String title = item.substring(titleStart+8,titleEnd);//TODO Magic Ints
-        int authorStart = item.indexOf("author: \"");
-        int authorEnd = item.indexOf("\",",authorStart);
-        String author = item.substring(authorStart+9,authorEnd);
-//        int genreStart = item.indexOf("categories: \"");
-//        int genreEnd = item.indexOf("\",",genreStart);
-//        Genre genre = Genre.valueOf(item.substring(genreStart+13,genreEnd).toUpperCase());
-        Book book = new Book(title,author, EnumSet.of(Genre.FANTASY));
+        int titleStartIndex = item.indexOf("\"title\": \"") + 10;
+        int titleEndIndex = item.indexOf("\",", titleStartIndex);
+        String title = item.substring(titleStartIndex, titleEndIndex);
+
+        int authorStartIndex = item.indexOf("\"authors\": [") + 13;
+        int authorEndIndex = item.indexOf("]", authorStartIndex);
+        String authorString = item.substring(authorStartIndex, authorEndIndex);
+        String author = authorString.substring(authorString.indexOf("\"") + 1, authorString.lastIndexOf("\""));
+
+        int langIndex = item.indexOf("\"language\":");
+        int pageCountIndex = item.indexOf("\"pageCount\":");
+
+        String language = item.substring(langIndex + 12, item.indexOf(",", langIndex)).replaceAll("\"", "");
+        String pageCount = item.substring(pageCountIndex + 12, item.indexOf(",", pageCountIndex)).replaceAll("\"", "");
+
+
+        Book book = new Book(title,author,Integer.parseInt(pageCount.strip()), Language.valueOf(language.toUpperCase()));
         return book;
     }
 

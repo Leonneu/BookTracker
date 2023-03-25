@@ -57,21 +57,4 @@ public class Input {
         Output.ShowOutput(msg);
         return userInput.nextLine();
     }
-    //TOOO Make generic shit
-    /*public static Book GetBook() {
-        String title,author,genreString;
-        Genre genre;
-        Output.ShowOutput("Titel:");
-        title= userInput.nextLine();
-        Output.ShowOutput("Autor:");
-        author= userInput.nextLine();
-        Output.ShowOutput("Genre:");
-        genreString= userInput.nextLine().toUpperCase();
-        try{//TODO Genre parsing, propably selection
-            genre = Genre.valueOf(genreString);
-        }catch (Exception e){
-            genre = Genre.FANTASY;
-        }
-        return new Book(title,author, new HashSet<Genre>(genre));
-    }*/
 }
