@@ -1,6 +1,9 @@
 package Model.Data;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.List;
 
 public enum Genre {
     CLASSIC,
@@ -12,11 +15,19 @@ public enum Genre {
     HORROR,
     DYSTOPIA,
     PSYCHOLOGY,
-    PHILOSOPHY,
-    BODY_SPIRIT_MIND;
+    PHILOSOPHY;
 
     //TODO implement
-    public static EnumSet<Genre> parseGenreSet(String value) {
-        return null;
+    public static EnumSet<Genre> parseGenreSet(String[] values) {
+        var result = EnumSet.noneOf(Genre.class);
+        for (String s : values
+        ) {
+            result.add(Genre.valueOf(s));
+        }
+        return result;
+    }
+
+    public static String[] getNames() {
+        return Arrays.stream(Genre.class.getEnumConstants()).map(Enum::name).toArray(String[]::new);
     }
 }

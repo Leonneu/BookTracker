@@ -34,8 +34,8 @@ public class LoadLibrary implements ConsoleCommand {
         for (String str:subList
              ) {
             var values = str.split("\\|");
-            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Genre.parseGenreSet(values[3]));
-            ReadingListEntry entry = new ReadingListEntry(b,Boolean.parseBoolean(values[4]),values[5]);
+            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Language.valueOf(values[3]),Genre.parseGenreSet(values[4].split(",")));
+            ReadingListEntry entry = new ReadingListEntry(b,Boolean.parseBoolean(values[5]),values[6]);
             result.add(entry);
         }
         return result;
@@ -46,22 +46,22 @@ public class LoadLibrary implements ConsoleCommand {
         for (String str:subList
              ) {
             var values = str.split("\\|");
-            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Genre.parseGenreSet(values[3]));
+            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Language.valueOf(values[3]),Genre.parseGenreSet(values[4].split(",")));
             Date dateStart;
-            if(!values[4].equals("-")){
-                var dateStr = values[4].split("\\.");
+            if(!values[5].equals("-")){
+                var dateStr = values[5].split("\\.");
                 dateStart = new Date(Integer.parseInt(dateStr[0]),Integer.parseInt(dateStr[1]),Integer.parseInt(dateStr[2]));
             }else{
                 dateStart = null;
             }
             Date dateEnd;
-            if(!values[5].equals("-")){
-                var dateStr = values[5].split("\\.");
+            if(!values[6].equals("-")){
+                var dateStr = values[6].split("\\.");
                 dateEnd = new Date(Integer.parseInt(dateStr[0]),Integer.parseInt(dateStr[1]),Integer.parseInt(dateStr[2]));
             }else{
                 dateEnd = null;
             }
-            result.add(new ReadingArchiveEntry(b,dateStart,dateEnd,Boolean.parseBoolean(values[6]),values[7]));
+            result.add(new ReadingArchiveEntry(b,dateStart,dateEnd,Boolean.parseBoolean(values[7]),values[8]));
         }
         return result;
     }

@@ -21,6 +21,15 @@ public class Output {
         return result.toString();
     }
 
+    public static String ParseGenreOptions(String[] options) {
+        int n = options.length;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            result.append(i).append(". ").append(options[i]).append(lineBreak);
+        }
+        return result.toString();
+    }
+
     public static void saveToTextFile(String content) {
         try (PrintWriter out = new PrintWriter("filename.txt")) {
             out.print(content);

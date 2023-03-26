@@ -1,5 +1,3 @@
-Test|Test|EN|null|true|-
-"id": "HHJwDwAAQBAJ|id": "HHJwDwAAQBAJ|EN|[FANTASY]|false|Testing
-"id": "r_9yEAAAQBAJ|id": "r_9yEAAAQBAJ|EN|[FANTASY]|false|Testing
+Dune - Der Wüstenplanet|Frank Herbert|DE|SCIENCE_FICTION,FICTION,PHILOSOPHY|false|Testing
 ---
-Test|Test|EN|null|0.0.2000|0.0.2000|true|-
+Test|Test|123|DE|FANTASY|0.0.2000|0.0.2000|true|-

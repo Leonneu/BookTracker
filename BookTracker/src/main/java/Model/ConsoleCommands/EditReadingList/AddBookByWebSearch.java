@@ -8,6 +8,7 @@ import Model.State;
 import IO.Input;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 
 public class AddBookByWebSearch implements ConsoleCommand {
     private DIContainer container;
@@ -25,8 +26,10 @@ public class AddBookByWebSearch implements ConsoleCommand {
         } catch (Exception e){
             Output.ShowOutput(e.getMessage());
             return State.MAIN;
-        }//TODO
-        container.GetReadingList().AddReadingListEntry(new ReadingListEntry(results.get(0),false,"Testing"));
+        }//TODO Refactor A lot
+        EnumSet<Genre> genres = Input.promptUserForGenres();
+        Book bNew = new Book(results.get(0),genres);
+        container.GetReadingList().AddReadingListEntry(new ReadingListEntry(bNew,false,"Testing"));
         return State.MAIN;
     }
 

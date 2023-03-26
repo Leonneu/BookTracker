@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -56,5 +57,27 @@ public class Input {
     public static String promptMsg(String msg){
         Output.ShowOutput(msg);
         return userInput.nextLine();
+    }
+
+    public static EnumSet<Genre> promptUserForGenres() {
+        EnumSet<Genre> result = EnumSet.noneOf(Genre.class);
+        String[] options = Genre.getNames();
+        int n = options.length;
+        boolean itWorked = false;
+        do {
+            Output.ShowOutput(Output.ParseGenreOptions(options));
+            String selectedOptions = Input.promptMsg("Geben Sie alle zutreffenden Kategorien an:");
+            try{
+                for (char c:selectedOptions.toCharArray()
+                ) {
+                    //TODO remove magic Int
+                    result.add(Genre.valueOf(options[c-48]));
+                }
+            }catch (Exception e){
+                itWorked=true;
+                Output.ShowOutput(e.getMessage());
+            }
+        }while (itWorked);
+        return result;
     }
 }

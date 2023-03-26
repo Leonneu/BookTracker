@@ -32,16 +32,20 @@ public record Book(
         this(title, author, -1, Language.EN, genre);
     }
 
+    public Book(Book oldBook, EnumSet<Genre> genre) {
+        this(oldBook.Title, oldBook.Author, oldBook.Pagecount, oldBook.language, genre);
+    }
+
     //TODO Stringbuilder
     @Override
     public String toString() {
-        String genreString="";
-        for (Genre g:Genre
-             ) {
-            genreString+=g.toString()+",";
+        String genreString = "";
+        for (Genre g : Genre
+        ) {
+            genreString += g.toString() + ",";
         }
-        if(genreString.endsWith(",")) genreString = genreString.substring(0,genreString.length()-1);
-        return Title + "|" + Author + "|" + language + "|" + genreString;
+        if (genreString.endsWith(",")) genreString = genreString.substring(0, genreString.length() - 1);
+        return Title + "|" + Author + "|" + Pagecount + "|" + language + "|" + genreString;
     }
 
     @Override
