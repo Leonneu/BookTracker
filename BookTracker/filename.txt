@@ -1,3 +1,4 @@
-Dune - Der Wüstenplanet|Frank Herbert|DE|SCIENCE_FICTION,FICTION,PHILOSOPHY|false|Testing
+Test|Test|12|EN|FANTASY|true|-
+Dune|Frank Herbert|898|EN|THRILLER,FANTASY,SCIENCE_FICTION,FICTION|false|Testing
 ---
-Test|Test|123|DE|FANTASY|0.0.2000|0.0.2000|true|-
+Test|Test|12|DE|FANTASY|0.0.2000|0.0.2000|true|-

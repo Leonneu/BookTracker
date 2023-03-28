@@ -39,12 +39,14 @@ public record Book(
     //TODO Stringbuilder
     @Override
     public String toString() {
-        String genreString = "";
-        for (Genre g : Genre
-        ) {
-            genreString += g.toString() + ",";
+        StringBuilder genreString = new StringBuilder();
+        if(Genre != null){
+            for (Genre g : Genre
+            ) {
+                if(genreString.length()>0) genreString.append(",");
+                genreString.append(g.toString());
+            }
         }
-        if (genreString.endsWith(",")) genreString = genreString.substring(0, genreString.length() - 1);
         return Title + "|" + Author + "|" + Pagecount + "|" + language + "|" + genreString;
     }
 

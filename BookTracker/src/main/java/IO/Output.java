@@ -1,9 +1,11 @@
 package IO;
 
 import Model.ConsoleCommands.ConsoleCommand;
+import Model.Data.Book;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.List;
 
 public class Output {
     public static String lineBreak = System.lineSeparator();
@@ -36,5 +38,14 @@ public class Output {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String ParseBooksIntoOutput(List<Book> books){
+        int n = books.size();
+        StringBuilder result = new StringBuilder();
+        for (int i=0;i<n;i++){
+            result.append(i).append(". ").append(books.get(i).toString()).append(lineBreak);
+        }
+        return result.toString();
     }
 }

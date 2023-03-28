@@ -27,8 +27,16 @@ public class AddBookByWebSearch implements ConsoleCommand {
             Output.ShowOutput(e.getMessage());
             return State.MAIN;
         }//TODO Refactor A lot
+        Output.ShowOutput("Welches der folgenden Bücher?");
+        Output.ShowOutput(Output.ParseBooksIntoOutput(results));
+        int selectedOption=0;
+        try {
+          selectedOption = Input.GetOption(results.size());
+        }catch (Exception e){
+            //TODO Errorhandeling;
+        }
         EnumSet<Genre> genres = Input.promptUserForGenres();
-        Book bNew = new Book(results.get(0),genres);
+        Book bNew = new Book(results.get(selectedOption),genres);
         container.GetReadingList().AddReadingListEntry(new ReadingListEntry(bNew,false,"Testing"));
         return State.MAIN;
     }
