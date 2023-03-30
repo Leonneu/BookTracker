@@ -18,7 +18,7 @@ public class AcquireBook implements ConsoleCommand {
 
     @Override
     public String name() {
-        return null;
+        return "Buch zur Sammlung hinzufügen";
     }
 
     @Override

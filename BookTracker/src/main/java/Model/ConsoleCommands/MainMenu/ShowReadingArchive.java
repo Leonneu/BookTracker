@@ -19,7 +19,7 @@ public class ShowReadingArchive implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Show Books in Library";
+        return "Lesearchive anzeigen";
     }
 
     @Override

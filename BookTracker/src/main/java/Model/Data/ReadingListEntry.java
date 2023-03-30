@@ -7,10 +7,10 @@ public record ReadingListEntry(Book book,boolean owned,String comment) {
         this.comment = comment;
     }
     public ReadingListEntry(Book book) {
-        this(book, false, null);
+        this(book, false, "-");
     }
     public ReadingListEntry(Book book, boolean owned) {
-        this(book, owned, null);
+        this(book, owned, "-");
     }
 
     @Override

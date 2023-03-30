@@ -13,14 +13,13 @@ public class ShowReadingList implements ConsoleCommand {
 
     @Override
     public State execute() {
-        Output.ShowOutput(container.GetReadingList().toString());
-
+        Output.ShowOutput(container.GetReadingList().toString().replace(";",Output.lineBreak));
         return State.MAIN;
     }
 
     @Override
     public String name() {
-        return "Wunschliste anzeigen";
+        return "Leseliste anzeigen";
     }
 
     @Override

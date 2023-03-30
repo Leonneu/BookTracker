@@ -17,7 +17,7 @@ public class EditReadingArchive implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Bibliothek bearbeiten";
+        return "Lesearchive bearbeiten";
     }
 
     @Override
