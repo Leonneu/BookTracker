@@ -1,6 +1,5 @@
 package IO;
 
-import Model.Data.Book;
 import Model.Data.Date;
 import Model.Data.Genre;
 
@@ -97,6 +96,26 @@ public class Input {
             }
         }while (!validInput);
         return result;
+    }
+
+    public static <T> T promptUserForListChoice(List<T> list)  {
+        int n = list.size();
+        Output.ShowOutput("List contents:");
+        for (int i = 0; i < n; i++) {
+            Output.ShowOutput(i+". "+list.get(i).toString());
+        }
+        boolean stillChoosing = true;
+        int selectedOption=0;
+        while(stillChoosing){
+            try {
+                selectedOption = GetOption(n);
+                stillChoosing=false;
+            } catch (InvalidOptionException e) {
+                Output.ShowOutput(e.getMessage());
+                Output.ShowOutput("Try again");
+            }
+        }
+        return list.get(selectedOption);
     }
 
 

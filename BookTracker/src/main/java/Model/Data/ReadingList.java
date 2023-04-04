@@ -1,6 +1,7 @@
 package Model.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReadingList {
     ArrayList<ReadingListEntry> readingList;
@@ -14,6 +15,10 @@ public class ReadingList {
 
     public ArrayList<ReadingListEntry> GetUnownedBooks(){
         return (ArrayList<ReadingListEntry>) readingList.stream().filter(e->e.owned()==false).toList();
+    }
+
+    public List<ReadingListEntry> searchByTitle(String title) {
+        return readingList.stream().filter(e -> e.book().Title().contains(title)).toList();
     }
 
     //TODO get 0 seems stupid

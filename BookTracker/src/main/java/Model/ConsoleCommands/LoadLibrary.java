@@ -61,7 +61,7 @@ public class LoadLibrary implements ConsoleCommand {
             }else{
                 dateEnd = null;
             }
-            result.add(new ReadingArchiveEntry(b,dateStart,dateEnd,Boolean.parseBoolean(values[7]),values[8]));
+            result.add(new ReadingArchiveEntry(b,dateStart,dateEnd,values[7]));
         }
         return result;
     }

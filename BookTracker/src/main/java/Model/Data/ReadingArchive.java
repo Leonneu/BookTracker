@@ -1,6 +1,7 @@
 package Model.Data;
 
 import IO.Output;
+import Model.BookNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +13,27 @@ import java.util.stream.Collectors;
 //Make two classes? Single Responsibility
 public class ReadingArchive {
     private ArrayList<ReadingArchiveEntry> archive;
+
     public ReadingArchive(ArrayList<ReadingArchiveEntry> archive) {
         this.archive = archive;
     }
 
-    public void AddEntry(ReadingArchiveEntry entry){
+    public void AddEntry(ReadingArchiveEntry entry) {
         archive.add(entry);
     }
-    //Question: This vs give List and do inplace operation?
+
     //TODO more sophisticated matching of searchstring, Regex?
-    public List<ReadingArchiveEntry> searchByAuthor(String author){
-       return archive.stream().filter(e->e.book().Author().contains(author)).toList();
+    public List<ReadingArchiveEntry> searchByAuthor(String author) {
+        return archive.stream().filter(e -> e.book().Author().contains(author)).toList();
     }
+
     //TODO more sophisticated matching of searchstring, Regex?
-    public List<ReadingArchiveEntry> searchByTitle(String title){
-        return archive.stream().filter(e->e.book().Title().contains(title)).toList();
+    public List<ReadingArchiveEntry> searchByTitle(String title) {
+        return archive.stream().filter(e -> e.book().Title().contains(title)).toList();
     }
-    public boolean RemoveEntry(Book b){
-        return archive.remove(archive.stream().filter(e->e.book().equals(b)));
+
+    public boolean RemoveEntry(Book b) {
+        return archive.remove(archive.stream().filter(e -> e.book().equals(b)));
     }
 
     //Use this from Output?
@@ -38,11 +42,11 @@ public class ReadingArchive {
 
     @Override
     public String toString() {
-        String result="";
-        String linebreak = ";";
-        for (var e:archive
-             ) {
-            result+=e.toString()+linebreak;
+        String result = "";
+        String valueSeparation = ";";
+        for (var e : archive
+        ) {
+            result += e.toString() + valueSeparation;
         }
         return result;
     }

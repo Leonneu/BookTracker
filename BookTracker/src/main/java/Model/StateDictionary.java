@@ -26,7 +26,6 @@ public class StateDictionary {
         });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
                 new AddBookFromReadingList(container),
-                new AcquireBook(container),
                 new DeleteBook(container),
                 new Cancel()
         });
