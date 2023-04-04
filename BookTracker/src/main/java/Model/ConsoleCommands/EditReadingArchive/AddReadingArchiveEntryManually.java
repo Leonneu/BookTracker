@@ -1,12 +1,12 @@
-package Model.ConsoleCommands.MainMenu;
+package Model.ConsoleCommands.EditReadingArchive;
 
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class AddBookFromReadingList implements ConsoleCommand {
-    private DIContainer container;
-    public AddBookFromReadingList(DIContainer container){
+public class AddReadingArchiveEntryManually implements ConsoleCommand {
+    DIContainer container;
+    public AddReadingArchiveEntryManually(DIContainer container) {
         this.container=container;
     }
 
@@ -17,7 +17,7 @@ public class AddBookFromReadingList implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "From Wishlist";
+        return "Buch manuell ins Archive hinzufügen";
     }
 
     @Override

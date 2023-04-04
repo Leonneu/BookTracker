@@ -47,7 +47,7 @@ public record Book(
                 genreString.append(g.toString());
             }
         }
-        return Title + "|" + Author + "|" + Pagecount + "|" + language + "|" + genreString;
+        return "%-20s|%-20s|%10d|%7s|%-60s".formatted(Title, Author, Pagecount, language, genreString);
     }
 
     @Override

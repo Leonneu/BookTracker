@@ -13,6 +13,8 @@ public class ShowReadingList implements ConsoleCommand {
 
     @Override
     public State execute() {
+        Output.ShowOutput("%-20s|%-20s|%-10s|%-7s|%-60s|%-10s|%-100s".formatted("Titel", "Autor", "Seitenzahl", "Sprache", "Genre","In Besitzt","Notiz"));
+        Output.ShowOutput("-".repeat(200));
         Output.ShowOutput(container.GetReadingList().toString().replace(";",Output.lineBreak));
         return State.MAIN;
     }
@@ -24,6 +26,6 @@ public class ShowReadingList implements ConsoleCommand {
 
     @Override
     public String description() {
-        return "Zeigt die Wunschliste an";
+        return "Zeigt die Leseliste an";
     }
 }

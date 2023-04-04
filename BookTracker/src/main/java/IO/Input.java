@@ -82,7 +82,7 @@ public class Input {
         boolean validInput=false;
         Date result = null;
         do{
-            String userInput = Input.promptMsg("Datum im folgenden format angeben: tt.mm.jjjj. z.B. 01.01.2020");
+            String userInput = Input.promptMsg("Datum im folgenden Format angeben: tt.mm.jjjj. z.B. 01.01.2020");
             var values = userInput.split(".");
             if(values.length==3){
                 try {

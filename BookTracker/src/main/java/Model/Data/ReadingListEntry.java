@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public final class ReadingListEntry {
     private final Book book;
-    private boolean owned;
     private final String comment;
+    private boolean owned;
 
     public ReadingListEntry(Book book, boolean owned, String comment) {
         this.book = book;
@@ -23,7 +23,7 @@ public final class ReadingListEntry {
 
     @Override
     public String toString() {
-        return book.toString() + "|" + owned + "|" + comment;
+        return String.format("%s|%10s|%-100s",book.toString(),(owned ? "Ja" : "Nein"),comment);
     }
 
     public Book book() {
@@ -38,8 +38,8 @@ public final class ReadingListEntry {
         return comment;
     }
 
-   public void acquireBook(){
+    public void acquireBook() {
         owned = true;
-   }
+    }
 
 }

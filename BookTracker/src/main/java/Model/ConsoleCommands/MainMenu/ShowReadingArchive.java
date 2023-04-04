@@ -13,6 +13,7 @@ public class ShowReadingArchive implements ConsoleCommand {
 
     @Override
     public State execute() {
+        Output.ShowOutput("Titel|Autor|Seitenzahl|Genre|Lesestart|Leseende|Notiz");
         Output.ShowOutput(container.GetReadingArchive().toString());
         return State.MAIN;
     }

@@ -1,5 +1,5 @@
 Test|Test|12|EN|FANTASY|true|-
 Dune|Frank Herbert|898|EN|THRILLER,FANTASY,SCIENCE_FICTION,FICTION|true|Testing
-Gideon the Ninth|Tamsyn Muir|448|EN|ROMANCE,FANTASY,SCIENCE_FICTION|true|
+Gideon the Ninth|Tamsyn Muir|448|EN|ROMANCE,FANTASY,SCIENCE_FICTION|true|-
 ---
 Test|Test|12|DE|FANTASY|0.0.2000|0.0.2000|true

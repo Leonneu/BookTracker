@@ -4,15 +4,17 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class DeleteBook implements ConsoleCommand {
+public class RemoveBookFromReadingList implements ConsoleCommand {
     private DIContainer container;
 
-    public DeleteBook(DIContainer container) {
+    public RemoveBookFromReadingList(DIContainer container) {
         this.container = container;
     }
 
     @Override
     public State execute() {
+
+
         return null;
     }
 

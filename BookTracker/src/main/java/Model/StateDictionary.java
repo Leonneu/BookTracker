@@ -1,6 +1,8 @@
 package Model;
 
 import Model.ConsoleCommands.*;
+import Model.ConsoleCommands.EditReadingArchive.AddReadingArchiveEntryManually;
+import Model.ConsoleCommands.EditReadingArchive.AddReadingListEntryToReadingArchive;
 import Model.ConsoleCommands.EditReadingList.*;
 import Model.ConsoleCommands.MainMenu.*;
 import Model.Data.DIContainer;
@@ -9,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StateDictionary {
-    private Map<State, ConsoleCommand[]> dic = new HashMap<>();
+    private final Map<State, ConsoleCommand[]> dic = new HashMap<>();
 
     public StateDictionary(DIContainer container) {
         dic.put(State.INIT, new ConsoleCommand[]{
@@ -25,21 +27,21 @@ public class StateDictionary {
                 new Exit(container)
         });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
-                new AddBookFromReadingList(container),
-                new DeleteBook(container),
+                new AddReadingListEntryToReadingArchive(container),
+                new AddReadingArchiveEntryManually(container),
                 new Cancel()
         });
         dic.put(State.EDITREADINGLIST, new ConsoleCommand[]{
-                new AddBookToReadingList(container),
+                new AddReadingListEntryToReadingList(container),
                 new AcquireBook(container),
-                new DeleteBook(container),
+                new RemoveBookFromReadingList(container),
                 new Cancel()
         });
         dic.put(State.EXIT, new ConsoleCommand[]{
         });
         dic.put(State.ADDBOOKTOREADINGLIST, new ConsoleCommand[]{
-                new AddBookByWebSearch(container),
-                new AddBookManually(container),
+                new AddReadingListEntryByWebSearch(container),
+                new AddReadingListEntryManually(container),
                 new Cancel()});
     }
 

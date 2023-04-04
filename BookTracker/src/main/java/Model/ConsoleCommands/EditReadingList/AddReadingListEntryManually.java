@@ -8,9 +8,9 @@ import Model.State;
 
 import java.util.EnumSet;
 
-public class AddBookManually implements ConsoleCommand {
+public class AddReadingListEntryManually implements ConsoleCommand {
     private DIContainer container;
-    public AddBookManually(DIContainer container) {
+    public AddReadingListEntryManually(DIContainer container) {
      this.container = container;
     }
     @Override

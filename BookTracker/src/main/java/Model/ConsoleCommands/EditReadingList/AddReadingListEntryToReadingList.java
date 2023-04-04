@@ -4,9 +4,9 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
 
-public class AddBookToReadingList implements ConsoleCommand {
+public class AddReadingListEntryToReadingList implements ConsoleCommand {
     private DIContainer container;
-    public AddBookToReadingList(DIContainer container){
+    public AddReadingListEntryToReadingList(DIContainer container){
         this.container=container;
     }
 

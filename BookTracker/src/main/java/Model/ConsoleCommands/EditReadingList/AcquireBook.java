@@ -1,4 +1,4 @@
-package Model.ConsoleCommands;
+package Model.ConsoleCommands.EditReadingList;
 
 import IO.Input;
 import IO.Output;

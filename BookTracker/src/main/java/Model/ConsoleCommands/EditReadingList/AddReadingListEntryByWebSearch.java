@@ -10,9 +10,9 @@ import IO.Input;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
-public class AddBookByWebSearch implements ConsoleCommand {
+public class AddReadingListEntryByWebSearch implements ConsoleCommand {
     private DIContainer container;
-    public AddBookByWebSearch(DIContainer container){
+    public AddReadingListEntryByWebSearch(DIContainer container){
         this.container = container;
     }
 
@@ -26,17 +26,16 @@ public class AddBookByWebSearch implements ConsoleCommand {
         } catch (Exception e){
             Output.ShowOutput(e.getMessage());
             return State.MAIN;
-        }//TODO Refactor A lot
+        }
         Book e = Input.promptUserForListChoice(results);
         EnumSet<Genre> genres = Input.promptUserForGenres();
-        Book bNew = new Book(e,genres);
-        container.GetReadingList().AddReadingListEntry(new ReadingListEntry(bNew,false,""));
+        container.GetReadingList().AddReadingListEntry(new ReadingListEntry(new Book(e,genres),false,"-"));
         return State.MAIN;
     }
 
     @Override
     public String name() {
-        return "By Web-search";
+        return "Durch Web-Suche";
     }
 
     @Override
