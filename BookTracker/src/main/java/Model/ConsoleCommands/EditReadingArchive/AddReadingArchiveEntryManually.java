@@ -3,6 +3,7 @@ package Model.ConsoleCommands.EditReadingArchive;
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.State;
+import jdk.jshell.spi.ExecutionControl;
 
 public class AddReadingArchiveEntryManually implements ConsoleCommand {
     DIContainer container;
@@ -12,7 +13,7 @@ public class AddReadingArchiveEntryManually implements ConsoleCommand {
 
     @Override
     public State execute() {
-        return null;
+        return null;//TODO
     }
 
     @Override
@@ -22,6 +23,6 @@ public class AddReadingArchiveEntryManually implements ConsoleCommand {
 
     @Override
     public String description() {
-        return null;
+        return "Füge ein Buch direkt in das Archive hinzu, sollte nur in Ausnahme Fällen verwendet werden";
     }
 }

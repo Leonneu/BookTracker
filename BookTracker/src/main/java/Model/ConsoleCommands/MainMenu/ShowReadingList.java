@@ -7,16 +7,16 @@ import Model.State;
 
 public class ShowReadingList implements ConsoleCommand {
     DIContainer container;
+
     public ShowReadingList(DIContainer container) {
-        this.container=container;
+        this.container = container;
     }
 
     @Override
     public State execute() {
-        Output.ShowOutput("%-20s|%-20s|%-10s|%-7s|%-60s|%-10s|%-100s".formatted("Titel", "Autor", "Seitenzahl", "Sprache", "Genre","In Besitzt","Notiz"));
-        Output.ShowOutput("-".repeat(200));
-        Output.ShowOutput(container.GetReadingList().toString().replace(";",Output.lineBreak));
-        return State.MAIN;
+        Output.showHeaderReadingList();
+        Output.showOutput(container.getReadingList().toString().replace(";",Output.lineBreak));
+        return State.SHOWREADINGLIST;
     }
 
     @Override

@@ -5,6 +5,10 @@ import Model.ConsoleCommands.EditReadingArchive.AddReadingArchiveEntryManually;
 import Model.ConsoleCommands.EditReadingArchive.AddReadingListEntryToReadingArchive;
 import Model.ConsoleCommands.EditReadingList.*;
 import Model.ConsoleCommands.MainMenu.*;
+import Model.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor;
+import Model.ConsoleCommands.ShowReadingList.ShowReadingListByTitle;
+import Model.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByAuthor;
+import Model.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByTitle;
 import Model.Data.DIContainer;
 
 import java.util.HashMap;
@@ -26,9 +30,19 @@ public class StateDictionary {
                 new ShowStatistics(container),
                 new Exit(container)
         });
+        dic.put(State.SHOWREADINGARCHIVE,new ConsoleCommand[]{
+                new ShowReadingArchiveByTitle(container),
+                new ShowReadingArchiveByAuthor(container),
+                new Cancel()
+        });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
                 new AddReadingListEntryToReadingArchive(container),
                 new AddReadingArchiveEntryManually(container),
+                new Cancel()
+        });
+        dic.put(State.SHOWREADINGLIST,new ConsoleCommand[]{
+                new ShowReadingListByTitle(container),
+                new ShowReadingListByAuthor(container),
                 new Cancel()
         });
         dic.put(State.EDITREADINGLIST, new ConsoleCommand[]{
@@ -37,12 +51,12 @@ public class StateDictionary {
                 new RemoveBookFromReadingList(container),
                 new Cancel()
         });
-        dic.put(State.EXIT, new ConsoleCommand[]{
-        });
         dic.put(State.ADDBOOKTOREADINGLIST, new ConsoleCommand[]{
                 new AddReadingListEntryByWebSearch(container),
                 new AddReadingListEntryManually(container),
                 new Cancel()});
+        dic.put(State.EXIT, new ConsoleCommand[]{
+        });
     }
 
     public ConsoleCommand[] GetOptions(State appState) {

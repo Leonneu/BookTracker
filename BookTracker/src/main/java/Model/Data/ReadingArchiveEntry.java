@@ -15,7 +15,7 @@ public final class ReadingArchiveEntry {
         this.comment = comment;
     }
 
-    public ReadingArchiveEntry(Book book, Date finishedReading, boolean owned) {
+    public ReadingArchiveEntry(Book book, Date finishedReading) {
         this(book, null, finishedReading, null);
     }
 
@@ -27,7 +27,7 @@ public final class ReadingArchiveEntry {
     //TODO Stringbuilder
     @Override
     public String toString() {
-        return book.toString() + "|" + startedReading.toString() + "|" + finishedReading.toString() + "|"  + comment;
+        return String.format("%s|%10s|%10s|%-100s",book.toString(),startedReading,finishedReading,comment);
     }
 
     public Book book() {

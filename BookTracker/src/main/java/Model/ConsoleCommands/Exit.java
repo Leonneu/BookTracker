@@ -16,12 +16,11 @@ public class Exit implements ConsoleCommand {
     public State execute() {
         String answer = Input.promptMsg("Änderungen speichern? (Y/N)").toLowerCase();
         if(answer.startsWith("j") || answer.startsWith("y")) {
-            String content = "";
-            content += container.GetReadingList().toString();
+            String content = container.getReadingList().toString();
             content += "---"+Output.lineBreak;
             content += container.GetReadingArchive().toString();
             content = content.replace(";",Output.lineBreak);
-            Output.saveToTextFile(content);
+            Output.saveToTextFile(content,container.getPath());
         }
         return State.EXIT;
     }

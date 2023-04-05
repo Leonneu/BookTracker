@@ -9,23 +9,24 @@ public class ReadingList {
     public ReadingList(ArrayList<ReadingListEntry> readingList) {
         this.readingList = readingList;
     }
-    public void AddReadingListEntry(ReadingListEntry entry){
+    public void addReadingListEntry(ReadingListEntry entry){
         readingList.add(entry);
     }
 
     public ArrayList<ReadingListEntry> GetUnownedBooks(){
-        return (ArrayList<ReadingListEntry>) readingList.stream().filter(e->e.owned()==false).toList();
+        return (ArrayList<ReadingListEntry>) readingList.stream().filter(e-> !e.owned()).toList();
     }
-
+    //TODO Regex
     public List<ReadingListEntry> searchByTitle(String title) {
         return readingList.stream().filter(e -> e.book().Title().contains(title)).toList();
     }
 
-    //TODO get 0 seems stupid
-    public ReadingListEntry RemoveEntry(Book b){
-        var toBeRemoved = readingList.stream().filter(e -> e.book().equals(b)).toList().get(0);
-        readingList.remove(toBeRemoved);
-        return toBeRemoved;
+    public List<ReadingListEntry> searchByAuthor(String author) {
+        return readingList.stream().filter(e -> e.book().Author().contains(author)).toList();
+    }
+
+    public void removeEntry(ReadingListEntry entryToRemove){
+        readingList.remove(entryToRemove);
     }
 
     @Override

@@ -1,8 +1,14 @@
 package Model.ConsoleCommands.EditReadingList;
 
+import IO.Input;
+import IO.Output;
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
+import Model.Data.ReadingList;
+import Model.Data.ReadingListEntry;
 import Model.State;
+
+import java.util.List;
 
 public class RemoveBookFromReadingList implements ConsoleCommand {
     private DIContainer container;
@@ -13,9 +19,21 @@ public class RemoveBookFromReadingList implements ConsoleCommand {
 
     @Override
     public State execute() {
-
-
-        return null;
+        ReadingList readingList = container.getReadingList();
+        String title = Input.promptMsg("Titel");
+        List<ReadingListEntry> results = readingList.searchByTitle(title);
+        ReadingListEntry readingListEntry;
+        switch (results.size()) {
+            case 0 -> {
+                Output.showOutput("Keine Buch mit diesem Titel in der Leseliste");
+                return State.EDITREADINGARCHIVE;
+            }
+            case 1 -> readingListEntry = results.get(0);
+            default -> readingListEntry = Input.promptUserForListChoice(results);
+        }
+        readingList.removeEntry(readingListEntry);
+        Output.showOutput("Eintrag erfolgreich gelöscht");
+        return State.MAIN;
     }
 
     @Override

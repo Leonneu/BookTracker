@@ -52,7 +52,7 @@ public class Input {
     }
 
     public static String promptMsg(String msg){
-        Output.ShowOutput(msg);
+        Output.showOutput(msg);
         return userInput.nextLine();
     }
 
@@ -62,7 +62,7 @@ public class Input {
         int n = options.length;
         boolean itWorked = false;
         do {
-            Output.ShowOutput(Output.ParseGenreOptions(options));
+            Output.showOutput(Output.parseGenreOptions(options));
             String selectedOptions = Input.promptMsg("Geben Sie alle zutreffenden Kategorien an:");
             try{
                 for (char c:selectedOptions.toCharArray()
@@ -72,7 +72,7 @@ public class Input {
                 }
             }catch (Exception e){
                 itWorked=true;
-                Output.ShowOutput(e.getMessage());
+                Output.showOutput(e.getMessage());
             }
         }while (itWorked);
         return result;
@@ -83,15 +83,16 @@ public class Input {
         Date result = null;
         do{
             String userInput = Input.promptMsg("Datum im folgenden Format angeben: tt.mm.jjjj. z.B. 01.01.2020");
-            var values = userInput.split(".");
+            var values = userInput.split("\\.");
             if(values.length==3){
                 try {
                     int day = Integer.parseInt(values[0]);
                     int month = Integer.parseInt(values[1]);
                     int year = Integer.parseInt(values[2]);
                     result = new Date(day,month,year);
+                    validInput = true;
                 }catch (Exception e){
-                    Output.ShowOutput(e.getMessage());
+                    Output.showOutput(e.getMessage());
                 }
             }
         }while (!validInput);
@@ -100,9 +101,9 @@ public class Input {
 
     public static <T> T promptUserForListChoice(List<T> list)  {
         int n = list.size();
-        Output.ShowOutput("List contents:");
+        Output.showOutput("List contents:");
         for (int i = 0; i < n; i++) {
-            Output.ShowOutput(i+". "+list.get(i).toString());
+            Output.showOutput(i+". "+list.get(i).toString());
         }
         boolean stillChoosing = true;
         int selectedOption=0;
@@ -111,8 +112,8 @@ public class Input {
                 selectedOption = GetOption(n);
                 stillChoosing=false;
             } catch (InvalidOptionException e) {
-                Output.ShowOutput(e.getMessage());
-                Output.ShowOutput("Try again");
+                Output.showOutput(e.getMessage());
+                Output.showOutput("Try again");
             }
         }
         return list.get(selectedOption);

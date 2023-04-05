@@ -21,9 +21,9 @@ public class AddReadingListEntryManually implements ConsoleCommand {
             int pageCount = Integer.parseInt(Input.promptMsg("Seitenzahl:"));
             Language language = Language.valueOf(Input.promptMsg("Sprache (EN/DE):"));
             EnumSet<Genre> genres = Input.promptUserForGenres();
-            container.GetReadingList().AddReadingListEntry(new ReadingListEntry(new Book(title,author,pageCount,language,genres)));
+            container.getReadingList().addReadingListEntry(new ReadingListEntry(new Book(title,author,pageCount,language,genres)));
         }catch (Exception e){
-            Output.ShowOutput(e.getMessage());
+            Output.showOutput(e.getMessage());
         }
         return State.MAIN;
     }

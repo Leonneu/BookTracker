@@ -4,6 +4,7 @@ import IO.Input;
 import Model.*;
 import Model.Data.*;
 
+import java.io.File;
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -20,12 +21,14 @@ public class LoadLibrary implements ConsoleCommand {
     public State execute() {
         String path = Input.promptMsg("Enter File path");
         if(!Input.validateFilePath(path)) throw new InvalidPathException(path,"is not a valid path");
-        ArrayList<String> content = Input.LoadTextFile(Input.parseFilePath(path));
+        File fullPath = Input.parseFilePath(path);
+        container.setPath(fullPath);
+        ArrayList<String> content = Input.LoadTextFile(fullPath);
         int splitIndex = FindSeparatorIndex(content);
         ArrayList<ReadingListEntry> readingListContent = ParseStringToListEntries(content.subList(0,splitIndex));
         ArrayList<ReadingArchiveEntry> readingArchiveContent = ParseStringToArchiveEntries(content.subList(splitIndex+1,content.size()));
         container.SetReadingArchive(new ReadingArchive(readingArchiveContent));
-        container.SetReadingList(new ReadingList(readingListContent));
+        container.setReadingList(new ReadingList(readingListContent));
         return State.MAIN;
     }
 
@@ -34,8 +37,8 @@ public class LoadLibrary implements ConsoleCommand {
         for (String str:subList
              ) {
             var values = str.split("\\|");
-            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Language.valueOf(values[3]),Genre.parseGenreSet(values[4].split(",")));
-            ReadingListEntry entry = new ReadingListEntry(b,Boolean.parseBoolean(values[5]),values[6]);
+            Book b = new Book(values[0],values[1],Integer.parseInt(values[2].trim()),Language.valueOf(values[3].trim()),Genre.parseGenreSet(values[4].trim().split(",")));
+            ReadingListEntry entry = new ReadingListEntry(b,values[5].trim().equals("Ja"),values[6]);
             result.add(entry);
         }
         return result;
@@ -46,17 +49,17 @@ public class LoadLibrary implements ConsoleCommand {
         for (String str:subList
              ) {
             var values = str.split("\\|");
-            Book b = new Book(values[0],values[1],Integer.parseInt(values[2]),Language.valueOf(values[3]),Genre.parseGenreSet(values[4].split(",")));
+            Book b = new Book(values[0],values[1],Integer.parseInt(values[2].trim()),Language.valueOf(values[3].trim()),Genre.parseGenreSet(values[4].trim().split(",")));
             Date dateStart;
-            if(!values[5].equals("-")){
-                var dateStr = values[5].split("\\.");
+            if(!values[5].trim().equals("-")){
+                var dateStr = values[5].trim().split("\\.");
                 dateStart = new Date(Integer.parseInt(dateStr[0]),Integer.parseInt(dateStr[1]),Integer.parseInt(dateStr[2]));
             }else{
                 dateStart = null;
             }
             Date dateEnd;
-            if(!values[6].equals("-")){
-                var dateStr = values[6].split("\\.");
+            if(!values[6].trim().equals("-")){
+                var dateStr = values[6].trim().split("\\.");
                 dateEnd = new Date(Integer.parseInt(dateStr[0]),Integer.parseInt(dateStr[1]),Integer.parseInt(dateStr[2]));
             }else{
                 dateEnd = null;

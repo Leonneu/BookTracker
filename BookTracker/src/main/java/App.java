@@ -14,12 +14,12 @@ public class App {
         while (appState != State.EXIT) {
             ConsoleCommand[] currentOptions =stateDictionary.GetOptions(appState);
             int numberOfOptions = currentOptions.length;
-            Output.ShowOutput(Output.ParseStateOptions(currentOptions));
+            Output.showOutput(Output.parseStateOptions(currentOptions));
             try {
                 int selectedOption = Input.GetOption(numberOfOptions);
                 appState=currentOptions[selectedOption].execute();
             } catch (Exception e) {
-                Output.ShowOutput(e.getMessage());
+                Output.showOutput(e.getMessage());
             }
         }
     }

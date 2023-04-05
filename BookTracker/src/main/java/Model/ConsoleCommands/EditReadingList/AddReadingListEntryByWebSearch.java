@@ -24,12 +24,12 @@ public class AddReadingListEntryByWebSearch implements ConsoleCommand {
         try {
             results = webSearch.searchForBookByTitle(searchPrompt);
         } catch (Exception e){
-            Output.ShowOutput(e.getMessage());
+            Output.showOutput(e.getMessage());
             return State.MAIN;
         }
         Book e = Input.promptUserForListChoice(results);
         EnumSet<Genre> genres = Input.promptUserForGenres();
-        container.GetReadingList().AddReadingListEntry(new ReadingListEntry(new Book(e,genres),false,"-"));
+        container.getReadingList().addReadingListEntry(new ReadingListEntry(new Book(e,genres),false,"-"));
         return State.MAIN;
     }
 
