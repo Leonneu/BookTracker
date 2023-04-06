@@ -17,8 +17,8 @@ public class ShowReadingListByAuthor implements ConsoleCommand {
     @Override
     public State execute() {
         ReadingList readingList = container.getReadingList();
-        String title = Input.promptMsg("Autor?");
-        var result = readingList.searchByAuthor(title);
+        String author = Input.promptMsg("Autor?");
+        var result = readingList.searchByAuthor(author);
         StringBuilder output = new StringBuilder();
         for (var e:result
              ) {
@@ -31,7 +31,7 @@ public class ShowReadingListByAuthor implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Filter nach Autor";
+        return "Filtern nach Autor";
     }
 
     @Override

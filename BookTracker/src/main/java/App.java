@@ -1,4 +1,5 @@
 import IO.Input;
+import IO.InvalidOptionException;
 import Model.StateDictionary;
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
@@ -18,8 +19,9 @@ public class App {
             try {
                 int selectedOption = Input.GetOption(numberOfOptions);
                 appState=currentOptions[selectedOption].execute();
-            } catch (Exception e) {
-                Output.showOutput(e.getMessage());
+            } catch (InvalidOptionException e) {
+                Output.showOutput("Hilfe:");
+                Output.showOutput(Output.parseStateHelp(currentOptions));
             }
         }
     }

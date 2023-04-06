@@ -1,7 +1,10 @@
 package Model.ConsoleCommands.ShowReadingArchive;
 
+import IO.Input;
+import IO.Output;
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
+import Model.Data.ReadingArchive;
 import Model.State;
 
 public class ShowReadingArchiveByTitle implements ConsoleCommand {
@@ -13,12 +16,22 @@ public class ShowReadingArchiveByTitle implements ConsoleCommand {
 
     @Override
     public State execute() {
-        return null;
+        ReadingArchive readingArchive = container.GetReadingArchive();
+        String title = Input.promptMsg("Titel?");
+        var result = readingArchive.searchByTitle(title);
+        StringBuilder output = new StringBuilder();
+        for (var e:result
+        ) {
+            output.append(e.toString()).append(Output.lineBreak);
+        }
+        Output.showHeaderReadingArchive();
+        Output.showOutput(output.toString());
+        return State.SHOWREADINGARCHIVE;
     }
 
     @Override
     public String name() {
-        return null;
+        return "Filtern nach Titel";
     }
 
     @Override

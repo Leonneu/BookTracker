@@ -1,15 +1,12 @@
 package JsonParser;
 
 import Model.Data.Book;
-import Model.Data.Genre;
 import Model.Data.Language;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
 
 public class JsonParser {
-    public static final int NUMBEROFRESULTS = 10;
     public static ArrayList<Book> parseHttpResponseToBooks(String response){
         String[] extractedResponses = extractResponses(response);
         ArrayList<Book> result = new ArrayList<>();
@@ -37,8 +34,7 @@ public class JsonParser {
         String pageCount = item.substring(pageCountIndex + 12, item.indexOf(",", pageCountIndex)).replaceAll("\"", "");
 
 
-        Book book = new Book(title,author,Integer.parseInt(pageCount.strip()), Language.valueOf(language.toUpperCase()));
-        return book;
+        return new Book(title,author,Integer.parseInt(pageCount.strip()), Language.valueOf(language.toUpperCase()));
     }
 
     private static String[] extractResponses(String response) {

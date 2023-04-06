@@ -1,10 +1,8 @@
 package Model.Data;
 
-import java.util.Objects;
-
 public final class ReadingListEntry {
     private final Book book;
-    private final String comment;
+    private String comment;
     private boolean owned;
 
     public ReadingListEntry(Book book, boolean owned, String comment) {
@@ -17,13 +15,13 @@ public final class ReadingListEntry {
         this(book, false, "-");
     }
 
-    public ReadingListEntry(Book book, boolean owned) {
-        this(book, owned, "-");
-    }
-
     @Override
     public String toString() {
         return String.format("%s|%10s|%-100s",book.toString(),(owned ? "Ja" : "Nein"),comment);
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Book book() {
@@ -32,10 +30,6 @@ public final class ReadingListEntry {
 
     public boolean owned() {
         return owned;
-    }
-
-    public String comment() {
-        return comment;
     }
 
     public void acquireBook() {

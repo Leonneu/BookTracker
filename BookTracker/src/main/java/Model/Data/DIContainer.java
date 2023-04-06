@@ -13,12 +13,13 @@ public final class DIContainer {
 
     ) {
         this.readingArchive = readingArchive;
-        this.readingList =readingList;
+        this.readingList = readingList;
     }
 
     public ReadingArchive GetReadingArchive() {
         return readingArchive;
     }
+
     public void SetReadingArchive(ReadingArchive readingArchive) {
         this.readingArchive = readingArchive;
     }
@@ -28,7 +29,7 @@ public final class DIContainer {
     }
 
     public void setReadingList(ReadingList readingList) {
-        this.readingList=readingList;
+        this.readingList = readingList;
     }
 
     public File getPath() {

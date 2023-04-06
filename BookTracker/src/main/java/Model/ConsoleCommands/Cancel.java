@@ -1,6 +1,5 @@
 package Model.ConsoleCommands;
 
-import Model.Data.DIContainer;
 import Model.State;
 
 public class Cancel implements ConsoleCommand {
@@ -11,7 +10,7 @@ public class Cancel implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Abbrechen";
+        return "Zurück";
     }
 
     @Override

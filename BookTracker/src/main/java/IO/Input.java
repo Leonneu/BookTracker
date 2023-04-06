@@ -8,31 +8,34 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Scanner;
 
 public class Input {
-    private static Scanner userInput = new Scanner(System.in);
-    private static Pattern filePathpattern = Pattern.compile("\\\\(?:\\w+\\\\)*\\w+\\.\\w+$");
+    private static final Scanner userInput = new Scanner(System.in);
 
     public static int GetOption(int numberOfValidOptions) throws InvalidOptionException {
-        int selectedOption = Integer.parseInt(userInput.nextLine());
-        userInput.reset();
+        int selectedOption;
+        try {
+            selectedOption = Integer.parseInt(userInput.nextLine());
+            userInput.reset();
+        }catch (Exception e){
+            throw new InvalidOptionException("Invalide Option");
+        }
+
         if (0 <= selectedOption && selectedOption < numberOfValidOptions)
             return selectedOption;
-        throw new InvalidOptionException("Invalid Option");
-    }
-
-    public static boolean validateFilePath(String path){
-        Matcher matchPath = filePathpattern.matcher(path);
-        return matchPath.matches();
+        throw new InvalidOptionException("Invalide Option");
     }
 
     public static File parseFilePath(String path) throws InvalidPathException {
-        File f = new File(System.getProperty("user.dir")+path);
+        var testIf = new File(path);
+        if(testIf.isAbsolute() && testIf.isFile()) return testIf;
+        File f = new File(System.getProperty("user.dir") + (path.startsWith("\\")?"":"\\") + path);
         if (f.isFile()) return f;
-        throw new InvalidPathException(f.getAbsolutePath(),"Cannot find valid file within that path");
+        throw new InvalidPathException(f.getAbsolutePath(),"Keine Datei mit diesem Pfad gefunden");
     }
 
     public static ArrayList<String> LoadTextFile(File file) {
@@ -59,7 +62,6 @@ public class Input {
     public static EnumSet<Genre> promptUserForGenres() {
         EnumSet<Genre> result = EnumSet.noneOf(Genre.class);
         String[] options = Genre.getNames();
-        int n = options.length;
         boolean itWorked = false;
         do {
             Output.showOutput(Output.parseGenreOptions(options));

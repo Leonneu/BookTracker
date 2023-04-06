@@ -1,12 +1,10 @@
 package IO;
 
 import Model.ConsoleCommands.ConsoleCommand;
-import Model.Data.Book;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class Output {
     public static String lineBreak = System.lineSeparator();
@@ -34,6 +32,15 @@ public class Output {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < n; i++) {
             result.append(i).append(". ").append(options[i].name()).append(lineBreak);
+        }
+        return result.toString();
+    }
+
+    public static String parseStateHelp(ConsoleCommand[] options) {
+        int n = options.length;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            result.append(i).append(". ").append(options[i].description()).append(lineBreak);
         }
         return result.toString();
     }

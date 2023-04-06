@@ -49,6 +49,7 @@ public class StateDictionary {
                 new AddReadingListEntryToReadingList(container),
                 new AcquireBook(container),
                 new RemoveBookFromReadingList(container),
+                new AttachComment(container),
                 new Cancel()
         });
         dic.put(State.ADDBOOKTOREADINGLIST, new ConsoleCommand[]{
