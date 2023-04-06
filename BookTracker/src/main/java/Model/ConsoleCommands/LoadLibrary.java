@@ -59,17 +59,17 @@ public class LoadLibrary implements ConsoleCommand {
         ) {
             var values = str.split("\\|");
             Book b = new Book(values[0], values[1], Integer.parseInt(values[2].trim()), Language.valueOf(values[3].trim()), Genre.parseGenreSet(values[4].trim().split(",")));
-            Date dateStart;
+            BookDateWrapper dateStart;
             if (!values[5].trim().equals("-")) {
                 var dateStr = values[5].trim().split("\\.");
-                dateStart = new Date(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
+                dateStart = new BookDateWrapper(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
             } else {
                 dateStart = null;
             }
-            Date dateEnd;
+            BookDateWrapper dateEnd;
             if (!values[6].trim().equals("-")) {
                 var dateStr = values[6].trim().split("\\.");
-                dateEnd = new Date(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
+                dateEnd = new BookDateWrapper(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
             } else {
                 dateEnd = null;
             }

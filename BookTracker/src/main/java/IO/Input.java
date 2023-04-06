@@ -1,6 +1,6 @@
 package IO;
 
-import Model.Data.Date;
+import Model.Data.BookDateWrapper;
 import Model.Data.Genre;
 
 import java.io.BufferedReader;
@@ -80,9 +80,9 @@ public class Input {
         return result;
     }
 
-    public static Date promptUserForDate(){
+    public static BookDateWrapper promptUserForDate(){
         boolean validInput=false;
-        Date result = null;
+        BookDateWrapper result = null;
         do{
             String userInput = Input.promptMsg("Datum im folgenden Format angeben: tt.mm.jjjj. z.B. 01.01.2020");
             var values = userInput.split("\\.");
@@ -91,11 +91,15 @@ public class Input {
                     int day = Integer.parseInt(values[0]);
                     int month = Integer.parseInt(values[1]);
                     int year = Integer.parseInt(values[2]);
-                    result = new Date(day,month,year);
+                    result = new BookDateWrapper(day,month,year);
                     validInput = true;
                 }catch (Exception e){
                     Output.showOutput(e.getMessage());
                 }
+            }
+            if(values.length==1){
+                result = new BookDateWrapper();
+                validInput=true;
             }
         }while (!validInput);
         return result;
