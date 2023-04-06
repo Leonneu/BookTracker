@@ -13,9 +13,14 @@ public class ReadingList {
         readingList.add(entry);
     }
 
-    public ArrayList<ReadingListEntry> GetUnownedBooks(){
-        return (ArrayList<ReadingListEntry>) readingList.stream().filter(e-> !e.owned()).toList();
+    public List<ReadingListEntry> getUnownedBooks(){
+        return readingList.stream().filter(e-> !e.owned()).toList();
     }
+
+    public List<ReadingListEntry> getOwnedBooks(){
+        return readingList.stream().filter(ReadingListEntry::owned).toList();
+    }
+
     //TODO Regex
     public List<ReadingListEntry> searchByTitle(String title) {
         return readingList.stream().filter(e -> e.book().Title().contains(title)).toList();

@@ -5,10 +5,12 @@ import Model.ConsoleCommands.EditReadingArchive.AddReadingArchiveEntryManually;
 import Model.ConsoleCommands.EditReadingArchive.AddReadingListEntryToReadingArchive;
 import Model.ConsoleCommands.EditReadingList.*;
 import Model.ConsoleCommands.MainMenu.*;
+import Model.ConsoleCommands.ShowReadingList.ShowOwnedBooks;
 import Model.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor;
 import Model.ConsoleCommands.ShowReadingList.ShowReadingListByTitle;
 import Model.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByAuthor;
 import Model.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByTitle;
+import Model.ConsoleCommands.ShowReadingList.ShowUnownedBooks;
 import Model.Data.DIContainer;
 
 import java.util.HashMap;
@@ -43,6 +45,8 @@ public class StateDictionary {
         dic.put(State.SHOWREADINGLIST,new ConsoleCommand[]{
                 new ShowReadingListByTitle(container),
                 new ShowReadingListByAuthor(container),
+                new ShowUnownedBooks(container),
+                new ShowOwnedBooks(container),
                 new Cancel()
         });
         dic.put(State.EDITREADINGLIST, new ConsoleCommand[]{

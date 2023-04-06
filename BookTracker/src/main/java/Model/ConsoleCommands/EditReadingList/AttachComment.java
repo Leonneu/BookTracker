@@ -1,4 +1,4 @@
-package Model;
+package Model.ConsoleCommands.EditReadingList;
 
 import IO.Input;
 import IO.Output;
@@ -6,6 +6,7 @@ import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.DIContainer;
 import Model.Data.ReadingList;
 import Model.Data.ReadingListEntry;
+import Model.State;
 
 public class AttachComment implements ConsoleCommand {
     private final DIContainer container;
