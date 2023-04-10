@@ -4,6 +4,7 @@ import IO.Output;
 import Model.ConsoleCommands.ConsoleCommand;
 import Model.Data.*;
 import Model.GoogleBooksWebApi;
+import Model.IBookFinder;
 import Model.State;
 import IO.Input;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 
 public class AddReadingListEntryByWebSearch implements ConsoleCommand {
-    private DIContainer container;
+    private final DIContainer container;
     public AddReadingListEntryByWebSearch(DIContainer container){
         this.container = container;
     }
@@ -19,7 +20,7 @@ public class AddReadingListEntryByWebSearch implements ConsoleCommand {
     @Override
     public State execute() {
         String searchPrompt = Input.promptMsg("Titel für die Suche Eingeben");
-        GoogleBooksWebApi webSearch = new GoogleBooksWebApi();
+        IBookFinder webSearch = new GoogleBooksWebApi();
         ArrayList<Book> results;
         try {
             results = webSearch.searchForBookByTitle(searchPrompt);
