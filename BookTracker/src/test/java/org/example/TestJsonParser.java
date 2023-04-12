@@ -1,8 +1,8 @@
 package org.example;
 
-import JsonParser.JsonParser;
-import Model.Data.Book;
-import Model.Data.Language;
+import Plugin.JsonParser;
+import Plugin.Application.Model.Book;
+import Plugin.Application.Model.Language;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

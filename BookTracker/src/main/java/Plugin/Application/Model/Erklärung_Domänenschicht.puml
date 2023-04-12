@@ -1,0 +1,198 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 2,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": true,
+    "hideDataStructures": true,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 1,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Plugin.Application.Model.Book",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1072845520 { 
+   	label=Application
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Book481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Book</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   Author: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Genre: EnumSet&lt;Genre&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Pagecount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Title: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   language: Language [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Author(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Genre(): EnumSet&lt;Genre&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Pagecount(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Title(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ language(): Language</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReadingArchive481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingArchive</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   archive: ArrayList&lt;ReadingArchiveEntry&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AddEntry(entry: ReadingArchiveEntry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RemoveEntry(b: Book): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByAuthor(author: String): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByTitle(title: String): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReadingArchiveEntry481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingArchiveEntry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   book: Book [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   comment: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   finishedReading: BookDateWrapper [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startedReading: BookDateWrapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ book(): Book</TD></TR>
+<TR><TD ALIGN="LEFT" >+ comment(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finishedReading(): BookDateWrapper</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startedReading(): BookDateWrapper</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReadingList481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingList</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   readingList: ArrayList&lt;ReadingListEntry&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addReadingListEntry(entry: ReadingListEntry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeEntry(entryToRemove: ReadingListEntry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByAuthor(author: String): List&lt;ReadingListEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByTitle(title: String): List&lt;ReadingListEntry&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReadingListEntry481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingListEntry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   book: Book [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   comment: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   owned: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ acquireBook()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ book(): Book</TD></TR>
+<TR><TD ALIGN="LEFT" >+ owned(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+ReadingArchive481104144 -> ReadingArchiveEntry481104144[label="archive
+[0..*]"];
+ReadingArchiveEntry481104144 -> Book481104144[label="book
+[0..1]"];
+ReadingList481104144 -> ReadingListEntry481104144[label="readingList
+[0..*]"];
+ReadingListEntry481104144 -> Book481104144[label="book
+[0..1]"];
+    
+}
+@enduml

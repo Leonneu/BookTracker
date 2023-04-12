@@ -1,17 +1,17 @@
-import IO.Input;
-import IO.InvalidOptionException;
-import Model.StateDictionary;
-import Model.ConsoleCommands.ConsoleCommand;
-import Model.Data.DIContainer;
-import Model.State;
-import IO.Output;
+import Plugin.IO.Input;
+import Plugin.IO.InvalidOptionException;
+import Plugin.Application.StateDictionary;
+import Plugin.Application.ConsoleCommands.ConsoleCommand;
+import Plugin.Application.Container;
+import Plugin.Application.State;
+import Plugin.IO.Output;
 
 public class App {
 
     public static State appState = State.INIT;
     public static void main(String[] args) {
-        DIContainer diContainer = new DIContainer(null,null);
-        StateDictionary stateDictionary = new StateDictionary(diContainer);
+        Container container = new Container(null,null);
+        StateDictionary stateDictionary = new StateDictionary(container);
         while (appState != State.EXIT) {
             ConsoleCommand[] currentOptions =stateDictionary.GetOptions(appState);
             int numberOfOptions = currentOptions.length;
