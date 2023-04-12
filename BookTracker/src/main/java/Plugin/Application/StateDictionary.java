@@ -1,23 +1,20 @@
 package Plugin.Application;
 
-import Application.ConsoleCommands.*;
 import Plugin.Application.ConsoleCommands.Cancel;
+import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.ConsoleCommands.EditReadingArchive.AddReadingArchiveEntryManually;
 import Plugin.Application.ConsoleCommands.EditReadingArchive.AddReadingListEntryToReadingArchive;
-import Application.ConsoleCommands.EditReadingList.*;
+import Plugin.Application.ConsoleCommands.EditReadingList.*;
+import Plugin.Application.ConsoleCommands.Exit;
 import Plugin.Application.ConsoleCommands.Init.LoadLibrary;
 import Plugin.Application.ConsoleCommands.Init.NewLibrary;
-import Application.ConsoleCommands.MainMenu.*;
+import Plugin.Application.ConsoleCommands.MainMenu.*;
+import Plugin.Application.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByAuthor;
+import Plugin.Application.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByTitle;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowOwnedBooks;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByTitle;
-import Plugin.Application.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByAuthor;
-import Plugin.Application.ConsoleCommands.ShowReadingArchive.ShowReadingArchiveByTitle;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowUnownedBooks;
-import Plugin.Application.ConsoleCommands.ConsoleCommand;
-import Plugin.Application.ConsoleCommands.EditReadingList.*;
-import Plugin.Application.ConsoleCommands.Exit;
-import Plugin.Application.ConsoleCommands.MainMenu.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +30,9 @@ public class StateDictionary {
         });
         dic.put(State.MAIN, new ConsoleCommand[]{
                 new ShowReadingArchive(container),
-                new EditReadingArchive(container),
+                new EditReadingArchive(),
                 new ShowReadingList(container),
-                new EditReadingList(container),
+                new EditReadingList(),
                 new ShowStatistics(container),
                 new Exit(container)
         });
@@ -57,7 +54,7 @@ public class StateDictionary {
                 new Cancel()
         });
         dic.put(State.EDITREADINGLIST, new ConsoleCommand[]{
-                new AddReadingListEntryToReadingList(container),
+                new AddReadingListEntryToReadingList(),
                 new AcquireBook(container),
                 new RemoveBookFromReadingList(container),
                 new AttachComment(container),

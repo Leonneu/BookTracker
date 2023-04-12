@@ -1,20 +1,19 @@
 package Plugin.Application.ConsoleCommands.EditReadingList;
 
+import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
+import Plugin.Application.Model.Book;
 import Plugin.Application.Model.Genre;
+import Plugin.Application.Model.Language;
 import Plugin.Application.Model.ReadingListEntry;
+import Plugin.Application.State;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
-import Plugin.Application.ConsoleCommands.ConsoleCommand;
-import Application.Model.*;
-import Plugin.Application.State;
-import Plugin.Application.Model.Book;
-import Plugin.Application.Model.Language;
 
 import java.util.EnumSet;
 
 public class AddReadingListEntryManually implements ConsoleCommand {
-    private Container container;
+    private final Container container;
     public AddReadingListEntryManually(Container container) {
      this.container = container;
     }

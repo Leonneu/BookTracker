@@ -1,16 +1,15 @@
 package Plugin.Application.ConsoleCommands.EditReadingList;
 
+import Plugin.Application.BookFinder;
+import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
+import Plugin.Application.Model.Book;
 import Plugin.Application.Model.Genre;
 import Plugin.Application.Model.ReadingListEntry;
-import Plugin.IO.Output;
-import Plugin.Application.ConsoleCommands.ConsoleCommand;
-import Application.Model.*;
-import Plugin.GoogleBooksWebApi;
-import Plugin.Application.BookFinder;
 import Plugin.Application.State;
+import Plugin.GoogleBooksWebApi;
 import Plugin.IO.Input;
-import Plugin.Application.Model.Book;
+import Plugin.IO.Output;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

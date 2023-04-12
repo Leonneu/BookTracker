@@ -1,15 +1,14 @@
 package Plugin.Application.ConsoleCommands.EditReadingArchive;
 
-import Plugin.Application.Container;
-import Plugin.Application.Model.ReadingList;
-import Plugin.Application.Model.ReadingListEntry;
-import Plugin.IO.Input;
-import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
-import Application.Model.*;
-import Plugin.Application.State;
+import Plugin.Application.Container;
 import Plugin.Application.Model.BookDateWrapper;
 import Plugin.Application.Model.ReadingArchiveEntry;
+import Plugin.Application.Model.ReadingList;
+import Plugin.Application.Model.ReadingListEntry;
+import Plugin.Application.State;
+import Plugin.IO.Input;
+import Plugin.IO.Output;
 
 import java.util.List;
 

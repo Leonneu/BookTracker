@@ -5,7 +5,7 @@ import Plugin.Application.Container;
 import Plugin.Application.State;
 
 public class ShowStatistics implements ConsoleCommand {
-    private Container container;
+    private final Container container;
     public ShowStatistics(Container container) {
         this.container = container;
     }

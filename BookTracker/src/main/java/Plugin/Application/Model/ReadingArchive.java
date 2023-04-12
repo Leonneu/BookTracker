@@ -8,7 +8,7 @@ import java.util.List;
 //Make one class one list and DB like fields?
 //Make two classes? Single Responsibility
 public class ReadingArchive {
-    private ArrayList<ReadingArchiveEntry> archive;
+    private final ArrayList<ReadingArchiveEntry> archive;
 
     public ReadingArchive(ArrayList<ReadingArchiveEntry> archive) {
         this.archive = archive;

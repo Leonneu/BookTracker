@@ -3,9 +3,8 @@ package Plugin.Application.ConsoleCommands.Init;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.*;
-import Plugin.IO.Input;
-import Application.Model.*;
 import Plugin.Application.State;
+import Plugin.IO.Input;
 
 import java.io.File;
 import java.util.ArrayList;

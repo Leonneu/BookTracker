@@ -11,13 +11,6 @@ public record Book(
         EnumSet<Genre> Genre
 
 ) {
-    public Book(String Title, String Author, int Pagecount, Language language, EnumSet<Genre> Genre) {
-        this.Title = Title;
-        this.Author = Author;
-        this.Pagecount = Pagecount;
-        this.language = language;
-        this.Genre = Genre;
-    }
 
     public Book(String title, String author, int pagecount, Language language) {
         this(title, author, pagecount, language, null);
@@ -38,10 +31,10 @@ public record Book(
     @Override
     public String toString() {
         StringBuilder genreString = new StringBuilder();
-        if(Genre != null){
+        if (Genre != null) {
             for (Genre g : Genre
             ) {
-                if(genreString.length()>0) genreString.append(",");
+                if (genreString.length() > 0) genreString.append(",");
                 genreString.append(g.toString());
             }
         }

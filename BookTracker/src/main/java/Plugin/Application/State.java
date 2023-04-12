@@ -9,5 +9,5 @@ public enum State {
 
     EDITREADINGLIST,
     ADDBOOKTOREADINGLIST,
-    EXIT;
+    EXIT
 }

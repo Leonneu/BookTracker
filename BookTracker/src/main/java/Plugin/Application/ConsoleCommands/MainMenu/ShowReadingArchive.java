@@ -6,7 +6,7 @@ import Plugin.Application.Container;
 import Plugin.Application.State;
 
 public class ShowReadingArchive implements ConsoleCommand {
-    private Container container;
+    private final Container container;
     public ShowReadingArchive(Container container) {
         this.container = container;
     }

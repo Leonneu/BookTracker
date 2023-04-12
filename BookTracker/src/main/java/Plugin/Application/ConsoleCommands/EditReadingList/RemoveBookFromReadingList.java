@@ -11,7 +11,7 @@ import Plugin.Application.State;
 import java.util.List;
 
 public class RemoveBookFromReadingList implements ConsoleCommand {
-    private Container container;
+    private final Container container;
 
     public RemoveBookFromReadingList(Container container) {
         this.container = container;

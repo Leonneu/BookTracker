@@ -1,13 +1,10 @@
 package Plugin.Application.ConsoleCommands.EditReadingList;
 
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
-import Plugin.Application.Container;
 import Plugin.Application.State;
 
 public class AddReadingListEntryToReadingList implements ConsoleCommand {
-    private Container container;
-    public AddReadingListEntryToReadingList(Container container){
-        this.container=container;
+    public AddReadingListEntryToReadingList(){
     }
 
     @Override
