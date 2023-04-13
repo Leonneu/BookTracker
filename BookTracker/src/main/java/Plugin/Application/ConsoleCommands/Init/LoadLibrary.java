@@ -68,7 +68,7 @@ public class LoadLibrary implements ConsoleCommand {
         return result;
     }
 
-    private static BookDateWrapper parseDateFromString(String dateAsString) {
+    private BookDateWrapper parseDateFromString(String dateAsString) {
         BookDateWrapper dateStart;
         if (!dateAsString.trim().equals("-")) {
             var dateStr = dateAsString.trim().split("\\.");
