@@ -61,23 +61,22 @@ public class LoadLibrary implements ConsoleCommand {
         ) {
             var values = str.split("\\|");
             Book b = new Book(values[0], values[1], Integer.parseInt(values[2].trim()), Language.valueOf(values[3].trim()), Genre.parseGenreSet(values[4].trim().split(",")));
-            BookDateWrapper dateStart;
-            if (!values[5].trim().equals("-")) {
-                var dateStr = values[5].trim().split("\\.");
-                dateStart = new BookDateWrapper(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
-            } else {
-                dateStart = null;
-            }
-            BookDateWrapper dateEnd;
-            if (!values[6].trim().equals("-")) {
-                var dateStr = values[6].trim().split("\\.");
-                dateEnd = new BookDateWrapper(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
-            } else {
-                dateEnd = null;
-            }
+            BookDateWrapper dateStart = parseDateFromString(values[5]);
+            BookDateWrapper dateEnd = parseDateFromString(values[6]);
             result.add(new ReadingArchiveEntry(b, dateStart, dateEnd, values[7]));
         }
         return result;
+    }
+
+    private static BookDateWrapper parseDateFromString(String dateAsString) {
+        BookDateWrapper dateStart;
+        if (!dateAsString.trim().equals("-")) {
+            var dateStr = dateAsString.trim().split("\\.");
+            dateStart = new BookDateWrapper(Integer.parseInt(dateStr[0]), Integer.parseInt(dateStr[1]), Integer.parseInt(dateStr[2]));
+        } else {
+            dateStart = null;
+        }
+        return dateStart;
     }
 
     //TODO Naming and Arraylist => List, Magic string "---"
