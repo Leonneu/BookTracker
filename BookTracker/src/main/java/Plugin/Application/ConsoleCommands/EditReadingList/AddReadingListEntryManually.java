@@ -23,7 +23,7 @@ public class AddReadingListEntryManually implements ConsoleCommand {
             String title = Input.promptMsg("Titel:");
             String author = Input.promptMsg("Autor:");
             int pageCount = Integer.parseInt(Input.promptMsg("Seitenzahl:"));
-            Language language = Language.valueOf(Input.promptMsg("Sprache (EN/DE):"));
+            Language language = Language.valueOf(Input.promptMsg("Sprache (EN/DE/ES):").trim().toUpperCase());
             EnumSet<Genre> genres = Input.promptUserForGenres();
             container.getReadingList().addReadingListEntry(new ReadingListEntry(new Book(title,author,pageCount,language,genres)));
         }catch (Exception e){
