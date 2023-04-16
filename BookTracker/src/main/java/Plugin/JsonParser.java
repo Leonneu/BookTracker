@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.MissingFormatArgumentException;
 
-public class JsonParser {
-    public static ArrayList<Book> parseHttpResponseToBooks(String response){
+public class JsonParser implements BookParser {
+    public ArrayList<Book> parseHttpResponseToBooks(String response){
         String[] extractedResponses = extractResponses(response);
         ArrayList<Book> result = new ArrayList<>();
         for (String item:extractedResponses
@@ -22,7 +22,7 @@ public class JsonParser {
         return result;
     }
 
-    private static Book parseIntoBook(String item) throws MissingFormatArgumentException {
+    private Book parseIntoBook(String item) throws MissingFormatArgumentException {
         int titleStartIndex = item.indexOf("\"title\": \"") + 10;
         int titleEndIndex = item.indexOf("\",", titleStartIndex);
         String title = item.substring(titleStartIndex, titleEndIndex);
@@ -43,7 +43,7 @@ public class JsonParser {
         return new Book(title,author,Integer.parseInt(pageCount.strip()), Language.valueOf(language.toUpperCase()));
     }
 
-    private static String[] extractResponses(String response) {
+    private String[] extractResponses(String response) {
         response = response.split("\"items\": ")[1];
         var parts = response.split("\"kind\": \"books#volume\",");
         return Arrays.copyOfRange(parts,1,parts.length);

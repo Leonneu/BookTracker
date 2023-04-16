@@ -10,6 +10,7 @@ import Plugin.Application.State;
 import Plugin.GoogleBooksWebApi;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
+import Plugin.JsonParser;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -23,7 +24,7 @@ public class AddReadingListEntryByWebSearch implements ConsoleCommand {
     @Override
     public State execute() {
         String searchPrompt = Input.promptMsg("Titel für die Suche Eingeben");
-        BookFinder webSearch = new GoogleBooksWebApi();
+        BookFinder webSearch = new GoogleBooksWebApi(new JsonParser());
         ArrayList<Book> results;
         try {
             results = webSearch.searchForBookByTitle(searchPrompt);
