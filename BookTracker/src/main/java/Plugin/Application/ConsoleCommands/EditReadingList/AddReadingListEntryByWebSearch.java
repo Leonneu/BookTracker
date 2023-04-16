@@ -17,17 +17,18 @@ import java.util.EnumSet;
 
 public class AddReadingListEntryByWebSearch implements ConsoleCommand {
     private final Container container;
-    public AddReadingListEntryByWebSearch(Container container){
+    private final BookFinder bookFinder;
+    public AddReadingListEntryByWebSearch(Container container,BookFinder bookFinder){
+        this.bookFinder =bookFinder;
         this.container = container;
     }
 
     @Override
     public State execute() {
         String searchPrompt = Input.promptMsg("Titel für die Suche Eingeben");
-        BookFinder webSearch = new GoogleBooksWebApi(new JsonParser());
         ArrayList<Book> results;
         try {
-            results = webSearch.searchForBookByTitle(searchPrompt);
+            results = bookFinder.searchForBookByTitle(searchPrompt);
         } catch (Exception e){
             Output.showOutput(e.getMessage());
             return State.MAIN;

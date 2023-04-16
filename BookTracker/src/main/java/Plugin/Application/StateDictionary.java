@@ -15,6 +15,8 @@ import Plugin.Application.ConsoleCommands.ShowReadingList.ShowOwnedBooks;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByTitle;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowUnownedBooks;
+import Plugin.GoogleBooksWebApi;
+import Plugin.JsonParser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,7 +63,7 @@ public class StateDictionary {
                 new Cancel()
         });
         dic.put(State.ADDBOOKTOREADINGLIST, new ConsoleCommand[]{
-                new AddReadingListEntryByWebSearch(container),
+                new AddReadingListEntryByWebSearch(container,new GoogleBooksWebApi(new JsonParser())),
                 new AddReadingListEntryManually(container),
                 new Cancel()});
         dic.put(State.EXIT, new ConsoleCommand[]{
