@@ -38,18 +38,18 @@ config=StructureConfiguration;
     "cutEnum": true,
     "cutTests": true,
     "cutClient": true,
-    "cutDataAccess": false,
-    "cutInterfaceStructures": false,
-    "cutDataStructures": false,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
     "cutGetterAndSetter": true,
     "cutConstructors": true
   },
   "graphTraversal": {
     "forwardDepth": 0,
-    "backwardDepth": 0,
+    "backwardDepth": 1,
     "classPackageExcludeFilter": "",
     "classPackageIncludeFilter": "",
-    "classNameExcludeFilter": "",
+    "classNameExcludeFilter": "AddReadingListEntryByWebSearch;AddReadingListEntryManually;ShowOwnedBooks;ShowReadingList;AddReadingListEntryToReadingList;EditReadingArchive;EditReadingList;MonthReport;YearReport;ShowStatistics;Output;ShowUnownedBooks;StateDictionary;RemoveBookFromReadingList;AttachComment;AddReadingListEntryToReadingArchive;App;AcquireBook;NewLibrary;",
     "classNameIncludeFilter": "",
     "methodNameExcludeFilter": "",
     "methodNameIncludeFilter": "",
@@ -58,7 +58,7 @@ config=StructureConfiguration;
     "hidePrivateMethods": true,
     "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
     "onlyShowApplicationEntryPoints": false, // root node is included
-    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
   },
   "details": {
     "aggregation": "GroupByClass", // ByClass, GroupByClass, None
@@ -67,7 +67,7 @@ config=StructureConfiguration;
     "showMethodParameterNames": true,
     "showMethodParameterTypes": true,
     "showMethodReturnType": true,
-    "showPackageLevels": 9,
+    "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
   "rootClass": "Plugin.IO.Input",
@@ -83,6 +83,166 @@ digraph g {
     
 
 'nodes 
+subgraph cluster_1072845520 { 
+   	label=Application
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_622202847 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AddReadingArchiveEntryManually167638088[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AddReadingArchiveEntryManually</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Cancel4600838[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cancel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Exit4600838[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Exit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LoadLibrary73560600[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LoadLibrary</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- FindSeparatorIndex(listOfStrings: ArrayList&lt;String&gt;): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- ParseStringToArchiveEntries(subList: List&lt;String&gt;): ArrayList&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- ParseStringToListEntries(subList: List&lt;String&gt;): ArrayList&lt;ReadingListEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- parseDateFromString(dateAsString: String): BookDateWrapper</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingArchive986665920[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingArchive</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingArchiveByAuthor1671248891[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingArchiveByAuthor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingArchiveByTitle1671248891[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingArchiveByTitle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingListByAuthor868104187[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingListByAuthor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingListByTitle868104187[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingListByTitle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
 subgraph cluster_2342 { 
    	label=IO
 	labeljust=l
@@ -109,7 +269,15 @@ subgraph cluster_2342 {
 } 
 
 'edges    
-
+Exit4600838 -> Input190330273[label="execute() -> saveToTextFile()", arrowhead=none];
+Input190330273 -> AddReadingArchiveEntryManually167638088[arrowhead=none];
+Input190330273 -> Cancel4600838[arrowhead=none];
+Input190330273 -> LoadLibrary73560600[arrowhead=none];
+ShowReadingArchive986665920 -> Input190330273[label="execute() -> showOutput()", arrowhead=none];
+ShowReadingArchiveByAuthor1671248891 -> Input190330273[label="execute() -> showOutput()", arrowhead=none];
+ShowReadingArchiveByTitle1671248891 -> Input190330273[label="execute() -> showOutput()", arrowhead=none];
+ShowReadingListByAuthor868104187 -> Input190330273[label="execute() -> promptMsg()"];
+ShowReadingListByTitle868104187 -> Input190330273[label="execute() -> showOutput()", arrowhead=none];
     
 }
 @enduml

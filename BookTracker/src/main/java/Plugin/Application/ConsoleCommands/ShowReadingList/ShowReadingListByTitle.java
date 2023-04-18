@@ -1,5 +1,7 @@
 package Plugin.Application.ConsoleCommands.ShowReadingList;
 
+import Plugin.IO.Builder.ListOutputBuilder;
+import Plugin.IO.Builder.OutputBuilder;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
@@ -19,13 +21,12 @@ public class ShowReadingListByTitle implements ConsoleCommand {
         ReadingList readingList = container.getReadingList();
         String title = Input.promptMsg("Titel?");
         var result = readingList.searchByTitle(title);
-        StringBuilder output = new StringBuilder();
+        OutputBuilder output = new ListOutputBuilder();
         for (var e:result
         ) {
-            output.append(e.toString()).append(Output.lineBreak);
+            output.append(e);
         }
-        Output.showHeaderReadingList();
-        Output.showOutput(output.toString());
+        Output.showOutput(output.finalise());
         return State.SHOWREADINGLIST;
     }
 

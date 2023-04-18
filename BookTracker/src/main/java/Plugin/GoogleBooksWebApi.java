@@ -34,7 +34,7 @@ public class GoogleBooksWebApi implements BookFinder {
             return new ArrayList<>();
         }
 
-        var resultBookList = parser.parseHttpResponseToBooks(response.body());
+        var resultBookList = parser.parseIntoBooks(response.body());
         if (resultBookList.size() < 1) throw new BookNotFoundException("Keine Treffer");
         return resultBookList;
     }

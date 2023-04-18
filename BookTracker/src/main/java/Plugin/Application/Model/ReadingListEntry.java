@@ -1,6 +1,6 @@
 package Plugin.Application.Model;
 
-public final class ReadingListEntry {
+public final class ReadingListEntry implements Entry{
     private final Book book;
     private String comment;
     private boolean owned;

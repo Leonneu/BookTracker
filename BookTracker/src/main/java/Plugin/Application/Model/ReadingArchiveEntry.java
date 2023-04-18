@@ -1,7 +1,7 @@
 package Plugin.Application.Model;
 
 public record ReadingArchiveEntry(Book book, BookDateWrapper startedReading, BookDateWrapper finishedReading,
-                                  String comment) {
+                                  String comment) implements Entry {
 
     @Override
     public String toString() {

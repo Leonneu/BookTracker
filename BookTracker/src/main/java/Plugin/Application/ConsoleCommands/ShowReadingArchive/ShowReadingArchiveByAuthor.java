@@ -1,11 +1,13 @@
 package Plugin.Application.ConsoleCommands.ShowReadingArchive;
 
-import Plugin.IO.Input;
-import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.ReadingArchive;
 import Plugin.Application.State;
+import Plugin.IO.Builder.ArchiveOutputBuilder;
+import Plugin.IO.Builder.OutputBuilder;
+import Plugin.IO.Input;
+import Plugin.IO.Output;
 
 public class ShowReadingArchiveByAuthor implements ConsoleCommand {
     Container container;
@@ -19,13 +21,12 @@ public class ShowReadingArchiveByAuthor implements ConsoleCommand {
         ReadingArchive readingArchive = container.GetReadingArchive();
         String author = Input.promptMsg("Autor?");
         var result = readingArchive.searchByAuthor(author);
-        StringBuilder output = new StringBuilder();
+        OutputBuilder builder = new ArchiveOutputBuilder();
         for (var e:result
         ) {
-            output.append(e.toString()).append(Output.lineBreak);
+            builder.append(e);
         }
-        Output.showHeaderReadingArchive();
-        Output.showOutput(output.toString());
+        Output.showOutput(builder.finalise());
         return State.SHOWREADINGARCHIVE;
     }
 

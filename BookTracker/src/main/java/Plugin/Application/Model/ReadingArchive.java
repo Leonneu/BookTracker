@@ -27,6 +27,9 @@ public class ReadingArchive {
     public List<ReadingArchiveEntry> searchByTitle(String title) {
         return archive.stream().filter(e -> e.book().Title().contains(title)).toList();
     }
+    public List<ReadingArchiveEntry> getArchiveAsList(){
+        return archive;
+    }
 
     public boolean RemoveEntry(Book b) {
         return archive.remove(archive.stream().filter(e -> e.book().equals(b)));

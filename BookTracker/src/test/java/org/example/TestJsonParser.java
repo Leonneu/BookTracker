@@ -217,7 +217,7 @@ public class TestJsonParser {
                     }
                     ]
                   }""";
-        ArrayList<Book> result = new JsonParser().parseHttpResponseToBooks(input);
+        ArrayList<Book> result = new JsonParser().parseIntoBooks(input);
         Book b = result.get(0);
         assertEquals("Die Worte des Lichts",b.Title());
         assertEquals("Brandon Sanderson",b.Author());

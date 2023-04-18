@@ -1,9 +1,11 @@
 package Plugin.Application.ConsoleCommands.MainMenu;
 
-import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.State;
+import Plugin.IO.Builder.ListOutputBuilder;
+import Plugin.IO.Builder.OutputBuilder;
+import Plugin.IO.Output;
 
 public class ShowReadingList implements ConsoleCommand {
     Container container;
@@ -14,8 +16,12 @@ public class ShowReadingList implements ConsoleCommand {
 
     @Override
     public State execute() {
-        Output.showHeaderReadingList();
-        Output.showOutput(container.getReadingList().toString().replace(";",Output.lineBreak));
+        OutputBuilder builder = new ListOutputBuilder();
+        for (var e:container.getReadingList().getReadingListAsList()
+             ) {
+            builder.append(e);
+        }
+        Output.showOutput(builder.finalise());
         return State.SHOWREADINGLIST;
     }
 

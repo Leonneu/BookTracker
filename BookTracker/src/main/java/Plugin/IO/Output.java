@@ -13,20 +13,6 @@ public class Output {
         System.out.println(message);
     }
 
-    public static void showHeaderReadingList(){
-        Output.showOutput("%-20s|%-20s|%-10s|%-7s|%-60s|%-10s|%-100s".formatted("Titel", "Autor", "Seitenzahl", "Sprache", "Genre","In Besitzt","Notiz"));
-        printHeaderLine();
-    }
-
-    public static void showHeaderReadingArchive(){
-        Output.showOutput("%-20s|%-20s|%-10s|%-7s|%-60s|%10s|%10s|%-100s".formatted("Titel", "Autor", "Seitenzahl", "Sprache", "Genre","Lesestart","Leseende","Notiz"));
-        printHeaderLine();
-    }
-
-    private static void printHeaderLine(){
-        Output.showOutput("-".repeat(170));
-    }
-
     public static String parseStateOptions(ConsoleCommand[] options) {
         int n = options.length;
         StringBuilder result = new StringBuilder();

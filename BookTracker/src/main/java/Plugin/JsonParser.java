@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.MissingFormatArgumentException;
 
 public class JsonParser implements BookParser {
-    public ArrayList<Book> parseHttpResponseToBooks(String response){
-        String[] extractedResponses = extractResponses(response);
+    public ArrayList<Book> parseIntoBooks(String jsonString){
+        String[] extractedResponses = extractResponses(jsonString);
         ArrayList<Book> result = new ArrayList<>();
         for (String item:extractedResponses
              ) {

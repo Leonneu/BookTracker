@@ -1,11 +1,13 @@
 package Plugin.Application.ConsoleCommands.ShowReadingList;
 
-import Plugin.IO.Input;
-import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.ReadingList;
 import Plugin.Application.State;
+import Plugin.IO.Builder.ListOutputBuilder;
+import Plugin.IO.Builder.OutputBuilder;
+import Plugin.IO.Input;
+import Plugin.IO.Output;
 
 public class ShowReadingListByAuthor implements ConsoleCommand {
     private final Container container;
@@ -19,13 +21,12 @@ public class ShowReadingListByAuthor implements ConsoleCommand {
         ReadingList readingList = container.getReadingList();
         String author = Input.promptMsg("Autor?");
         var result = readingList.searchByAuthor(author);
-        StringBuilder output = new StringBuilder();
+        OutputBuilder builder = new ListOutputBuilder();
         for (var e:result
              ) {
-            output.append(e.toString()).append(Output.lineBreak);
+            builder.append(e);
         }
-        Output.showHeaderReadingList();
-        Output.showOutput(output.toString());
+        Output.showOutput(builder.finalise());
         return State.SHOWREADINGLIST;
     }
 

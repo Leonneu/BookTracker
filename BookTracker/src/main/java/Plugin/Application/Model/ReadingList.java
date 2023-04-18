@@ -33,6 +33,9 @@ public class ReadingList {
     public void removeEntry(ReadingListEntry entryToRemove){
         readingList.remove(entryToRemove);
     }
+    public List<ReadingListEntry> getReadingListAsList(){
+        return readingList;
+    }
 
     @Override
     public String toString() {

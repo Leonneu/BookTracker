@@ -1,9 +1,11 @@
 package Plugin.Application.ConsoleCommands.MainMenu;
 
-import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.State;
+import Plugin.IO.Builder.ArchiveOutputBuilder;
+import Plugin.IO.Builder.OutputBuilder;
+import Plugin.IO.Output;
 
 public class ShowReadingArchive implements ConsoleCommand {
     private final Container container;
@@ -13,8 +15,12 @@ public class ShowReadingArchive implements ConsoleCommand {
 
     @Override
     public State execute() {
-        Output.showHeaderReadingArchive();
-        Output.showOutput(container.GetReadingArchive().toString().replace(";", Output.lineBreak));
+        OutputBuilder builder = new ArchiveOutputBuilder();
+        for (var e:container.GetReadingArchive().getArchiveAsList()
+             ) {
+            builder.append(e);
+        }
+        Output.showOutput(builder.finalise());
         return State.SHOWREADINGARCHIVE;
     }
 

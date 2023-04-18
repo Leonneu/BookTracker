@@ -1,5 +1,7 @@
 package Plugin.Application.ConsoleCommands.ShowReadingList;
 
+import Plugin.IO.Builder.ListOutputBuilder;
+import Plugin.IO.Builder.OutputBuilder;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
@@ -22,13 +24,12 @@ public class ShowUnownedBooks implements ConsoleCommand {
     public State execute() {
         ReadingList readingList = container.getReadingList();
         var result = readingList.getUnownedBooks();
-        StringBuilder output = new StringBuilder();
+        OutputBuilder builder = new ListOutputBuilder();
         for (var e:result
         ) {
-            output.append(e.toString()).append(Output.lineBreak);
+            builder.append(e);
         }
-        Output.showHeaderReadingList();
-        Output.showOutput(output.toString());
+        Output.showOutput(builder.finalise());
         String ans = Input.promptMsg("Als Wunschliste speichern? (Y/N)").toLowerCase();
         if(ans.startsWith("j")||ans.startsWith("y")){
             try {

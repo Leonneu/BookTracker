@@ -15,6 +15,8 @@ import Plugin.Application.ConsoleCommands.ShowReadingList.ShowOwnedBooks;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByTitle;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowUnownedBooks;
+import Plugin.Application.ConsoleCommands.ShowStatistics.MonthReport;
+import Plugin.Application.ConsoleCommands.ShowStatistics.YearReport;
 import Plugin.GoogleBooksWebApi;
 import Plugin.JsonParser;
 
@@ -66,6 +68,11 @@ public class StateDictionary {
                 new AddReadingListEntryByWebSearch(container,new GoogleBooksWebApi(new JsonParser())),
                 new AddReadingListEntryManually(container),
                 new Cancel()});
+        dic.put(State.STATISTIC,new ConsoleCommand[]{
+                new YearReport(container),
+                new MonthReport(container),
+                new Cancel()
+        });
         dic.put(State.EXIT, new ConsoleCommand[]{
         });
     }
