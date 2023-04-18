@@ -38,14 +38,14 @@ config=StructureConfiguration;
     "cutEnum": true,
     "cutTests": true,
     "cutClient": true,
-    "cutDataAccess": false,
-    "cutInterfaceStructures": false,
-    "cutDataStructures": false,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
     "cutGetterAndSetter": true,
     "cutConstructors": true
   },
   "graphTraversal": {
-    "forwardDepth": 1,
+    "forwardDepth": 2,
     "backwardDepth": 2,
     "classPackageExcludeFilter": "",
     "classPackageIncludeFilter": "",
@@ -53,10 +53,10 @@ config=StructureConfiguration;
     "classNameIncludeFilter": "",
     "methodNameExcludeFilter": "",
     "methodNameIncludeFilter": "",
-    "hideMappings": true,
-    "hideDataStructures": true,
+    "hideMappings": false,
+    "hideDataStructures": false,
     "hidePrivateMethods": true,
-    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
     "onlyShowApplicationEntryPoints": false, // root node is included
     "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
   },
@@ -67,7 +67,7 @@ config=StructureConfiguration;
     "showMethodParameterNames": true,
     "showMethodParameterTypes": true,
     "showMethodReturnType": true,
-    "showPackageLevels": 1,
+    "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
   "rootClass": "Plugin.Application.Model.Book",
@@ -87,6 +87,12 @@ subgraph cluster_1072845520 {
    	label=Application
 	labeljust=l
 	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1770848053 { 
+   	label=Model
+	labeljust=l
+	fillcolor="#d8d8d8"
 	style=filled
    
    Book481104144[
@@ -182,6 +188,7 @@ ReadingListEntry481104144[
 	shape=plaintext
 	fillcolor="#FFFFFF"
 ];
+} 
 } 
 
 'edges    

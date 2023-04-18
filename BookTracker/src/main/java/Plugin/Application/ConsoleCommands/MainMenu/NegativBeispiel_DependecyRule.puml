@@ -176,7 +176,8 @@ subgraph cluster_2342 {
 ];
 } 
 
-'edges    
+'edges
+ShowReadingList986665920 -> Output190330273
 ConsoleCommand4600838 -> ShowReadingList986665920[arrowhead=none, arrowtail=empty, dir=both];
 ShowReadingList986665920 -> Container160408811[label="container
 [0..1]"];
