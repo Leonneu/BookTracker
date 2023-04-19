@@ -16,7 +16,7 @@ public class ShowReadingArchive implements ConsoleCommand {
     @Override
     public State execute() {
         OutputBuilder builder = new ArchiveOutputBuilder();
-        for (var e:container.GetReadingArchive().getArchiveAsList()
+        for (var e:container.getReadingArchive().getArchiveAsList()
              ) {
             builder.append(e);
         }

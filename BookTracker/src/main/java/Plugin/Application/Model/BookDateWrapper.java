@@ -2,7 +2,7 @@ package Plugin.Application.Model;
 
 import java.time.LocalDate;
 
-public final class BookDateWrapper {
+public final class BookDateWrapper{
    private final LocalDate date;
 
     public BookDateWrapper(int day, int month, int year) { //TODO Validate Date?

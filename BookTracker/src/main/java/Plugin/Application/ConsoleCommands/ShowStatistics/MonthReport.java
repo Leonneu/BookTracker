@@ -13,6 +13,7 @@ public class MonthReport implements ConsoleCommand {
 
     @Override
     public State execute() {
+
         return State.STATISTIC;
     }
 

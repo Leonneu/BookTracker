@@ -18,7 +18,7 @@ public class ShowReadingArchiveByTitle implements ConsoleCommand {
 
     @Override
     public State execute() {
-        ReadingArchive readingArchive = container.GetReadingArchive();
+        ReadingArchive readingArchive = container.getReadingArchive();
         String title = Input.promptMsg("Titel?");
         var result = readingArchive.searchByTitle(title);
         OutputBuilder builder = new ArchiveOutputBuilder();

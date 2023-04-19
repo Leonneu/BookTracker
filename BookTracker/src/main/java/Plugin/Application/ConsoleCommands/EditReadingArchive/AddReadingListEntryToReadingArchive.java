@@ -40,7 +40,7 @@ public class AddReadingListEntryToReadingArchive implements ConsoleCommand {
             comment = "-";
         }
         readingList.removeEntry(readingListEntry);
-        container.GetReadingArchive().AddEntry(new ReadingArchiveEntry(readingListEntry.book(),startDate,endDate,comment));
+        container.getReadingArchive().AddEntry(new ReadingArchiveEntry(readingListEntry.book(),startDate,endDate,comment));
         return State.MAIN;
     }
 

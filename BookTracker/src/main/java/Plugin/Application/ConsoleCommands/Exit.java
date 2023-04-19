@@ -18,7 +18,7 @@ public class Exit implements ConsoleCommand {
             if(Input.promptUserIfSave()) {
                 String content = container.getReadingList().toString();
                 content += "---"+Output.lineBreak;
-                content += container.GetReadingArchive().toString();
+                content += container.getReadingArchive().toString();
                 content = content.replace(";",Output.lineBreak);
                 Output.saveToTextFile(content,container.getPath());
             }

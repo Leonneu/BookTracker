@@ -18,7 +18,7 @@ public class ShowReadingArchiveByAuthor implements ConsoleCommand {
 
     @Override
     public State execute() {
-        ReadingArchive readingArchive = container.GetReadingArchive();
+        ReadingArchive readingArchive = container.getReadingArchive();
         String author = Input.promptMsg("Autor?");
         var result = readingArchive.searchByAuthor(author);
         OutputBuilder builder = new ArchiveOutputBuilder();

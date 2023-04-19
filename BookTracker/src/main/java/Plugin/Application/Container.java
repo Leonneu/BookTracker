@@ -19,7 +19,7 @@ public final class Container {
         this.readingList = readingList;
     }
 
-    public ReadingArchive GetReadingArchive() {
+    public ReadingArchive getReadingArchive() {
         return readingArchive;
     }
 
