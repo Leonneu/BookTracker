@@ -24,23 +24,20 @@ public class LoadLibrary implements ConsoleCommand {
         container.setPath(fullPath);
         ArrayList<String> content = Input.LoadTextFile(fullPath);
         int splitIndex = FindSeparatorIndex(content);
-        ArrayList<ReadingListEntry> readingListContent;
-
-        if (splitIndex != 0) {
-            readingListContent = ParseStringToListEntries(content.subList(0, splitIndex));
-        } else {
-            readingListContent = new ArrayList<>();
-        }
-        ArrayList<ReadingArchiveEntry> readingArchiveContent;
-        if (splitIndex != content.size() - 1) {
-            readingArchiveContent = ParseStringToArchiveEntries(content.subList(splitIndex + 1, content.size()));
-        } else {
-            readingArchiveContent = new ArrayList<>();
-        }
+        ArrayList<ReadingListEntry> readingListContent = split1(content, splitIndex);
+        ArrayList<ReadingArchiveEntry> readingArchiveContent = split2(content,splitIndex);
 
         container.setReadingArchive(new ReadingArchive(readingArchiveContent));
         container.setReadingList(new ReadingList(readingListContent));
         return State.MAIN;
+    }
+
+    private ArrayList<ReadingArchiveEntry> split2(ArrayList<String> content, int splitIndex) {
+        return splitIndex != content.size() - 1 ? ParseStringToArchiveEntries(content.subList(splitIndex + 1, content.size())) : new ArrayList<>();
+    }
+
+    private ArrayList<ReadingListEntry> split1(ArrayList<String> content, int splitIndex) {
+        return splitIndex != 0 ? ParseStringToListEntries(content.subList(0, splitIndex)) : new ArrayList<>();
     }
 
     private ArrayList<ReadingListEntry> ParseStringToListEntries(List<String> subList) {

@@ -108,6 +108,8 @@ subgraph cluster_1072845520 {
 <TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
 <TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
 <TR><TD ALIGN="LEFT" >- parseDateFromString(dateAsString: String): BookDateWrapper</TD></TR>
+<TR><TD ALIGN="LEFT" >- split1(content: ArrayList&lt;String&gt;, splitIndex: int): ArrayList&lt;ReadingListEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- split2(content: ArrayList&lt;String&gt;, splitIndex: int): ArrayList&lt;ReadingArchiveEntry&gt;</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
