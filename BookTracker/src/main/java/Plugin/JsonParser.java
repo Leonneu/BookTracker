@@ -34,7 +34,6 @@ public class JsonParser implements BookParser {
 
         int langIndex = item.indexOf("\"language\":");
         int pageCountIndex = item.indexOf("\"pageCount\":");
-
         if(pageCountIndex==-1||langIndex==-1) throw new MissingFormatArgumentException("Page count or Language missing");
         String language = item.substring(langIndex + 12, item.indexOf(",", langIndex)).replaceAll("\"", "");
         String pageCount = item.substring(pageCountIndex + 12, item.indexOf(",", pageCountIndex)).replaceAll("\"", "");

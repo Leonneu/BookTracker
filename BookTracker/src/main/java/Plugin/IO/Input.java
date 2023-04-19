@@ -124,5 +124,9 @@ public class Input {
         return list.get(selectedOption);
     }
 
+    public static boolean promptUserIfSave(){
+        String ans = Input.promptMsg("Speichern? (Y/N)").toLowerCase();
+        return ans.startsWith("j")||ans.startsWith("y");
+    }
 
 }

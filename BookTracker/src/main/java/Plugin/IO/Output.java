@@ -50,11 +50,24 @@ public class Output {
         return result.toString();
     }
 
+
     public static void saveToTextFile(String content, File path) {
         try (PrintWriter out = new PrintWriter(path)) {
             out.print(content);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void saveToNewTextFile(String path, String output) {
+        try{
+            File f = new File(path + "\\Wunschliste.txt");
+            f.createNewFile();
+            saveToTextFile(output,f);
+            Output.showOutput("Datei erfolgreich gespeichert!");
+        }catch (Exception e){
+            Output.showOutput(e.getMessage());
+        }
+
     }
 }

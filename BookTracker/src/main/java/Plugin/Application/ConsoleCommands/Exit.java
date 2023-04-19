@@ -15,8 +15,7 @@ public class Exit implements ConsoleCommand {
     @Override
     public State execute() {
         if(container.getPath() != null){
-            String answer = Input.promptMsg("Änderungen speichern? (Y/N)").toLowerCase();
-            if(answer.startsWith("j") || answer.startsWith("y")) {
+            if(Input.promptUserIfSave()) {
                 String content = container.getReadingList().toString();
                 content += "---"+Output.lineBreak;
                 content += container.GetReadingArchive().toString();
