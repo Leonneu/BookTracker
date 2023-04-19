@@ -24,19 +24,19 @@ public class LoadLibrary implements ConsoleCommand {
         container.setPath(fullPath);
         ArrayList<String> content = Input.LoadTextFile(fullPath);
         int splitIndex = FindSeparatorIndex(content);
-        ArrayList<ReadingListEntry> readingListContent = split1(content, splitIndex);
-        ArrayList<ReadingArchiveEntry> readingArchiveContent = split2(content,splitIndex);
+        ArrayList<ReadingListEntry> readingListContent = initReadingList(content, splitIndex);
+        ArrayList<ReadingArchiveEntry> readingArchiveContent = initReadingArchive(content,splitIndex);
 
         container.setReadingArchive(new ReadingArchive(readingArchiveContent));
         container.setReadingList(new ReadingList(readingListContent));
         return State.MAIN;
     }
 
-    private ArrayList<ReadingArchiveEntry> split2(ArrayList<String> content, int splitIndex) {
+    private ArrayList<ReadingArchiveEntry> initReadingArchive(ArrayList<String> content, int splitIndex) {
         return splitIndex != content.size() - 1 ? ParseStringToArchiveEntries(content.subList(splitIndex + 1, content.size())) : new ArrayList<>();
     }
 
-    private ArrayList<ReadingListEntry> split1(ArrayList<String> content, int splitIndex) {
+    private ArrayList<ReadingListEntry> initReadingList(ArrayList<String> content, int splitIndex) {
         return splitIndex != 0 ? ParseStringToListEntries(content.subList(0, splitIndex)) : new ArrayList<>();
     }
 
