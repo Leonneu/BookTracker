@@ -45,8 +45,8 @@ config=StructureConfiguration;
     "cutConstructors": true
   },
   "graphTraversal": {
-    "forwardDepth": 2,
-    "backwardDepth": 2,
+    "forwardDepth": 0,
+    "backwardDepth": 0,
     "classPackageExcludeFilter": "",
     "classPackageIncludeFilter": "",
     "classNameExcludeFilter": "",
@@ -70,7 +70,7 @@ config=StructureConfiguration;
     "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
-  "rootClass": "Plugin.BookParser",
+  "rootClass": "Plugin.Application.ConsoleCommands.Init.LoadLibrary",
   "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
 }
 diagram meta data end '/
@@ -83,45 +83,31 @@ digraph g {
     
 
 'nodes 
-subgraph cluster_1901307053 { 
-   	label=Plugin
+subgraph cluster_1072845520 { 
+   	label=Application
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   BookParser1901307053[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(I)BookParser</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ parseIntoBooks(content: String): ArrayList&lt;Book&gt;</TD></TR>
-</TABLE>>
+   subgraph cluster_622202847 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#d8d8d8"
 	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#F1E5FD"
-];
-
-GoogleBooksWebApi1901307053[
+   
+   LoadLibrary73560600[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)GoogleBooksWebApi</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)LoadLibrary</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   parser: BookParser [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ searchForBookByTitle(bookTitle: String): ArrayList&lt;Book&gt;</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-JsonParser1901307053[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)JsonParser</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >- extractResponses(response: String): String[]</TD></TR>
-<TR><TD ALIGN="LEFT" >- parseIntoBook(item: String): Book</TD></TR>
-<TR><TD ALIGN="LEFT" >+ parseIntoBooks(jsonString: String): ArrayList&lt;Book&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- FindSeparatorIndex(listOfStrings: ArrayList&lt;String&gt;): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- ParseStringToArchiveEntries(subList: List&lt;String&gt;): ArrayList&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- ParseStringToListEntries(subList: List&lt;String&gt;): ArrayList&lt;ReadingListEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- parseDateFromString(dateAsString: String): BookDateWrapper</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -129,11 +115,10 @@ JsonParser1901307053[
 	fillcolor="#FFFFFF"
 ];
 } 
+} 
 
 'edges    
-BookParser1901307053 -> JsonParser1901307053[arrowhead=none, arrowtail=empty, dir=both];
-GoogleBooksWebApi1901307053 -> BookParser1901307053[label="parser
-[0..1]"];
+
     
 }
 @enduml

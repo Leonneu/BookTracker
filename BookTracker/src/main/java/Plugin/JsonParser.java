@@ -39,7 +39,6 @@ public class JsonParser implements BookParser {
         String language = item.substring(langIndex + 12, item.indexOf(",", langIndex)).replaceAll("\"", "");
         String pageCount = item.substring(pageCountIndex + 12, item.indexOf(",", pageCountIndex)).replaceAll("\"", "");
 
-
         return new Book(title,author,Integer.parseInt(pageCount.strip()), Language.valueOf(language.toUpperCase()));
     }
 

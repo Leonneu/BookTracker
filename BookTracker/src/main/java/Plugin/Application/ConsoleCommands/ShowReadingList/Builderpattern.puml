@@ -42,15 +42,15 @@ config=StructureConfiguration;
     "cutInterfaceStructures": true,
     "cutDataStructures": true,
     "cutGetterAndSetter": true,
-    "cutConstructors": true
+    "cutConstructors": false
   },
   "graphTraversal": {
     "forwardDepth": 2,
-    "backwardDepth": 2,
+    "backwardDepth": 1,
     "classPackageExcludeFilter": "",
     "classPackageIncludeFilter": "",
     "classNameExcludeFilter": "",
-    "classNameIncludeFilter": "",
+    "classNameIncludeFilter": "ShowReadingListByAuthor;OutputBuilder;ListOutputBuilder;",
     "methodNameExcludeFilter": "",
     "methodNameIncludeFilter": "",
     "hideMappings": false,
@@ -70,7 +70,7 @@ config=StructureConfiguration;
     "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
-  "rootClass": "Plugin.BookParser",
+  "rootClass": "Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor",
   "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
 }
 diagram meta data end '/
@@ -83,45 +83,28 @@ digraph g {
     
 
 'nodes 
-subgraph cluster_1901307053 { 
-   	label=Plugin
+subgraph cluster_1072845520 { 
+   	label=Application
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   BookParser1901307053[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(I)BookParser</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ parseIntoBooks(content: String): ArrayList&lt;Book&gt;</TD></TR>
-</TABLE>>
+   subgraph cluster_622202847 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#d8d8d8"
 	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#F1E5FD"
-];
-
-GoogleBooksWebApi1901307053[
+   
+   ShowReadingListByAuthor868104187[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)GoogleBooksWebApi</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)ShowReadingListByAuthor</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   parser: BookParser [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ searchForBookByTitle(bookTitle: String): ArrayList&lt;Book&gt;</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-JsonParser1901307053[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)JsonParser</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >- extractResponses(response: String): String[]</TD></TR>
-<TR><TD ALIGN="LEFT" >- parseIntoBook(item: String): Book</TD></TR>
-<TR><TD ALIGN="LEFT" >+ parseIntoBooks(jsonString: String): ArrayList&lt;Book&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ShowReadingListByAuthor(container: Container)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -129,11 +112,57 @@ JsonParser1901307053[
 	fillcolor="#FFFFFF"
 ];
 } 
+} 
+
+subgraph cluster_2342 { 
+   	label=IO
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_2055071053 { 
+   	label=Builder
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ListOutputBuilder1194353618[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListOutputBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   result: StringBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ListOutputBuilder()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(entry: Entry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(entryList: List&lt;Entry&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finalise(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OutputBuilder1194353618[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)OutputBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ append(entry: Entry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(entryList: List&lt;Entry&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finalise(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+} 
+} 
 
 'edges    
-BookParser1901307053 -> JsonParser1901307053[arrowhead=none, arrowtail=empty, dir=both];
-GoogleBooksWebApi1901307053 -> BookParser1901307053[label="parser
-[0..1]"];
+OutputBuilder1194353618 -> ListOutputBuilder1194353618[arrowhead=none, arrowtail=empty, dir=both];
+OutputBuilder1194353618 -> ShowReadingListByAuthor868104187;
+
     
 }
 @enduml

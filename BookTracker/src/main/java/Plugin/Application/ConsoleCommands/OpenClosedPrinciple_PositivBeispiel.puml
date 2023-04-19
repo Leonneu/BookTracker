@@ -45,17 +45,17 @@ config=StructureConfiguration;
     "cutConstructors": true
   },
   "graphTraversal": {
-    "forwardDepth": 2,
+    "forwardDepth": 1,
     "backwardDepth": 2,
     "classPackageExcludeFilter": "",
     "classPackageIncludeFilter": "",
     "classNameExcludeFilter": "",
-    "classNameIncludeFilter": "",
+    "classNameIncludeFilter": "App;ConsoleCommand;EditReadingList;LoadLibrary;ShowReadingList",
     "methodNameExcludeFilter": "",
     "methodNameIncludeFilter": "",
     "hideMappings": false,
     "hideDataStructures": false,
-    "hidePrivateMethods": false,
+    "hidePrivateMethods": true,
     "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
     "onlyShowApplicationEntryPoints": false, // root node is included
     "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
@@ -70,7 +70,7 @@ config=StructureConfiguration;
     "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
-  "rootClass": "Plugin.BookParser",
+  "rootClass": "Plugin.Application.ConsoleCommands.ConsoleCommand",
   "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
 }
 diagram meta data end '/
@@ -83,17 +83,25 @@ digraph g {
     
 
 'nodes 
-subgraph cluster_1901307053 { 
-   	label=Plugin
+subgraph cluster_1072845520 { 
+   	label=Application
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   BookParser1901307053[
+   subgraph cluster_622202847 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ConsoleCommand4600838[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(I)BookParser</TD></TR>
+<TR><TD ALIGN="LEFT" >(I)ConsoleCommand</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ parseIntoBooks(content: String): ArrayList&lt;Book&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -101,13 +109,13 @@ subgraph cluster_1901307053 {
 	fillcolor="#F1E5FD"
 ];
 
-GoogleBooksWebApi1901307053[
+EditReadingList986665920[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)GoogleBooksWebApi</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)EditReadingList</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   parser: BookParser [0..1]</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ searchForBookByTitle(bookTitle: String): ArrayList&lt;Book&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -115,13 +123,55 @@ GoogleBooksWebApi1901307053[
 	fillcolor="#FFFFFF"
 ];
 
-JsonParser1901307053[
+LoadLibrary73560600[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)JsonParser</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)LoadLibrary</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >- extractResponses(response: String): String[]</TD></TR>
-<TR><TD ALIGN="LEFT" >- parseIntoBook(item: String): Book</TD></TR>
-<TR><TD ALIGN="LEFT" >+ parseIntoBooks(jsonString: String): ArrayList&lt;Book&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- FindSeparatorIndex(listOfStrings: ArrayList&lt;String&gt;): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- ParseStringToArchiveEntries(subList: List&lt;String&gt;): ArrayList&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- ParseStringToListEntries(subList: List&lt;String&gt;): ArrayList&lt;ReadingListEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- parseDateFromString(dateAsString: String): BookDateWrapper</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingList986665920[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingList</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_66049 { 
+   	label=App
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   App66049[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)App</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -131,9 +181,11 @@ JsonParser1901307053[
 } 
 
 'edges    
-BookParser1901307053 -> JsonParser1901307053[arrowhead=none, arrowtail=empty, dir=both];
-GoogleBooksWebApi1901307053 -> BookParser1901307053[label="parser
-[0..1]"];
+App66049 -> ConsoleCommand4600838[label="main() -> execute()"];
+ConsoleCommand4600838 -> EditReadingList986665920[arrowhead=none, arrowtail=empty, dir=both];
+ConsoleCommand4600838 -> LoadLibrary73560600[arrowhead=none, arrowtail=empty, dir=both];
+ConsoleCommand4600838 -> ShowReadingList986665920[arrowhead=none, arrowtail=empty, dir=both];
+ShowReadingList986665920 -> ConsoleCommand4600838[label="execute() -> showOutput()", arrowhead=none];
     
 }
 @enduml
