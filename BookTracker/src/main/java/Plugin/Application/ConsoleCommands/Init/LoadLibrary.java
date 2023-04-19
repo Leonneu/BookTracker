@@ -26,7 +26,6 @@ public class LoadLibrary implements ConsoleCommand {
         int splitIndex = FindSeparatorIndex(content);
         ArrayList<ReadingListEntry> readingListContent = initReadingList(content, splitIndex);
         ArrayList<ReadingArchiveEntry> readingArchiveContent = initReadingArchive(content,splitIndex);
-
         container.setReadingArchive(new ReadingArchive(readingArchiveContent));
         container.setReadingList(new ReadingList(readingListContent));
         return State.MAIN;

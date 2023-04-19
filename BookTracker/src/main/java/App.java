@@ -1,10 +1,12 @@
-import Plugin.IO.Input;
-import Plugin.IO.InvalidOptionException;
-import Plugin.Application.StateDictionary;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.State;
+import Plugin.Application.StateDictionary;
+import Plugin.IO.Input;
+import Plugin.IO.InvalidOptionException;
 import Plugin.IO.Output;
+
+import java.util.Arrays;
 
 public class App {
 
@@ -15,13 +17,13 @@ public class App {
         while (appState != State.EXIT) {
             ConsoleCommand[] currentOptions =stateDictionary.GetOptions(appState);
             int numberOfOptions = currentOptions.length;
-            Output.showOutput(Output.parseStateOptions(currentOptions));
+            Output.showOutput(Output.parseOptions(Arrays.stream(currentOptions).map(ConsoleCommand::name).toList()));
             try {
                 int selectedOption = Input.GetOption(numberOfOptions);
                 appState=currentOptions[selectedOption].execute();
             } catch (InvalidOptionException e) {
                 Output.showOutput("Hilfe:");
-                Output.showOutput(Output.parseStateHelp(currentOptions));
+                Output.showOutput(Output.parseOptions(Arrays.stream(currentOptions).map(ConsoleCommand::description).toList()));
             }
         }
     }

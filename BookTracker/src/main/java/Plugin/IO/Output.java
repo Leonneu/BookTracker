@@ -5,6 +5,7 @@ import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.List;
 
 public class Output {
     public static String lineBreak = System.lineSeparator();
@@ -27,6 +28,15 @@ public class Output {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < n; i++) {
             result.append(i).append(". ").append(options[i].description()).append(lineBreak);
+        }
+        return result.toString();
+    }
+
+    public static String parseOptions(List<String> options){
+        int n = options.size();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            result.append(i).append(". ").append(options.get(i)).append(lineBreak);
         }
         return result.toString();
     }

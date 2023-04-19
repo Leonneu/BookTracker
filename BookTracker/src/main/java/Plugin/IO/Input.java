@@ -69,7 +69,6 @@ public class Input {
             try{
                 for (char c:selectedOptions.toCharArray()
                 ) {
-                    //TODO remove magic Int
                     result.add(Genre.valueOf(options[c-48]));
                 }
             }catch (Exception e){
