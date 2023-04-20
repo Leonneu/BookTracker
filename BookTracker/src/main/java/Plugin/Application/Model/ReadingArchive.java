@@ -46,4 +46,12 @@ public class ReadingArchive {
         }
         return result.toString();
     }
+
+    public List<ReadingArchiveEntry> searchByYear(int year) {
+        return archive.stream().filter(e->e.finishedReading().year()==year).toList();
+    }
+
+    public List<ReadingArchiveEntry> searchByMonth(BookDateWrapper targetDate) {
+        return archive.stream().filter(e->(e.finishedReading().year()==targetDate.year()&&e.finishedReading().month()== targetDate.month())).toList();
+    }
 }

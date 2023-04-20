@@ -30,4 +30,8 @@ public final class BookDateWrapper{
         return date.getYear();
     }
 
+    public int getDifference(BookDateWrapper otherDate){
+        return date.until(LocalDate.of(otherDate.year(),otherDate.month(),otherDate.day())).getDays();
+    }
+
 }

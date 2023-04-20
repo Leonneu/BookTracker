@@ -7,4 +7,8 @@ public record ReadingArchiveEntry(Book book, BookDateWrapper startedReading, Boo
     public String toString() {
         return String.format("%s|%10s|%10s|%-100s", book.toString(), startedReading, finishedReading, comment);
     }
+
+    public int getReadingDuration(){
+        return startedReading.getDifference(finishedReading);
+    }
 }
