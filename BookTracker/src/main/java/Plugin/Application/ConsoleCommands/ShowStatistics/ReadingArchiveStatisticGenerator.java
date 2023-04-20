@@ -2,8 +2,7 @@ package Plugin.Application.ConsoleCommands.ShowStatistics;
 
 import Plugin.Application.Model.*;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ReadingArchiveStatisticGenerator {
     private final ReadingArchive readingArchive;
@@ -27,7 +26,7 @@ public class ReadingArchiveStatisticGenerator {
     }
 
     public int countPages(List<Book> books){
-        return books.stream().map(Book::Pagecount).reduce(0,Integer::sum);
+        return books.stream().map(Book::pagecount).reduce(0,Integer::sum);
     }
     public int pagesReadInTimeSpan(){
         return countPages(readInTargetTimeSpan.stream().map(ReadingArchiveEntry::book).toList());
@@ -52,11 +51,25 @@ public class ReadingArchiveStatisticGenerator {
 
     public ReadingArchiveEntry fastestRead(){
         return readInTargetTimeSpan.stream().reduce((a, b)->
-                a.book().Pagecount()/a.getReadingDuration() > b.book().Pagecount()/b.getReadingDuration() ? a:b
+                a.book().pagecount()/a.getReadingDuration() > b.book().pagecount()/b.getReadingDuration() ? a:b
         ).get();
     }
 
     public ReadingArchiveEntry shortestRead(){
         return readInTargetTimeSpan.stream().reduce((a,b)->a.getReadingDuration()>b.getReadingDuration()?a:b).get();
+    }
+
+    public String mostPopularAuthor(){
+        Map<String,Integer> result = new HashMap<>();
+        for (var e: readInTargetTimeSpan
+        ) {
+            String key = e.book().author();
+            if(result.containsKey(key)){
+                result.put(key,result.get(key)+1);
+            }else{
+                result.put(key,1);
+            }
+        }
+        return Collections.max(result.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
     }
 }

@@ -23,11 +23,11 @@ public class ReadingList {
 
     //TODO Regex
     public List<ReadingListEntry> searchByTitle(String title) {
-        return readingList.stream().filter(e -> e.book().Title().toLowerCase().contains(title.toLowerCase())).toList();
+        return readingList.stream().filter(e -> e.book().title().toLowerCase().contains(title.toLowerCase())).toList();
     }
 
     public List<ReadingListEntry> searchByAuthor(String author) {
-        return readingList.stream().filter(e -> e.book().Author().toLowerCase().contains(author.toLowerCase())).toList();
+        return readingList.stream().filter(e -> e.book().author().toLowerCase().contains(author.toLowerCase())).toList();
     }
 
     public void removeEntry(ReadingListEntry entryToRemove){

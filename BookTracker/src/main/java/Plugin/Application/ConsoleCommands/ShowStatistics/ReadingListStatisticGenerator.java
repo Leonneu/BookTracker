@@ -3,7 +3,7 @@ package Plugin.Application.ConsoleCommands.ShowStatistics;
 import Plugin.Application.Model.Genre;
 import Plugin.Application.Model.ReadingList;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class ReadingListStatisticGenerator {
     ReadingList readingList;
@@ -32,7 +32,25 @@ public class ReadingListStatisticGenerator {
     }
 
     public int pagesToRead(){
-        return readingList.getReadingListAsList().stream().map(r->r.book().Pagecount()).reduce(0,Integer::sum);
+        return readingList.getReadingListAsList().stream().map(r->r.book().pagecount()).reduce(0,Integer::sum);
+    }
+
+    public String mostPopularAuthor(){
+        Map<String,Integer> result = new HashMap<>();
+        for (var e: readingList.getReadingListAsList()
+             ) {
+            String key = e.book().author();
+            if(result.containsKey(key)){
+                result.put(key,result.get(key)+1);
+            }else{
+                result.put(key,1);
+            }
+        }
+        return Collections.max(result.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+    }
+
+    public double avgPageCount(){
+        return pagesToRead()/(double)numberOfBooksOnReadingList();
     }
 
 }

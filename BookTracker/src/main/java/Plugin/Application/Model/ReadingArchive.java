@@ -20,12 +20,12 @@ public class ReadingArchive {
 
     //TODO more sophisticated matching of searchstring, Regex?
     public List<ReadingArchiveEntry> searchByAuthor(String author) {
-        return archive.stream().filter(e -> e.book().Author().contains(author)).toList();
+        return archive.stream().filter(e -> e.book().author().contains(author)).toList();
     }
 
     //TODO more sophisticated matching of searchstring, Regex?
     public List<ReadingArchiveEntry> searchByTitle(String title) {
-        return archive.stream().filter(e -> e.book().Title().contains(title)).toList();
+        return archive.stream().filter(e -> e.book().title().contains(title)).toList();
     }
     public List<ReadingArchiveEntry> getArchiveAsList(){
         return archive;

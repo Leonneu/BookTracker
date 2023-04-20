@@ -219,9 +219,9 @@ public class TestJsonParser {
                   }""";
         ArrayList<Book> result = new JsonParser().parseIntoBooks(input);
         Book b = result.get(0);
-        assertEquals("Die Worte des Lichts",b.Title());
-        assertEquals("Brandon Sanderson",b.Author());
-        assertEquals(976,b.Pagecount());
+        assertEquals("Die Worte des Lichts",b.title());
+        assertEquals("Brandon Sanderson",b.author());
+        assertEquals(976,b.pagecount());
         assertEquals(Language.DE,b.language());
     }
 }

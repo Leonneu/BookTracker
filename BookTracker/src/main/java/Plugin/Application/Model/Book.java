@@ -4,9 +4,9 @@ import java.util.EnumSet;
 import java.util.Objects;
 
 public record Book(
-        String Title,
-        String Author,
-        int Pagecount,
+        String title,
+        String author,
+        int pagecount,
         Language language,
         EnumSet<Genre> Genre
 
@@ -25,7 +25,7 @@ public record Book(
     }
 
     public Book(Book oldBook, EnumSet<Genre> genre) {
-        this(oldBook.Title, oldBook.Author, oldBook.Pagecount, oldBook.language, genre);
+        this(oldBook.title, oldBook.author, oldBook.pagecount, oldBook.language, genre);
     }
 
     @Override
@@ -38,18 +38,18 @@ public record Book(
                 genreString.append(g.toString());
             }
         }
-        return "%-20s|%-20s|%10d|%7s|%-60s".formatted(Title, Author, Pagecount, language, genreString);
+        return "%-20s|%-20s|%10d|%7s|%-60s".formatted(title, author, pagecount, language, genreString);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Book book)) return false;
-        return Title.equals(book.Title) && Author.equals(book.Author) && language == book.language;
+        return title.equals(book.title) && author.equals(book.author) && language == book.language;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Title, Author, language);
+        return Objects.hash(title, author, language);
     }
 }
