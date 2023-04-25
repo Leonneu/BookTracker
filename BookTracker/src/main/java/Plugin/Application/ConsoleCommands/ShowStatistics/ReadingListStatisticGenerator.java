@@ -6,7 +6,7 @@ import Plugin.Application.Model.ReadingList;
 import java.util.*;
 
 public class ReadingListStatisticGenerator {
-    ReadingList readingList;
+    private final ReadingList readingList;
     public ReadingListStatisticGenerator(ReadingList readingList) {
         this.readingList = readingList;
     }

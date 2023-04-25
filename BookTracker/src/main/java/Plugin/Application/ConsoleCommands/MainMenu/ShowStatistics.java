@@ -12,7 +12,7 @@ public class ShowStatistics implements ConsoleCommand {
 
     @Override
     public State execute() {
-        return null;
+        return State.STATISTIC;
     }
 
     @Override

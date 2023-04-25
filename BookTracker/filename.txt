@@ -1,8 +1,7 @@
 Test                |Test                |        12|     EN|FANTASY                                                     |      Nein|-                                                                                                   
 Dune                |Frank Herbert       |       898|     EN|THRILLER,FANTASY,SCIENCE_FICTION,FICTION                    |        Ja|Testing                                                                                             
 Harrow the Ninth    |Tamsyn Muir         |       512|     EN|FANTASY                                                     |      Nein|-                                                                                                   
-Good Omens          |Terry Pratchett",
-          "Neil Gaiman|         0|     EN|FICTION                                                     |      Nein|-                                                                                                   
+Good Omens          |Terry Pratchett, Neil Gaiman|         0|     EN|FICTION                                                     |      Nein|-
 ---
 Test                |Test                |        12|     DE|FANTASY                                                     |  1.1.2000|  1.1.2000|true                                                                                                
 Gideon the Ninth    |Tamsyn Muir         |       448|     EN|ROMANCE,FANTASY,SCIENCE_FICTION                             |   1.1.202|    2.2.33|-                                                                                                   
