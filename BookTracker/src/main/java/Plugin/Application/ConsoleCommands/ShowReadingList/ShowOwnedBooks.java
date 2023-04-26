@@ -10,17 +10,19 @@ import Plugin.IO.Output;
 
 public class ShowOwnedBooks implements ConsoleCommand {
     private final Container container;
+    private final OutputBuilder builder;
 
-    public ShowOwnedBooks(Container container) {
-        this.container=container;
+    public ShowOwnedBooks(Container container, OutputBuilder builder) {
+        this.container = container;
+        this.builder = builder;
     }
 
     @Override
     public State execute() {
         ReadingList readingList = container.getReadingList();
         var result = readingList.getOwnedBooks();
-        OutputBuilder builder = new ListOutputBuilder();
-        for (var e:result
+        builder.reset();
+        for (var e : result
         ) {
             builder.append(e);
         }

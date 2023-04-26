@@ -14,16 +14,18 @@ import java.util.List;
 
 public class ShowUnownedBooks implements ConsoleCommand {
     private final Container container;
+    private final OutputBuilder builder;
 
-    public ShowUnownedBooks(Container container) {
+    public ShowUnownedBooks(Container container, OutputBuilder builder) {
         this.container = container;
+        this.builder = builder;
     }
 
     @Override
     public State execute() {
         ReadingList readingList = container.getReadingList();
         var result = readingList.getUnownedBooks();
-        OutputBuilder builder = new ListOutputBuilder();
+        builder.reset();
         for (var e : result
         ) {
             builder.append(e);

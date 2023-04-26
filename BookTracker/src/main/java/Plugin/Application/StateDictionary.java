@@ -18,6 +18,8 @@ import Plugin.Application.ConsoleCommands.ShowReadingList.ShowUnownedBooks;
 import Plugin.Application.ConsoleCommands.ShowStatistics.ReadingListReport;
 import Plugin.Application.ConsoleCommands.ShowStatistics.ReadingArchiveReport;
 import Plugin.GoogleBooksWebApi;
+import Plugin.IO.Builder.ArchiveOutputBuilder;
+import Plugin.IO.Builder.ListOutputBuilder;
 import Plugin.JsonParser;
 
 import java.util.HashMap;
@@ -33,16 +35,16 @@ public class StateDictionary {
                 new Exit(container)
         });
         dic.put(State.MAIN, new ConsoleCommand[]{
-                new ShowReadingArchive(container),
+                new ShowReadingArchive(container, new ArchiveOutputBuilder()),
                 new EditReadingArchive(),
-                new ShowReadingList(container),
+                new ShowReadingList(container, new ListOutputBuilder()),
                 new EditReadingList(),
                 new ShowStatistics(container),
                 new Exit(container)
         });
-        dic.put(State.SHOWREADINGARCHIVE,new ConsoleCommand[]{
-                new ShowReadingArchiveByTitle(container),
-                new ShowReadingArchiveByAuthor(container),
+        dic.put(State.SHOWREADINGARCHIVE, new ConsoleCommand[]{
+                new ShowReadingArchiveByTitle(container,new ArchiveOutputBuilder()),
+                new ShowReadingArchiveByAuthor(container,new ArchiveOutputBuilder()),
                 new Cancel()
         });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
@@ -50,11 +52,11 @@ public class StateDictionary {
                 new AddReadingArchiveEntryManually(container),
                 new Cancel()
         });
-        dic.put(State.SHOWREADINGLIST,new ConsoleCommand[]{
-                new ShowReadingListByTitle(container),
-                new ShowReadingListByAuthor(container),
-                new ShowUnownedBooks(container),
-                new ShowOwnedBooks(container),
+        dic.put(State.SHOWREADINGLIST, new ConsoleCommand[]{
+                new ShowReadingListByTitle(container, new ListOutputBuilder()),
+                new ShowReadingListByAuthor(container, new ListOutputBuilder()),
+                new ShowUnownedBooks(container, new ListOutputBuilder()),
+                new ShowOwnedBooks(container, new ListOutputBuilder()),
                 new Cancel()
         });
         dic.put(State.EDITREADINGLIST, new ConsoleCommand[]{
@@ -65,10 +67,10 @@ public class StateDictionary {
                 new Cancel()
         });
         dic.put(State.ADDBOOKTOREADINGLIST, new ConsoleCommand[]{
-                new AddReadingListEntryByWebSearch(container,new GoogleBooksWebApi(new JsonParser())),
+                new AddReadingListEntryByWebSearch(container, new GoogleBooksWebApi(new JsonParser())),
                 new AddReadingListEntryManually(container),
                 new Cancel()});
-        dic.put(State.STATISTIC,new ConsoleCommand[]{
+        dic.put(State.STATISTIC, new ConsoleCommand[]{
                 new ReadingArchiveReport(container),
                 new ReadingListReport(container),
                 new Cancel()

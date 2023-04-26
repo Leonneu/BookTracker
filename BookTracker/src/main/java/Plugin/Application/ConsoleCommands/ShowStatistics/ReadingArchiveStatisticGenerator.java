@@ -25,7 +25,7 @@ public class ReadingArchiveStatisticGenerator {
         }
     }
 
-    public int countPages(List<Book> books){
+    private int countPages(List<Book> books){
         return books.stream().map(Book::pagecount).reduce(0,Integer::sum);
     }
     public int pagesReadInTimeSpan(){

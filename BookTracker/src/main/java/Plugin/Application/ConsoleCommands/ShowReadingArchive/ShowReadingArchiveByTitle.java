@@ -11,8 +11,10 @@ import Plugin.IO.Output;
 
 public class ShowReadingArchiveByTitle implements ConsoleCommand {
     Container container;
+    OutputBuilder builder;
 
-    public ShowReadingArchiveByTitle(Container container) {
+    public ShowReadingArchiveByTitle(Container container, OutputBuilder builder) {
+        this.builder = builder;
         this.container = container;
     }
 
@@ -21,7 +23,7 @@ public class ShowReadingArchiveByTitle implements ConsoleCommand {
         ReadingArchive readingArchive = container.getReadingArchive();
         String title = Input.promptMsg("Titel?");
         var result = readingArchive.searchByTitle(title);
-        OutputBuilder builder = new ArchiveOutputBuilder();
+        builder.reset();
         for (var e:result
         ) {
             builder.append(e);

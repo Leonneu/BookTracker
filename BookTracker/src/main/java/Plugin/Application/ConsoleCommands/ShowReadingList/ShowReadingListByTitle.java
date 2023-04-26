@@ -11,9 +11,11 @@ import Plugin.Application.State;
 
 public class ShowReadingListByTitle implements ConsoleCommand {
     private final Container container;
+    private final OutputBuilder builder;
 
-    public ShowReadingListByTitle(Container container) {
+    public ShowReadingListByTitle(Container container, OutputBuilder builder) {
         this.container = container;
+        this.builder = builder;
     }
 
     @Override
@@ -21,12 +23,12 @@ public class ShowReadingListByTitle implements ConsoleCommand {
         ReadingList readingList = container.getReadingList();
         String title = Input.promptMsg("Titel?");
         var result = readingList.searchByTitle(title);
-        OutputBuilder output = new ListOutputBuilder();
-        for (var e:result
+        builder.reset();
+        for (var e : result
         ) {
-            output.append(e);
+            builder.append(e);
         }
-        Output.showOutput(output.finalise());
+        Output.showOutput(builder.finalise());
         return State.SHOWREADINGLIST;
     }
 

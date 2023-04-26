@@ -11,9 +11,11 @@ import Plugin.IO.Output;
 
 public class ShowReadingListByAuthor implements ConsoleCommand {
     private final Container container;
+    private final OutputBuilder builder;
 
-    public ShowReadingListByAuthor(Container container) {
+    public ShowReadingListByAuthor(Container container, OutputBuilder builder) {
         this.container = container;
+        this.builder = builder;
     }
 
     @Override
@@ -21,9 +23,9 @@ public class ShowReadingListByAuthor implements ConsoleCommand {
         ReadingList readingList = container.getReadingList();
         String author = Input.promptMsg("Autor?");
         var result = readingList.searchByAuthor(author);
-        OutputBuilder builder = new ListOutputBuilder();
-        for (var e:result
-             ) {
+        builder.reset();
+        for (var e : result
+        ) {
             builder.append(e);
         }
         Output.showOutput(builder.finalise());

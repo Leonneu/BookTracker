@@ -9,13 +9,15 @@ import Plugin.IO.Output;
 
 public class ShowReadingArchive implements ConsoleCommand {
     private final Container container;
-    public ShowReadingArchive(Container container) {
+    private final OutputBuilder builder;
+    public ShowReadingArchive(Container container,OutputBuilder builder) {
+        this.builder = builder;
         this.container = container;
     }
 
     @Override
     public State execute() {
-        OutputBuilder builder = new ArchiveOutputBuilder();
+        builder.reset();
         for (var e:container.getReadingArchive().getArchiveAsList()
              ) {
             builder.append(e);

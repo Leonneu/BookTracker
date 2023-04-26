@@ -33,4 +33,9 @@ public class ArchiveOutputBuilder implements OutputBuilder{
         result.append(separator);
         return result.toString();
     }
+
+    @Override
+    public void reset() {
+        result = new StringBuilder(header).append(lineSeparator).append(separator).append(lineSeparator);
+    }
 }
