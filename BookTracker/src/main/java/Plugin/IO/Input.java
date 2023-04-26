@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
-    private static final Scanner userInput = new Scanner(System.in);
+    public static Scanner userInput = new Scanner(System.in);
 
     public static int GetOption(int numberOfValidOptions) throws InvalidOptionException {
         int selectedOption;
