@@ -21,7 +21,7 @@ public class Input {
         try {
             selectedOption = Integer.parseInt(userInput.nextLine());
             userInput.reset();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new InvalidOptionException("Invalide Option");
         }
 
@@ -32,10 +32,10 @@ public class Input {
 
     public static File parseFilePath(String path) throws InvalidPathException {
         var testIf = new File(path);
-        if(testIf.isAbsolute() && testIf.isFile()) return testIf;
-        File f = new File(System.getProperty("user.dir") + (path.startsWith("\\")?"":"\\") + path);
+        if (testIf.isAbsolute() && testIf.isFile()) return testIf;
+        File f = new File(System.getProperty("user.dir") + (path.startsWith("\\") ? "" : "\\") + path);
         if (f.isFile()) return f;
-        throw new InvalidPathException(f.getAbsolutePath(),"Keine Datei mit diesem Pfad gefunden");
+        throw new InvalidPathException(f.getAbsolutePath(), "Keine Datei mit diesem Pfad gefunden");
     }
 
     public static ArrayList<String> LoadTextFile(File file) {
@@ -54,7 +54,7 @@ public class Input {
         return fileAsStringArray;
     }
 
-    public static String promptMsg(String msg){
+    public static String promptMsg(String msg) {
         Output.showOutput(msg);
         return userInput.nextLine();
     }
@@ -66,56 +66,57 @@ public class Input {
         do {
             Output.showOutput(Output.parseGenreOptions(options));
             String selectedOptions = Input.promptMsg("Geben Sie alle zutreffenden Kategorien an:");
-            try{
-                for (char c:selectedOptions.toCharArray()
+            try {
+                for (char c : selectedOptions.toCharArray()
                 ) {
-                    result.add(Genre.valueOf(options[c-48]));
+                    result.add(Genre.valueOf(options[c - 48]));
                 }
-            }catch (Exception e){
-                itWorked=true;
+            } catch (Exception e) {
+                itWorked = true;
                 Output.showOutput(e.getMessage());
             }
-        }while (itWorked);
+        } while (itWorked);
         return result;
     }
 
-    public static BookDateWrapper promptUserForDate(){
-        boolean validInput=false;
+    public static BookDateWrapper promptUserForDate() {
+        boolean validInput = false;
         BookDateWrapper result = null;
-        do{
+        do {
             String userInput = Input.promptMsg("Datum im folgenden Format angeben: tt.mm.jjjj. z.B. 01.01.2020");
             var values = userInput.split("\\.");
-            if(values.length==3){
+            if (values.length == 3) {
                 try {
                     int day = Integer.parseInt(values[0]);
                     int month = Integer.parseInt(values[1]);
                     int year = Integer.parseInt(values[2]);
-                    result = new BookDateWrapper(day,month,year);
+                    result = new BookDateWrapper(day, month, year);
                     validInput = true;
-                }catch (Exception e){
+                } catch (Exception e) {
                     Output.showOutput(e.getMessage());
                 }
             }
-            if(values.length==1){
+            if (values.length == 1) {
                 result = new BookDateWrapper();
-                validInput=true;
+                validInput = true;
             }
-        }while (!validInput);
+        } while (!validInput);
         return result;
     }
 
-    public static <T> T promptUserForListChoice(List<T> list)  {
+    public static <T> T promptUserForListChoice(List<T> list) {
         int n = list.size();
-        Output.showOutput("List contents:");
+        if (n == 1) return list.get(0);
+        Output.showOutput("Optionen:");
         for (int i = 0; i < n; i++) {
-            Output.showOutput(i+". "+list.get(i).toString());
+            Output.showOutput(i + ". " + list.get(i).toString());
         }
         boolean stillChoosing = true;
-        int selectedOption=0;
-        while(stillChoosing){
+        int selectedOption = 0;
+        while (stillChoosing) {
             try {
                 selectedOption = GetOption(n);
-                stillChoosing=false;
+                stillChoosing = false;
             } catch (InvalidOptionException e) {
                 Output.showOutput(e.getMessage());
                 Output.showOutput("Try again");
@@ -124,9 +125,9 @@ public class Input {
         return list.get(selectedOption);
     }
 
-    public static boolean promptUserIfSave(){
+    public static boolean promptUserIfSave() {
         String ans = Input.promptMsg("Speichern? (Y/N)").toLowerCase();
-        return ans.startsWith("j")||ans.startsWith("y");
+        return ans.startsWith("j") || ans.startsWith("y");
     }
 
 }

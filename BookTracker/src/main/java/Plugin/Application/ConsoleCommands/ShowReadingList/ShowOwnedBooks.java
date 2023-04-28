@@ -4,7 +4,6 @@ import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.ReadingList;
 import Plugin.Application.State;
-import Plugin.IO.Builder.ListOutputBuilder;
 import Plugin.IO.Builder.OutputBuilder;
 import Plugin.IO.Output;
 
@@ -32,11 +31,11 @@ public class ShowOwnedBooks implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Bessesene Bücher anzeigen";
+        return "Bücher im Besitzt anzeigen";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Zeit alle Bücher der Leseliste an, welche im Besitzt sind.";
     }
 }
