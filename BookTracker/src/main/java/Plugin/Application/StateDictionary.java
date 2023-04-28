@@ -43,8 +43,8 @@ public class StateDictionary {
                 new Exit(container)
         });
         dic.put(State.SHOWREADINGARCHIVE, new ConsoleCommand[]{
-                new ShowReadingArchiveByTitle(container,new ArchiveOutputBuilder()),
-                new ShowReadingArchiveByAuthor(container,new ArchiveOutputBuilder()),
+                new ShowReadingArchiveByTitle(container, new ArchiveOutputBuilder()),
+                new ShowReadingArchiveByAuthor(container, new ArchiveOutputBuilder()),
                 new Cancel()
         });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{

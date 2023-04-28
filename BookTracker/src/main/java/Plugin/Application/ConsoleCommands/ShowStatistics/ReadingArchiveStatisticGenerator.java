@@ -56,7 +56,7 @@ public class ReadingArchiveStatisticGenerator {
     }
 
     public ReadingArchiveEntry shortestRead(){
-        return readInTargetTimeSpan.stream().reduce((a,b)->a.getReadingDuration()>b.getReadingDuration()?a:b).get();
+        return readInTargetTimeSpan.stream().reduce((a,b)->a.getReadingDuration()>b.getReadingDuration()?b:a).get();
     }
 
     public String mostPopularAuthor(){

@@ -1,6 +1,6 @@
 package Plugin.Application.Model;
 
-public final class ReadingListEntry implements Entry{
+public final class ReadingListEntry implements Entry {
     private final Book book;
     private String comment;
     private boolean owned;
@@ -17,7 +17,7 @@ public final class ReadingListEntry implements Entry{
 
     @Override
     public String toString() {
-        return String.format("%s|%10s|%-100s",book.toString(),(owned ? "Ja" : "Nein"),comment);
+        return String.format("%s|%10s|%-100s", book.toString(), (owned ? "Ja" : "Nein"), comment);
     }
 
     public void setComment(String comment) {

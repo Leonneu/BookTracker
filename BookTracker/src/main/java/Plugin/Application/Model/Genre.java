@@ -15,7 +15,6 @@ public enum Genre {
     PSYCHOLOGY,
     PHILOSOPHY;
 
-    //TODO implement
     public static EnumSet<Genre> parseGenreSet(String[] values) {
         var result = EnumSet.noneOf(Genre.class);
         for (String s : values

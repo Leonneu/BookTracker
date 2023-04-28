@@ -48,7 +48,7 @@ public class TestReadingArchiveGenerator {
     public void testShortestRead() {
         ReadingArchiveEntry expected = new ReadingArchiveEntry(new Book("title","author",100,Language.EN),
                 new BookDateWrapper(10,10,2023),
-                new BookDateWrapper(11,10,2023),
+                new BookDateWrapper(10,10,2023),
                 "");
         testArchive.AddEntry(expected);
         ReadingArchiveStatisticGenerator generator = new ReadingArchiveStatisticGenerator(testArchive,new BookDateWrapper(), TypeOfReport.TOTAL);
