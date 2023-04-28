@@ -38,6 +38,7 @@ public class TestReadingListGenerator {
     private static ReadingListEntry generateEntry(boolean isOwned) {
         return new ReadingListEntry(new Book("Testing", "Testing", 1, Language.EN), isOwned, "");
     }
+
     private static ReadingListEntry generateEntry(Integer pageCount) {
         return new ReadingListEntry(new Book("Testing", "Testing", pageCount, Language.EN), true, "");
     }
@@ -49,23 +50,39 @@ public class TestReadingListGenerator {
         Assertions.assertEquals(expected, generator.percentOfBooksOwned(), delta);
     }
 
+    public static List<Arguments> testTotal() {
+        return List.of(
+                Arguments.of(new ReadingList(generateArrayList(new int[]{10, 10, 10, 10})), 40),
+                Arguments.of(new ReadingList(generateArrayList(new int[]{100, 10, 10, 10})), 130),
+                Arguments.of(new ReadingList(generateArrayList(new int[]{100000, 10000, 1000, 100,10,1})), 111111),
+                Arguments.of(new ReadingList(generateArrayList(new int[]{1})), 1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("testTotal")
+    public void testTotalPages(ReadingList readingList,int expected){
+        ReadingListStatisticGenerator generator = new ReadingListStatisticGenerator(readingList);
+        Assertions.assertEquals(expected, generator.pagesToRead());
+    }
+
     public static List<Arguments> testAvg() {
         return List.of(
-                Arguments.of(new ReadingList(generateArrayList(new int[]{10,10,10,10})),10),
-                Arguments.of(new ReadingList(generateArrayList(new int[]{20,5,100,1})),31.5),
-                Arguments.of(new ReadingList(generateArrayList(new int[]{1})),1),
-                Arguments.of(new ReadingList(generateArrayList(new int[]{12,13,14,15})),(12+13+14+15)/4.0)
+                Arguments.of(new ReadingList(generateArrayList(new int[]{10, 10, 10, 10})), 10),
+                Arguments.of(new ReadingList(generateArrayList(new int[]{20, 5, 100, 1})), 31.5),
+                Arguments.of(new ReadingList(generateArrayList(new int[]{1})), 1),
+                Arguments.of(new ReadingList(generateArrayList(new int[]{12, 13, 14, 15})), 13.5)
         );
     }
 
     @ParameterizedTest
     @MethodSource("testAvg")
-    public void testAvgPageCalculation(ReadingList readingList, double expected){
+    public void testAvgPageCalculation(ReadingList readingList, double expected) {
         ReadingListStatisticGenerator generator = new ReadingListStatisticGenerator(readingList);
-        Assertions.assertEquals(expected,generator.avgPageCount());
+        Assertions.assertEquals(expected, generator.avgPageCount());
     }
 
-    public static ArrayList<ReadingListEntry> generateArrayList(int[] pages){
+    public static ArrayList<ReadingListEntry> generateArrayList(int[] pages) {
         ArrayList<ReadingListEntry> result = new ArrayList<>();
         for (Integer page : pages) {
             result.add(generateEntry(page));
