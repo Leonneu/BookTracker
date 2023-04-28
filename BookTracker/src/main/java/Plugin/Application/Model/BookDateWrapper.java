@@ -1,6 +1,7 @@
 package Plugin.Application.Model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public final class BookDateWrapper{
    private final LocalDate date;
@@ -31,7 +32,7 @@ public final class BookDateWrapper{
     }
 
     public int getDifference(BookDateWrapper otherDate){
-        return date.until(LocalDate.of(otherDate.year(),otherDate.month(),otherDate.day())).getDays()+1;
+        return (int)ChronoUnit.DAYS.between(LocalDate.of(otherDate.year(),otherDate.month(),otherDate.day()),this.date)+1;
     }
 
 }

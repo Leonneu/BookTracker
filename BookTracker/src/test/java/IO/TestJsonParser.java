@@ -1,4 +1,4 @@
-package org.example;
+package IO;
 
 import Plugin.JsonParser;
 import Plugin.Application.Model.Book;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestJsonParser {
     @Test
     public void testStringBookParsing() {
-        String input = """
+        String outputWebSearch = """
                 {
                   "kind": "books#volumes",
                   "totalItems": 148,
@@ -217,7 +217,7 @@ public class TestJsonParser {
                     }
                     ]
                   }""";
-        ArrayList<Book> result = new JsonParser().parseIntoBooks(input);
+        ArrayList<Book> result = new JsonParser().parseIntoBooks(outputWebSearch);
         Book b = result.get(0);
         assertEquals("Die Worte des Lichts",b.title());
         assertEquals("Brandon Sanderson",b.author());
