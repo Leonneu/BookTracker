@@ -14,24 +14,6 @@ public class Output {
         System.out.println(message);
     }
 
-    public static String parseStateOptions(ConsoleCommand[] options) {
-        int n = options.length;
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            result.append(i).append(". ").append(options[i].name()).append(lineBreak);
-        }
-        return result.toString();
-    }
-
-    public static String parseStateHelp(ConsoleCommand[] options) {
-        int n = options.length;
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            result.append(i).append(". ").append(options[i].description()).append(lineBreak);
-        }
-        return result.toString();
-    }
-
     public static String parseOptions(List<String> options){
         int n = options.size();
         StringBuilder result = new StringBuilder();
