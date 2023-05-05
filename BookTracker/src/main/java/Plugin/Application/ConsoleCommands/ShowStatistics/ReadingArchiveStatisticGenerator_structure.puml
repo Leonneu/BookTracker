@@ -1,0 +1,304 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": false,
+    "cutClient": false,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 1,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "BothDirections" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 3,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Plugin.Application.ConsoleCommands.ShowStatistics.ReadingArchiveStatisticGenerator",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1072845520 { 
+   	label=Application
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1770848053 { 
+   	label=Model
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Book481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Book</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   Genre: EnumSet&lt;Genre&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   author: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   language: Language [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pagecount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   title: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Book(title: String, author: String, pagecount: int, language: Language)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Book(title: String, author: String, pagecount: int, genre: EnumSet&lt;Genre&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Book(title: String, author: String, genre: EnumSet&lt;Genre&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Book(oldBook: Book, genre: EnumSet&lt;Genre&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Book(title: String, author: String, pagecount: int, language: Language, Genre: EnumSet&lt;Genre&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Genre(): EnumSet&lt;Genre&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ author(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hashCode(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ language(): Language</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pagecount(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ title(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BookDateWrapper481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BookDateWrapper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   date: LocalDate [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ BookDateWrapper(day: int, month: int, year: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ BookDateWrapper()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ day(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDifference(otherDate: BookDateWrapper): long</TD></TR>
+<TR><TD ALIGN="LEFT" >+ month(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ year(): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Genre481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(E)Genre</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   CLASSIC: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   DYSTOPIA: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   FANTASY: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   FICTION: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   HORROR: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   PHILOSOPHY: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   PSYCHOLOGY: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   ROMANCE: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   SCIENCE_FICTION: Genre [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   THRILLER: Genre [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getNames(): String[]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parseGenreSet(values: String[]): EnumSet&lt;Genre&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ valueOf(name: String): Genre</TD></TR>
+<TR><TD ALIGN="LEFT" >+ values(): Genre[]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#DCFBD5"
+];
+
+ReadingArchive481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingArchive</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   archive: ArrayList&lt;ReadingArchiveEntry&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ AddEntry(entry: ReadingArchiveEntry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ReadingArchive(archive: ArrayList&lt;ReadingArchiveEntry&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ RemoveEntry(b: Book): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getArchiveAsList(): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByAuthor(author: String): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByMonth(targetDate: BookDateWrapper): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByTitle(title: String): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ searchByYear(year: int): List&lt;ReadingArchiveEntry&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReadingArchiveEntry481104144[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingArchiveEntry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   book: Book [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   comment: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   finishedReading: BookDateWrapper [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startedReading: BookDateWrapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ReadingArchiveEntry(book: Book, startedReading: BookDateWrapper, finishedReading: BookDateWrapper, comment: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ book(): Book</TD></TR>
+<TR><TD ALIGN="LEFT" >+ comment(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finishedReading(): BookDateWrapper</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getReadingDuration(): long</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startedReading(): BookDateWrapper</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_622202847 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_321249907 { 
+   	label=ShowStatistics
+	labeljust=l
+	fillcolor="#c4c4c4"
+	style=filled
+   
+   ReadingArchiveReport661982456[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingArchiveReport</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ReadingArchiveReport(container: Container)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ReadingArchiveStatisticGenerator661982456[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ReadingArchiveStatisticGenerator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   readInTargetTimeSpan: List&lt;ReadingArchiveEntry&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   readingArchive: ReadingArchive [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   targetDate: BookDateWrapper [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ReadingArchiveStatisticGenerator(archive: ReadingArchive)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ReadingArchiveStatisticGenerator(archive: ReadingArchive, targetDate: BookDateWrapper, type: TypeOfReport)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ avgPagesInTimeSpan(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ booksReadInTimeSpan(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- countPages(books: List&lt;Book&gt;): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ fastestRead(): ReadingArchiveEntry</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mostPopularAuthor(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mostPopularGenre(): Genre</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pagesReadInTimeSpan(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ shortestRead(): ReadingArchiveEntry</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+} 
+
+subgraph cluster_1481390466 { 
+   	label=StatisticsGeneratorTest
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   TestReadingArchiveGenerator1481390466[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TestReadingArchiveGenerator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ generateDate(year: int): BookDateWrapper</TD></TR>
+<TR><TD ALIGN="LEFT" >+ generateEntry(): ReadingArchiveEntry</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setup()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ testFastestRead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ testShortestRead()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+ReadingArchiveStatisticGenerator661982456 -> BookDateWrapper481104144[label="targetDate
+[0..1]"];
+ReadingArchiveStatisticGenerator661982456 -> ReadingArchive481104144[label="readingArchive
+[0..1]"];
+ReadingArchiveStatisticGenerator661982456 -> ReadingArchiveEntry481104144[label="readInTargetTimeSpan
+[0..*]"];
+    
+}
+@enduml
