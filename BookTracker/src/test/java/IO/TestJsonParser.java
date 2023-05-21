@@ -217,8 +217,8 @@ public class TestJsonParser {
                     }
                     ]
                   }""";
-        ArrayList<Book> result = new JsonParser().parseIntoBooks(outputWebSearch);
-        Book b = result.get(0);
+        ArrayList<Book> r = new JsonParser().parseIntoBooks(outputWebSearch);
+        Book b = r.get(0);
         assertEquals("Die Worte des Lichts",b.title());
         assertEquals("Brandon Sanderson",b.author());
         assertEquals(976,b.pagecount());

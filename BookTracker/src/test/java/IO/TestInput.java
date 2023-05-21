@@ -43,6 +43,5 @@ public class TestInput {
             return;
         }
         Assertions.assertEquals(expected,Input.promptUserForGenres());
-
     }
 }

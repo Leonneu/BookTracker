@@ -24,6 +24,13 @@ public class TestReadingListGenerator {
                 Arguments.of(new ReadingList(generateArrayList(0, 20)), 0, 0));
     }
 
+    @ParameterizedTest
+    @MethodSource("testReadingListOwned")
+    public void testPercentOfBooksOwned(ReadingList readingList, double expected, double delta) {
+        ReadingListStatisticGenerator generator = new ReadingListStatisticGenerator(readingList);
+        Assertions.assertEquals(expected, generator.percentOfBooksOwned(), delta);
+    }
+
     private static ArrayList<ReadingListEntry> generateArrayList(int numberOfOwned, int numberOfUnowned) {
         ArrayList<ReadingListEntry> result = new ArrayList<>();
         for (int i = 0; i < numberOfOwned; i++) {
@@ -41,13 +48,6 @@ public class TestReadingListGenerator {
 
     private static ReadingListEntry generateEntry(Integer pageCount) {
         return new ReadingListEntry(new Book("Testing", "Testing", pageCount, Language.EN), true, "");
-    }
-
-    @ParameterizedTest
-    @MethodSource("testReadingListOwned")
-    public void testPercentOfBooksOwned(ReadingList readingList, double expected, double delta) {
-        ReadingListStatisticGenerator generator = new ReadingListStatisticGenerator(readingList);
-        Assertions.assertEquals(expected, generator.percentOfBooksOwned(), delta);
     }
 
     public static List<Arguments> testTotal() {

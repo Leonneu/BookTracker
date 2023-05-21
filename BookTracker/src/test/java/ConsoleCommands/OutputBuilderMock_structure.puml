@@ -1,0 +1,332 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 1,
+    "backwardDepth": 1,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "ConsoleCommands.OutputBuilderMock",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1072845520 { 
+   	label=Application
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_622202847 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ShowOwnedBooks868104187[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowOwnedBooks</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingArchive986665920[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingArchive</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingArchiveByAuthor1671248891[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingArchiveByAuthor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingArchiveByTitle1671248891[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingArchiveByTitle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingList986665920[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingList</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingListByAuthor868104187[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingListByAuthor</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowReadingListByTitle868104187[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowReadingListByTitle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ShowUnownedBooks868104187[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ShowUnownedBooks</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   builder: OutputBuilder [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   container: Container [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ description(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ execute(): State</TD></TR>
+<TR><TD ALIGN="LEFT" >- formatWishListOutput(content: List&lt;ReadingListEntry&gt;): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ name(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_1640416479 { 
+   	label=ConsoleCommands
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   OutputBuilderMock1640416479[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OutputBuilderMock</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   finaliseWasCalled: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   resetWasCalled: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ append(entry: Entry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(entryList: List&lt;Entry&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finalise(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reset()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resetMock()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2342 { 
+   	label=IO
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_2055071053 { 
+   	label=Builder
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ArchiveOutputBuilder1194353618[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArchiveOutputBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   result: StringBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ append(entry: Entry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(entryList: List&lt;Entry&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finalise(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reset()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListOutputBuilder1194353618[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListOutputBuilder</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   result: StringBuilder [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ append(entry: Entry)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ append(entryList: List&lt;Entry&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ finalise(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reset()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+OutputBuilderMock1640416479 -> ArchiveOutputBuilder1194353618[arrowhead=none];
+OutputBuilderMock1640416479 -> ListOutputBuilder1194353618[arrowhead=none];
+ShowOwnedBooks868104187 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowReadingArchive986665920 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowReadingArchiveByAuthor1671248891 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowReadingArchiveByTitle1671248891 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowReadingList986665920 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowReadingListByAuthor868104187 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowReadingListByTitle868104187 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+ShowUnownedBooks868104187 -> OutputBuilderMock1640416479[label="builder
+[0..1]", arrowhead=none];
+    
+}
+@enduml
