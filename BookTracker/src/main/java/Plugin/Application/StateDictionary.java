@@ -2,7 +2,6 @@ package Plugin.Application;
 
 import Plugin.Application.ConsoleCommands.Cancel;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
-import Plugin.Application.ConsoleCommands.EditReadingArchive.AddReadingArchiveEntryManually;
 import Plugin.Application.ConsoleCommands.EditReadingArchive.AddReadingListEntryToReadingArchive;
 import Plugin.Application.ConsoleCommands.EditReadingList.*;
 import Plugin.Application.ConsoleCommands.Exit;
@@ -15,8 +14,8 @@ import Plugin.Application.ConsoleCommands.ShowReadingList.ShowOwnedBooks;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByAuthor;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowReadingListByTitle;
 import Plugin.Application.ConsoleCommands.ShowReadingList.ShowUnownedBooks;
-import Plugin.Application.ConsoleCommands.ShowStatistics.ReadingListReport;
 import Plugin.Application.ConsoleCommands.ShowStatistics.ReadingArchiveReport;
+import Plugin.Application.ConsoleCommands.ShowStatistics.ReadingListReport;
 import Plugin.GoogleBooksWebApi;
 import Plugin.IO.Builder.ArchiveOutputBuilder;
 import Plugin.IO.Builder.ListOutputBuilder;
@@ -49,7 +48,6 @@ public class StateDictionary {
         });
         dic.put(State.EDITREADINGARCHIVE, new ConsoleCommand[]{
                 new AddReadingListEntryToReadingArchive(container),
-                new AddReadingArchiveEntryManually(container),
                 new Cancel()
         });
         dic.put(State.SHOWREADINGLIST, new ConsoleCommand[]{

@@ -1,9 +1,0 @@
-Test                |Test                |        12|     EN|FANTASY                                                     |      Nein|-                                                                                                   
-Dune                |Frank Herbert       |       898|     EN|THRILLER,FANTASY,SCIENCE_FICTION,FICTION                    |        Ja|Testing                                                                                             
-Harrow the Ninth    |Tamsyn Muir         |       512|     EN|FANTASY                                                     |      Nein|-                                                                                                   
-Good Omens          |Terry Pratchett, Neil Gaiman|         0|     EN|FICTION                                                     |      Nein|-                                                                                                   
-God Emperor of Dune |Frank Herbert       |       432|     EN|THRILLER,ROMANCE,FANTASY                                    |      Nein|-                                                                                                   
----
-Test                |Test                |        12|     DE|FANTASY                                                     |  1.1.2000|  1.1.2000|true                                                                                                
-Gideon the Ninth    |Tamsyn Muir         |       448|     EN|ROMANCE,FANTASY,SCIENCE_FICTION                             |   1.1.202|    2.2.33|-                                                                                                   
-Per Anhalter durch die Galaxis|Douglas Adams       |       200|     DE|PSYCHOLOGY                                                  | 11.4.2023| 11.4.2022|nö                                                                                                  

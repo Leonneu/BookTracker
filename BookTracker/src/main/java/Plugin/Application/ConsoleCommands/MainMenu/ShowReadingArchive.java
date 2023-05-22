@@ -3,7 +3,6 @@ package Plugin.Application.ConsoleCommands.MainMenu;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.State;
-import Plugin.IO.Builder.ArchiveOutputBuilder;
 import Plugin.IO.Builder.OutputBuilder;
 import Plugin.IO.Output;
 
@@ -33,6 +32,6 @@ public class ShowReadingArchive implements ConsoleCommand {
 
     @Override
     public String description() {
-        return "Shows all the Books currently in the Library";
+        return "Zeigt alle gelesenen Bücher an.";
     }
 }

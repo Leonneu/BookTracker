@@ -43,7 +43,7 @@ public class ReadingArchiveReport implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Jahres Statistik anzeigen";
+        return "Lesearchiv Statistik anzeigen";
     }
 
     @Override

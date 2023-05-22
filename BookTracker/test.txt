@@ -3,6 +3,7 @@ Dune                |Frank Herbert       |       898|     EN|THRILLER,FANTASY,SC
 Harrow the Ninth    |Tamsyn Muir         |       512|     EN|FANTASY                                                     |      Nein|-                                                                                                   
 Good Omens          |Terry Pratchett     |         0|     EN|FICTION                                                     |      Nein|-                                                                                                   
 God Emperor of Dune |Frank Herbert       |       432|     EN|THRILLER,ROMANCE,FANTASY                                    |      Nein|-                                                                                                   
+Children of Dune    |Frank Herbert       |       642|     EN|SCIENCE_FICTION                                             |      Nein|-                                                                                                   
 ---
 Test                |Test                |        12|     DE|FANTASY                                                     |  1.1.2000|  1.1.2000|true                                                                                                
 Gideon the Ninth    |Tamsyn Muir         |       448|     EN|ROMANCE,FANTASY,SCIENCE_FICTION                             |   1.1.202|    2.2.33|-                                                                                                   

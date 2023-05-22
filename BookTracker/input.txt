@@ -1,4 +1,0 @@
-Test                |Test                |        12|     EN|FANTASY                                                     |        Ja|-                                                                                                   
-The Final Empire    |Brandon Sanderson   |       772|     EN|ROMANCE,FANTASY                                             |      Nein|-                                                                                                   
----
-Test                |Test                |        12|     DE|FANTASY                                                     |  0.0.2000|  0.0.2000|true                                                                                                

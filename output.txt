@@ -1,3 +1,0 @@
-Test|TestA|FANTASY
-Test2|TestAbc|FANTASY
-Book Title|Author|FANTASY

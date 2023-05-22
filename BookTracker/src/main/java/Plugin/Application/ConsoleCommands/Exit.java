@@ -28,11 +28,11 @@ public class Exit implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Exit";
+        return "Beenden";
     }
 
     @Override
     public String description() {
-        return "Exits the program.";
+        return "Schließt die Anwendung.";
     }
 }

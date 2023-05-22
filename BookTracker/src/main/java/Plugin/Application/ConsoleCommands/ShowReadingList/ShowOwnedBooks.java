@@ -36,6 +36,6 @@ public class ShowOwnedBooks implements ConsoleCommand {
 
     @Override
     public String description() {
-        return "Zeit alle Bücher der Leseliste an, welche im Besitzt sind.";
+        return "Zeigt alle Bücher der Leseliste an, welche im Besitzt sind.";
     }
 }

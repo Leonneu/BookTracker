@@ -42,6 +42,6 @@ public class AttachComment implements ConsoleCommand {
 
     @Override
     public String description() {
-        return null;
+        return "Fügt eine persönliche Notiz zu einem Eintrag hinzu.";
     }
 }

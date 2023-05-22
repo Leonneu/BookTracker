@@ -4,7 +4,6 @@ import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.ReadingList;
 import Plugin.Application.State;
-import Plugin.IO.Builder.ListOutputBuilder;
 import Plugin.IO.Builder.OutputBuilder;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
@@ -39,6 +38,6 @@ public class ShowReadingListByAuthor implements ConsoleCommand {
 
     @Override
     public String description() {
-        return null;
+        return "Zeigt alle Bücher in der Leseliste an, welche von dem spezifizirten Autor sind.";
     }
 }

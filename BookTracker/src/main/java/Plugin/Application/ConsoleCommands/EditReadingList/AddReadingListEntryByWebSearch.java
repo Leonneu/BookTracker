@@ -7,10 +7,8 @@ import Plugin.Application.Model.Book;
 import Plugin.Application.Model.Genre;
 import Plugin.Application.Model.ReadingListEntry;
 import Plugin.Application.State;
-import Plugin.GoogleBooksWebApi;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
-import Plugin.JsonParser;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -46,6 +44,6 @@ public class AddReadingListEntryByWebSearch implements ConsoleCommand {
 
     @Override
     public String description() {
-        return null;
+        return "Füge ein Buch durch eine Suche in der Google Books API hinzu";
     }
 }

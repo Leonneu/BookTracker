@@ -4,7 +4,6 @@ import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.ReadingArchive;
 import Plugin.Application.State;
-import Plugin.IO.Builder.ArchiveOutputBuilder;
 import Plugin.IO.Builder.OutputBuilder;
 import Plugin.IO.Input;
 import Plugin.IO.Output;
@@ -39,6 +38,6 @@ public class ShowReadingArchiveByTitle implements ConsoleCommand {
 
     @Override
     public String description() {
-        return null;
+        return "Zeigt alle Bücher im Lesearchiv an die den spezifizirten Titel haben";
     }
 }

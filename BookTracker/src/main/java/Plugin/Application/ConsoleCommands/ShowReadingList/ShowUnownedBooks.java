@@ -1,16 +1,12 @@
 package Plugin.Application.ConsoleCommands.ShowReadingList;
 
-import Plugin.IO.Builder.ListOutputBuilder;
-import Plugin.IO.Builder.OutputBuilder;
-import Plugin.IO.Input;
-import Plugin.IO.Output;
 import Plugin.Application.ConsoleCommands.ConsoleCommand;
 import Plugin.Application.Container;
 import Plugin.Application.Model.ReadingList;
-import Plugin.Application.Model.ReadingListEntry;
 import Plugin.Application.State;
-
-import java.util.List;
+import Plugin.IO.Builder.OutputBuilder;
+import Plugin.IO.Input;
+import Plugin.IO.Output;
 
 public class ShowUnownedBooks implements ConsoleCommand {
     private final Container container;
@@ -39,15 +35,6 @@ public class ShowUnownedBooks implements ConsoleCommand {
         return State.SHOWREADINGLIST;
     }
 
-    private String formatWishListOutput(List<ReadingListEntry> content) {
-        StringBuilder result = new StringBuilder();
-        for (var e : content
-        ) {
-            result.append(e.toString()).append(Output.lineBreak);
-        }
-        return result.toString();
-    }
-
     @Override
     public String name() {
         return "Unbessesene Bücher anzeigen";
@@ -55,6 +42,6 @@ public class ShowUnownedBooks implements ConsoleCommand {
 
     @Override
     public String description() {
-        return null;
+        return "Zeigt alle Bücher an, welche nicht im Besitzt sind. Hier kann eine Wunschliste erstellt werden.";
     }
 }

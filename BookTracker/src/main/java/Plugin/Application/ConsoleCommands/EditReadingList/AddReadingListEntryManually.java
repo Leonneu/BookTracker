@@ -34,11 +34,11 @@ public class AddReadingListEntryManually implements ConsoleCommand {
 
     @Override
     public String name() {
-        return "Manually";
+        return "Buch manuell hinzufügen";
     }
 
     @Override
     public String description() {
-        return null;
+        return "Füge ein Buch durch manuelle Eingabe von allen Attributen hinzu";
     }
 }

@@ -33,6 +33,6 @@ public class ShowReadingList implements ConsoleCommand {
 
     @Override
     public String description() {
-        return "Zeigt die Leseliste an";
+        return "Zeigt die alle Bücher auf der Leseliste an.";
     }
 }
