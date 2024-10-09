@@ -27,7 +27,7 @@ public class AddReadingListEntryToReadingArchive implements ConsoleCommand {
         ReadingListEntry readingListEntry;
         switch (results.size()) {
             case 0 -> {
-                Output.showOutput("Keine Buch mit diesem Titel in der Leseliste");
+                Output.showOutput("Kein Buch mit diesem Titel in der Leseliste");
                 return State.EDITREADINGARCHIVE;
             }
             case 1 -> readingListEntry = results.get(0);
