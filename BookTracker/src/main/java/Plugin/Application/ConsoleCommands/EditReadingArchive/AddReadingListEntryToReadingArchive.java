@@ -33,7 +33,9 @@ public class AddReadingListEntryToReadingArchive implements ConsoleCommand {
             case 1 -> readingListEntry = results.get(0);
             default -> readingListEntry = Input.promptUserForListChoice(results);
         }
+        System.out.println("Geben Sie das Startdatum an");
         BookDateWrapper startDate = Input.promptUserForDate();
+        System.out.println("Geben Sie das Enddatum an");
         BookDateWrapper endDate = Input.promptUserForDate();
         String comment = Input.promptMsg("Notiz oder Kommentar?");
         if (comment.isEmpty()) {
